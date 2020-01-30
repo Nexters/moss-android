@@ -8,7 +8,7 @@ import com.nexters.moss.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MyApplication : Application() {
+class MossApplication : Application() {
     companion object { var debugMode: Boolean = true }
 
     private fun isDebuggable(context: Context): Boolean {
@@ -30,7 +30,7 @@ class MyApplication : Application() {
         debugMode = isDebuggable(this)
 
         startKoin {
-            androidContext(this@MyApplication)
+            androidContext(this@MossApplication)
             modules(appModule)
         }
     }
