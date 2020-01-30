@@ -1,4 +1,4 @@
-package com.nexters.moss.ui.send
+package com.nexters.moss.ui.send.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
+import com.nexters.moss.model.CakeModel
 
-class SendAdapter (private val context: Context, private val cakeList:ArrayList<CakeModel>) :
+class SendAdapter :
     RecyclerView.Adapter<SendAdapter.Holder>() {
+    private var context: Context? = null
+    private var cakeList = ArrayList<CakeModel>()
+
     inner class Holder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         private val habit = itemView.findViewById<TextView>(R.id.txt_send_recycler_habit)
 
@@ -19,6 +23,7 @@ class SendAdapter (private val context: Context, private val cakeList:ArrayList<
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.activity_send_item, parent,false)
         return Holder(view)
     }
@@ -31,7 +36,9 @@ class SendAdapter (private val context: Context, private val cakeList:ArrayList<
         return cakeList.size
     }
 
-
-
+    fun setCakeList(list: ArrayList<CakeModel>) {
+        cakeList = list
+        notifyDataSetChanged()
+    }
 
 }
