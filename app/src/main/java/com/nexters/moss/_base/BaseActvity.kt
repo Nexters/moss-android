@@ -9,12 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
 
-abstract class BaseActivity<T: ViewDataBinding, V: ViewModel>(c: Class<V>) : AppCompatActivity() {
-    protected val viewModel by lazy {
-        ViewModelProviders.of(this).get(c)
-    }
+abstract class BaseActivity<T: ViewDataBinding> : AppCompatActivity() {
+    abstract val vm: ViewModel
 
     protected val binding by lazy {
         DataBindingUtil.setContentView(this, getLayoutRes()) as T
