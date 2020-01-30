@@ -5,30 +5,26 @@ import java.lang.StringBuilder
 
 class DLog {
     companion object {
-        private const val TAG = "DLog"
+        private const val TAG = "MOSS"
 
         fun e(msg: String) {
-            if (MyApplication.debugMode)
+            if (MossApplication.debugMode)
                 Log.e(TAG, buildLogMsg(msg))
         }
         fun d(msg: String) {
-            if (MyApplication.debugMode)
+            if (MossApplication.debugMode)
                 Log.d(TAG, buildLogMsg(msg))
         }
-        fun d() {
-            if (MyApplication.debugMode)
-                Log.d(TAG, buildLogMsg(""))
-        }
         fun w(msg: String) {
-            if (MyApplication.debugMode)
+            if (MossApplication.debugMode)
                 Log.w(TAG, buildLogMsg(msg))
         }
         fun v(msg: String) {
-            if (MyApplication.debugMode)
+            if (MossApplication.debugMode)
                 Log.v(TAG, buildLogMsg(msg))
         }
         fun i(msg: String) {
-            if (MyApplication.debugMode)
+            if (MossApplication.debugMode)
                 Log.i(TAG, buildLogMsg(msg))
         }
 
