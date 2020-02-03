@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- diary -->
+    <dimen name="diary_padding_title_start_end">23dp</dimen>
+    <dimen name="diary_padding_title_bottom">15sp</dimen>
+
+
+    <dimen name="diary_txt_title">18sp</dimen>
+    <dimen name="diary_tab_layout_title">16sp</dimen>
+</resources>
