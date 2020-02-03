@@ -3,4 +3,19 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    
+    <!-- cake -->
+    <color name="cake_green_tea">#49874c</color>
+
+
+    <!-- receive -->
+    <color name="receive_btn">#3a4657</color>
+    <color name="receive_cheer_message_from">#ec303f</color>
+    <color name="receive_cheer_message_content">#333333</color>
+    <color name="receive_cake_name_subjective">#B33a4657</color>
+    <color name="receive_cake_name">#3a4657</color>
 </resources>
