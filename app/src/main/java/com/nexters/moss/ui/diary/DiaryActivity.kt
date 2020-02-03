@@ -20,7 +20,10 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setViewPager()
+    }
 
+    private fun setViewPager(){
         diaryAdapter = DiaryViewPagerAdapter(supportFragmentManager)
 
         layout_diary_view_pager.adapter = diaryAdapter
