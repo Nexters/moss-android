@@ -39,6 +39,21 @@
     <dimen name="main_today_text_size">12sp</dimen>
     <dimen name="main_habit_list_margin_top">6dp</dimen>
 
+    <!-- main drawer -->
+    <dimen name="main_drawer_item_width">280dp</dimen>
+    <dimen name="main_drawer_nickname_text_size">20sp</dimen>
+    <dimen name="main_drawer_nickname_margin_top">79dp</dimen>
+    <dimen name="main_drawer_nickname_margin_start">20dp</dimen>
+    <dimen name="main_drawer_logout_text_size">12sp</dimen>
+    <dimen name="main_drawer_push_margin_top">64dp</dimen>
+    <dimen name="main_drawer_right_items_margin_end">20dp</dimen>
+    <dimen name="main_drawer_left_items_text_size">18sp</dimen>
+    <dimen name="main_drawer_left_items_margin_top">23dp</dimen>
+    <dimen name="main_drawer_left_items_margin_start">24dp</dimen>
+    <dimen name="main_drawer_push_switch_width">56dp</dimen>
+    <dimen name="main_drawer_push_switch_height">28dp</dimen>
+
+
     <!-- item main habit -->
     <dimen name="item_main_habit_item_height">96dp</dimen>
     <dimen name="item_main_habit_item_margin_vertical">6dp</dimen>

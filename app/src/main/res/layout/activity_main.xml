@@ -69,6 +69,7 @@
                 android:text="습관"
                 android:textColor="@color/textColorBlackDeep"
                 android:textSize="@dimen/main_text_habit_text_size"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/guide_start"
                 app:layout_constraintTop_toBottomOf="@id/btn_openSettingDrawer" />
 
@@ -160,7 +161,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="300dp"
+            android:layout_width="@dimen/main_drawer_item_width"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:background="@color/white"
@@ -169,19 +170,56 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
+                android:id="@+id/tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hihiehieih"
+                android:text="닉네임"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/main_drawer_nickname_text_size"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/main_drawer_nickname_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_nickname_margin_top"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="hihiehieih"
+                android:text="로그아웃"
+                android:textSize="@dimen/main_drawer_logout_text_size"
+                android:textColor="#b33a4657"
+                android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_nickname"
+                app:layout_constraintBottom_toBottomOf="@id/tv_nickname"/>
+            <TextView
+                android:id="@+id/txt_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="푸시설정"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/main_drawer_left_items_text_size"
+                android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_push_margin_top"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/tv_nickname" />
+            <Switch
+                android:layout_width="@dimen/main_drawer_push_switch_width"
+                android:layout_height="@dimen/main_drawer_push_switch_height"
+                android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txt_push"
+                app:layout_constraintBottom_toBottomOf="@id/txt_push"/>
+            <TextView
+                android:id="@+id/txt_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="탈퇴하기"
+                android:textSize="@dimen/main_drawer_left_items_text_size"
+                android:textColor="@color/textColorBlack"
+                android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_left_items_margin_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_push"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
