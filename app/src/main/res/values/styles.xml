@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Onboardig TabTheme -->
+    <style name="TabTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="android:textColorPrimary">#226632</item>
+        <item name="android:textColorSecondary">#226632</item>
+        <item name="colorAccent">#226632</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
 </resources>

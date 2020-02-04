@@ -19,4 +19,7 @@
     <!-- item main habit -->
     <color name="itemHabitBackground">#f5f5f5</color>
 
+    <!-- onboarding -->
+    <color name="indicator_default_dot">#d8d8d8</color>
+    <color name="indicator_select_dot">#333333</color>
 </resources>
