@@ -12,6 +12,7 @@
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/dl_settingDrawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:isDrawerOpen="@{vm.isOpenDrawer}">

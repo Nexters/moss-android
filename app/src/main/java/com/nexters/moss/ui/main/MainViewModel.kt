@@ -13,4 +13,8 @@ class MainViewModel : ViewModel() {
         DLog.d("open drawer")
         _isOpenDrawer.value = true
     }
+
+    fun setDrawerState(isOpened: Boolean) {
+        _isOpenDrawer.value = isOpened
+    }
 }
