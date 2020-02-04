@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Moss</string>
 
+
+    <!-- send cake -->
+    <string name="send_cake_title">케익 보내기</string>
+    <string name="send_cake_button">보내기</string>
+    <string name="send_cake_message_hint">한줄 24자 최소 3자</string>
+    <string name="send_cake_message_alert">*욕설, 비방하지마세요. 신고당함</string>
+
     <!-- onboarding -->
     <string name="onboarding_one_title">Habikery에 오신 걸 환영해요!</string>
     <string name="onboarding_one_description">매일 실천할 수 있는 습관을 만들고\n유지할 수 있는 방법, 소개해드릴까요?</string>
