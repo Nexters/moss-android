@@ -3,4 +3,23 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="textColorBlackDeep">#131313</color>
+    <color name="textColorBlack">#333333</color>
+    <color name="textColorBlackSub">#999999</color>
+    <color name="textColorHint">#c8c8c8</color>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- send cake -->
+    <color name="sendBorder">#ECECEC</color>
+
+    <!-- item main habit -->
+    <color name="itemHabitBackground">#f5f5f5</color>
+
+    <!-- onboarding -->
+    <color name="indicator_default_dot">#d8d8d8</color>
+    <color name="indicator_select_dot">#333333</color>
 </resources>
