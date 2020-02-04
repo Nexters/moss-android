@@ -1,17 +1,17 @@
 package com.nexters.moss.ui.diary
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
+import com.nexters.moss._base.BaseFragment
+import com.nexters.moss.databinding.FragmentWholeBinding
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.ui.diary.adapter.DiaryPieceRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_whole.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DiaryWholeFragment : Fragment() {
+class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
 
     private val cakeList = arrayListOf<DiaryCakeModel>(
         DiaryCakeModel("클리어9", "야호야호", "녹차케이크"),
@@ -19,13 +19,10 @@ class DiaryWholeFragment : Fragment() {
         DiaryCakeModel("클리어7", "냠냠냠냠", "초코케이크")
     )
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_whole, container, false)
+    override val vm : DiaryWholeViewModel by viewModel()
+    override fun getLayoutRes(): Int = R.layout.fragment_whole
+    override fun setUpBinding() {
+        binding.vm = vm
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

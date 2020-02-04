@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.nexters.moss.ui.diary.DiaryActivity" />
+            type="com.nexters.moss.ui.diary.DiaryViewModel" />
     </data>
 
     <RelativeLayout
@@ -55,9 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-
             </androidx.viewpager.widget.ViewPager>
-
 
         </RelativeLayout>
 

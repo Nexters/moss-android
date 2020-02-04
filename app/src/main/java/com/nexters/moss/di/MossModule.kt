@@ -1,5 +1,8 @@
 package com.nexters.moss.di
 
+import com.nexters.moss.ui.diary.DiaryPieceViewModel
+import com.nexters.moss.ui.diary.DiaryViewModel
+import com.nexters.moss.ui.diary.DiaryWholeViewModel
 import com.nexters.moss.ui.main.MainViewModel
 import com.nexters.moss.ui.make_nickname.MakeNicknameViewModel
 import com.nexters.moss.ui.send.SendViewModel
@@ -16,4 +19,7 @@ val viewModelModule = module {
     viewModel { MakeNicknameViewModel() }
     viewModel { SendViewModel() }
     viewModel { MainViewModel() }
+    viewModel { DiaryViewModel() }
+    viewModel { DiaryPieceViewModel() }
+    viewModel { DiaryWholeViewModel() }
 }

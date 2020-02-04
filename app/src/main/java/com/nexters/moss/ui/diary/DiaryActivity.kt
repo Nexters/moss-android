@@ -12,10 +12,10 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>() {
     override val vm: DiaryViewModel by viewModel()
     override fun getLayoutRes() = R.layout.activity_diary
     override fun setupBinding() {
-        binding.vm = this
+        binding.vm = vm
     }
 
-    lateinit var diaryAdapter: DiaryViewPagerAdapter
+    private lateinit var diaryAdapter: DiaryViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

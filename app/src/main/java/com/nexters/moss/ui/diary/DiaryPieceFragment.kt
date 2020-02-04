@@ -1,18 +1,17 @@
 package com.nexters.moss.ui.diary
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
+import com.nexters.moss._base.BaseFragment
+import com.nexters.moss.databinding.FragmentPieceBinding
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.ui.diary.adapter.DiaryPieceRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_piece.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DiaryPieceFragment : Fragment() {
-
+class DiaryPieceFragment : BaseFragment<FragmentPieceBinding>() {
 
     private val cakeList = arrayListOf<DiaryCakeModel>(
         DiaryCakeModel("클리어1", "야호야호", "녹차케이크"),
@@ -21,28 +20,10 @@ class DiaryPieceFragment : Fragment() {
         DiaryCakeModel("클리어4", "쭈욱쭈욱", "치즈케이크")
     )
 
-    //lateinit var binding : FragmentPieceBinding
-    //var vm : ViewModel = DiaryPieceViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_piece, container,false)
-
-
-//        binding = DataBindingUtil.inflate(
-//            inflater, R.layout.fragment_piece, container, false
-//        )
-//
-//        with(binding){
-//            pieceVM = DiaryPieceFragment()
-//            lifecycleOwner = this@DiaryPieceFragment
-//        }
-//
-//       return binding.root
+    override val vm: DiaryPieceViewModel by viewModel()
+    override fun getLayoutRes(): Int = R.layout.fragment_piece
+    override fun setUpBinding() {
+        binding.vm = vm
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
