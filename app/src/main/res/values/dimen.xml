@@ -40,6 +40,12 @@
     <dimen name="main_habit_list_margin_top">6dp</dimen>
 
     <!-- item main habit -->
+    <dimen name="item_main_habit_item_height">96dp</dimen>
+    <dimen name="item_main_habit_item_margin_vertical">6dp</dimen>
+    <dimen name="item_main_habit_habit_name_text_size">20sp</dimen>
+    <dimen name="item_main_habit_habit_name_margin_start">20dp</dimen>
+    <dimen name="item_main_habit_check_margin_end">14dp</dimen>
+
     <!-- item main add habit -->
     <!-- formation habit -->
     <!-- item formation habit -->
