@@ -18,13 +18,13 @@
             android:layout_width="0.1dp"
             android:layout_height="0.1dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/_20sdp"/>
+            app:layout_constraintGuide_begin="@dimen/formation_habit_guide_start"/>
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_end"
             android:layout_width="0.1dp"
             android:layout_height="0.1dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/_20sdp"/>
+            app:layout_constraintGuide_end="@dimen/formation_habit_guide_end"/>
 
         <TextView
             android:id="@+id/txt_title"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="습관 고르기"
             android:textColor="@color/textColorBlack"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/formation_habit_title_text_Size"
             android:letterSpacing="-0.04"
             app:layout_constraintVertical_bias="0.1"
             app:layout_constraintStart_toStartOf="@id/guide_start"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3일 연속으로 달성하면, 깜짝 케이크가 도착해요."
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/formation_habit_explain_text_size"
             android:textColor="#B33a3f46"
             android:letterSpacing="-0.04"
             app:layout_constraintStart_toStartOf="@id/guide_start"
@@ -52,7 +52,7 @@
             android:id="@+id/rv_formationHabitList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/formation_habit_formation_item_list_margin_top"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintTop_toBottomOf="@id/txt_selectHabitExplain"/>
@@ -61,11 +61,11 @@
             android:layout_height="@dimen/_54sdp"
             android:text="습관 생성하기"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/formation_habit_make_habit_text_size"
             android:backgroundTint="@color/textColorBlackSub"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/formation_habit_make_habit_margin_horizontal"
+            android:layout_marginEnd="@dimen/formation_habit_make_habit_margin_horizontal"
+            android:layout_marginBottom="@dimen/formation_habit_make_habit_margin_bottom"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
