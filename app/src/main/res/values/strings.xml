@@ -17,4 +17,9 @@
     <string name="onboarding_three_description">조각 케이크 8조각을 모아\n홀케이크를 완성하고 뿌듯함을 느껴보세요</string>
     <string name="onboarding_four_title">서로의 습관을 응원해보세요</string>
     <string name="onboarding_four_description">다른 사용자에게 메세지와 케이크를 보내보세요\n뿌듯함이 2배가 될거예요</string>
+
+    <!-- diary -->
+    <string name="diary_title">케익 다이어리</string>
+    <string name="diary_title_piece_cake">조각케이크</string>
+    <string name="diary_title_whole_cake">홀케이크</string>
 </resources>
