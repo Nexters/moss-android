@@ -28,6 +28,7 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        vm.setCakeList(cakeList)
         setRecyclerView()
     }
 
