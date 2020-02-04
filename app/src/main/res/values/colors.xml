@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-
     <color name="textColorBlack">#333333</color>
     <color name="textColorBlackSub">#999999</color>
     <color name="textColorHint">#c8c8c8</color>
@@ -15,5 +14,4 @@
 
     <!-- send cake -->
     <color name="sendBorder">#ECECEC</color>
-
 </resources>
