@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_report_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_txt_title"
+            android:textSize="@dimen/report_title" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_report_head">
+
+        <RadioGroup
+            android:id="@+id/radio_group_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/btn_report_offensive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_txt_offensive"
+                android:textSize="@dimen/report_txt_normal" />
+
+            <RadioButton
+                android:id="@+id/btn_report_inappropriate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_txt_inappropriate"
+                android:textSize="@dimen/report_txt_normal" />
+
+            <RadioButton
+                android:id="@+id/btn_report_spam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/report_txt_spam"
+                android:textSize="@dimen/report_txt_normal" />
+
+            <RadioButton
+                android:id="@+id/btn_report_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_report_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/radio_group_report"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/btn_radio_invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/btn_radio_invisible"
+                android:hint="@string/report_txt_other"
+                android:inputType="text"
+                android:maxLength="12"
+                android:paddingTop="0dp"
+                android:textSize="@dimen/report_txt_normal" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

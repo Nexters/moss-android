@@ -1,5 +1,7 @@
 package com.nexters.moss.ui.receive
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
@@ -15,6 +17,7 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
 }

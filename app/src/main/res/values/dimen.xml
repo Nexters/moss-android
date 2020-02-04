@@ -15,4 +15,8 @@
     <dimen name="receive_txt_normal">16sp</dimen>
     <dimen name="receive_txt_cake_soft">13sp</dimen>
     <dimen name="receive_txt_cake_bold">20sp</dimen>
+
+    <!-- report -->
+    <dimen name="report_title">20sp</dimen>
+    <dimen name="report_txt_normal">16sp</dimen>
 </resources>
