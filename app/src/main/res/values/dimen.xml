@@ -24,4 +24,62 @@
     <dimen name="diary_tab_layout_title">16sp</dimen>
     <dimen name="diary_item_txt_clear">14sp</dimen>
     <dimen name="diary_item_txt_cake_name">20sp</dimen>
+
+    <!-- main -->
+    <dimen name="main_guide_start">16dp</dimen>
+    <dimen name="main_guide_end">16dp</dimen>
+    <dimen name="main_open_drawer_margin_top">30dp</dimen>
+    <dimen name="main_receive_cake_margin_end">30dp</dimen>
+    <dimen name="main_text_habit_text_size">36sp</dimen>
+    <dimen name="main_text_habit_margin_top">25dp</dimen>
+    <dimen name="main_edit_habit_text_size">12sp</dimen>
+    <dimen name="main_edit_habit_margin_start">6dp</dimen>
+    <dimen name="main_days_text_size">16sp</dimen>
+    <dimen name="main_days_margin_end">14dp</dimen>
+    <dimen name="main_today_text_size">12sp</dimen>
+    <dimen name="main_habit_list_margin_top">6dp</dimen>
+
+    <!-- item main habit -->
+    <dimen name="item_main_habit_item_height">96dp</dimen>
+    <dimen name="item_main_habit_item_margin_vertical">6dp</dimen>
+    <dimen name="item_main_habit_habit_name_text_size">20sp</dimen>
+    <dimen name="item_main_habit_habit_name_margin_start">20dp</dimen>
+    <dimen name="item_main_habit_check_margin_end">14dp</dimen>
+
+    <!-- item main add habit -->
+    <dimen name="item_main_add_habit_item_height">54dp</dimen>
+    <dimen name="item_main_add_habit_text_size">20sp</dimen>
+    <dimen name="item_main_add_habit_item_margin_top">20dp</dimen>
+
+    <!-- formation habit -->
+    <dimen name="formation_habit_guide_start">20dp</dimen>
+    <dimen name="formation_habit_guide_end">20dp</dimen>
+    <dimen name="formation_habit_title_text_Size">18sp</dimen>
+    <dimen name="formation_habit_explain_text_size">14sp</dimen>
+    <dimen name="formation_habit_formation_item_list_margin_top">24dp</dimen>
+    <dimen name="formation_habit_make_habit_height">54dp</dimen>
+    <dimen name="formation_habit_make_habit_text_size">16sp</dimen>
+    <dimen name="formation_habit_make_habit_margin_horizontal">16dp</dimen>
+    <dimen name="formation_habit_make_habit_margin_bottom">30dp</dimen>
+
+    <!-- item formation habit -->
+    <dimen name="item_formation_habit_item_height">76dp</dimen>
+    <dimen name="item_formation_habit_habit_name_text_size">18sp</dimen>
+    <dimen name="item_formation_habit_habit_name_margin_start">17dp</dimen>
+
+    <!-- make nickname -->
+    <dimen name="make_nickname_title_text_size">18sp</dimen>
+    <dimen name="make_nickname_explain_text_size">12sp</dimen>
+    <dimen name="make_nickname_edit_nickname_text_size">16sp</dimen>
+    <dimen name="make_nickname_edit_nickname_margin_top">38dp</dimen>
+    <dimen name="make_nickname_edit_nickname_margin_start">16dp</dimen>
+    <dimen name="make_nickname_edit_nickname_margin_end">16dp</dimen>
+    <dimen name="make_nickname_edit_nickname_padding_start">4dp</dimen>
+    <dimen name="make_nickname_edit_nickname_padding_end">4dp</dimen>
+    <dimen name="make_nickname_start_height">54dp</dimen>
+    <dimen name="make_nickname_start_margin_start">16dp</dimen>
+    <dimen name="make_nickname_start_margin_end">16dp</dimen>
+    <dimen name="make_nickname_start_margin_bottom">30dp</dimen>
+    <dimen name="make_nickname_start_text_size">16sp</dimen>
+
 </resources>

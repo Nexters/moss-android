@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_96sdp"
+    android:layout_height="@dimen/item_main_habit_item_height"
     android:background="@color/itemHabitBackground"
-    android:layout_marginTop="@dimen/_6sdp"
-    android:layout_marginBottom="@dimen/_6sdp"
+    android:layout_marginTop="@dimen/item_main_habit_item_margin_vertical"
+    android:layout_marginBottom="@dimen/item_main_habit_item_margin_vertical"
     android:gravity="center_vertical">
     <TextView
         android:id="@+id/tv_habitName"
@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:text="습관습관"
         android:textColor="@color/textColorBlack"
-        android:textSize="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_20sdp"/>
+        android:textSize="@dimen/item_main_habit_habit_name_text_size"
+        android:layout_marginStart="@dimen/item_main_habit_habit_name_margin_start"/>
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
@@ -25,35 +25,36 @@
         android:text="o"
         android:textSize="@dimen/_22sdp"
         android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/_10sdp"/>
+        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
         android:textColor="@color/textColorBlack"
         android:textSize="@dimen/_22sdp"
-        android:layout_marginEnd="@dimen/_10sdp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="o"
-        android:textColor="@color/textColorHint"
-        android:textSize="@dimen/_22sdp"
-        android:layout_marginEnd="@dimen/_10sdp"/>
+        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
         android:textSize="@dimen/_22sdp"
         android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/_10sdp"/>
+        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
         android:textSize="@dimen/_22sdp"
         android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/_10sdp"/>
+        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="o"
+        android:textSize="@dimen/_22sdp"
+        android:textColor="@color/textColorHint"
+        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
+
 
 
 </LinearLayout>
