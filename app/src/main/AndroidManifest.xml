@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".ui.make_nickname.MakeNicknameActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +20,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.make_nickname.SendActivity"></activity>
+        <activity android:name=".ui.send.SendActivity"></activity>
+        <activity android:name=".ui.main.MainActivity" />
     </application>
 
 </manifest>
