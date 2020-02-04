@@ -3,9 +3,11 @@ package com.nexters.moss.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityMainBinding
+import com.nexters.moss.ui.main.adapter.HabitListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -18,5 +20,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setupHabitRecyclerView()
+    }
+
+    private fun setupHabitRecyclerView() {
+        with(binding.rvHabitList) {
+            adapter = HabitListAdapter().apply {
+                refreshItemList(ArrayList<String>().apply {
+                    add("야식먹기")
+                    add("늦잠자기")
+                })
+            }
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
     }
 }
