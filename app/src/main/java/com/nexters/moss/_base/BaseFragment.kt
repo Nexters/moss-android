@@ -23,6 +23,7 @@ abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
+    abstract fun setupBinding()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +34,12 @@ abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
         this.container = container
 
         return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupBinding()
+        binding.lifecycleOwner = this
     }
 
     fun toast(content: String) {
