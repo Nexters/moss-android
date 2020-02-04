@@ -47,6 +47,9 @@
     <dimen name="item_main_habit_check_margin_end">14dp</dimen>
 
     <!-- item main add habit -->
+    <dimen name="item_main_add_habit_item_height">54dp</dimen>
+    <dimen name="item_main_add_habit_text_size">20sp</dimen>
+
     <!-- formation habit -->
     <!-- item formation habit -->
     <!-- make nickname -->
