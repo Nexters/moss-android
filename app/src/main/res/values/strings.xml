@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Moss</string>
+
+    <!-- onboarding -->
+    <string name="onboarding_one_title">Habikery에 오신 걸 환영해요!</string>
+    <string name="onboarding_one_description">매일 실천할 수 있는 습관을 만들고\n유지할 수 있는 방법, 소개해드릴까요?</string>
+    <string name="onboarding_two_title">딱 3일! 습관을 지속해보세요</string>
+    <string name="onboarding_two_description">3일째날 다른 사용자에게서 응원의 메시지와\n함께 조각 케이크를 받을 수 있어요</string>
+    <string name="onboarding_three_title">맛있는 홀케이크를 완성하세요</string>
+    <string name="onboarding_three_description">조각 케이크 8조각을 모아\n홀케이크를 완성하고 뿌듯함을 느껴보세요</string>
+    <string name="onboarding_four_title">서로의 습관을 응원해보세요</string>
+    <string name="onboarding_four_description">다른 사용자에게 메세지와 케이크를 보내보세요\n뿌듯함이 2배가 될거예요</string>
 </resources>
