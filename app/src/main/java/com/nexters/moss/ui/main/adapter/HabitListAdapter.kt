@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
 import java.util.*
@@ -25,18 +26,20 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                 )
             }
             else -> {
-                HabitViewHolder(
-                    LayoutInflater.from(context).inflate(R.layout.item_main_habit, parent, false)
+                AddHabitViewHolder(
+                    LayoutInflater.from(context).inflate(R.layout.item_main_add_habit, parent, false)
                 )
             }
         }
     }
 
-    override fun getItemCount() = itemList.size
+    override fun getItemCount() = itemList.size + 1
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is AddHabitViewHolder -> {
-
+                holder.itemView.setOnClickListener {
+                    Toast.makeText(context, "추가", Toast.LENGTH_SHORT).show()
+                }
             }
             is HabitViewHolder -> {
                 holder.habitName.text = itemList[position]
@@ -56,17 +59,17 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     }
 
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        Collections.swap(itemList, fromPosition, toPosition)
-        notifyItemMoved(fromPosition, toPosition)
+        if (toPosition != itemList.size) {
+            Collections.swap(itemList, fromPosition, toPosition)
+            notifyItemMoved(fromPosition, toPosition)
+        }
     }
 
     fun refreshItemList(list: ArrayList<String>) {
         itemList = list
     }
 
-    class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     class HabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val habitName: TextView = itemView.findViewById(R.id.tv_habitName)

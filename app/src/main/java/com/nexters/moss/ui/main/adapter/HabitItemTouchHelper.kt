@@ -11,8 +11,14 @@ class HabitItemTouchHelper : ItemTouchHelper.Callback() {
         viewHolder: RecyclerView.ViewHolder
     ): Int {
         val dragFlag = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        val position = viewHolder.adapterPosition
 
-        return makeMovementFlags(dragFlag, 0)
+        return if (position == recyclerView.childCount - 1) {
+            makeMovementFlags(0, 0)
+        }
+        else {
+            makeMovementFlags(dragFlag, 0)
+        }
     }
 
     override fun onMove(
@@ -20,7 +26,13 @@ class HabitItemTouchHelper : ItemTouchHelper.Callback() {
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        onItemTouchListener?.onItemMove(viewHolder.adapterPosition, target.adapterPosition)
+        val from = viewHolder.adapterPosition
+        val to = target.adapterPosition
+
+        if (from == recyclerView.adapter!!.itemCount - 1)
+            return false
+
+        onItemTouchListener?.onItemMove(from, to)
         return false
     }
 
