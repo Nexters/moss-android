@@ -19,19 +19,19 @@
             android:layout_width="0.1dp"
             android:layout_height="0.1dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/_16sdp" />
+            app:layout_constraintGuide_begin="@dimen/main_guide_start" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_end"
             android:layout_width="0.1dp"
             android:layout_height="0.1dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/_16sdp" />
+            app:layout_constraintGuide_end="@dimen/main_guide_end" />
 
         <ImageButton
             android:id="@+id/btn_openSettingDrawer"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/main_open_drawer_margin_top"
             android:background="#000"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -39,7 +39,7 @@
             android:id="@+id/btn_receiveCake"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
             android:background="#000"
             app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
             app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer"/>
@@ -56,8 +56,8 @@
             android:layout_height="wrap_content"
             android:text="습관"
             android:textColor="@color/textColorBlackDeep"
-            android:textSize="@dimen/_36sdp"
-            android:layout_marginTop="@dimen/_25sdp"
+            android:textSize="@dimen/main_text_habit_text_size"
+            android:layout_marginTop="@dimen/main_text_habit_margin_top"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toBottomOf="@id/btn_openSettingDrawer"/>
         <TextView
@@ -66,8 +66,8 @@
             android:layout_height="wrap_content"
             android:text="편집"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:layout_marginStart="@dimen/_6sdp"
+            android:textSize="@dimen/main_edit_habit_text_size"
+            android:layout_marginStart="@dimen/main_edit_habit_margin_start"
             app:layout_constraintStart_toEndOf="@id/txt_habit"
             app:layout_constraintBottom_toBottomOf="@id/txt_habit"
             app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"/>
@@ -77,9 +77,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="22"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/main_days_text_size"
             android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/main_days_margin_end"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
         <TextView
@@ -87,9 +87,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="21"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/main_days_text_size"
             android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/main_days_margin_end"
             app:layout_constraintEnd_toStartOf="@id/tv_dayOfFifth"
             app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
         <TextView
@@ -97,9 +97,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/main_days_text_size"
             android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/main_days_margin_end"
             app:layout_constraintEnd_toStartOf="@id/tv_dayOfFourth"
             app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
         <TextView
@@ -107,9 +107,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="19"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/main_days_text_size"
             android:textColor="@color/textColorBlack"
-            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/main_days_margin_end"
             app:layout_constraintEnd_toStartOf="@id/tv_dayOfThird"
             app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
         <TextView
@@ -117,9 +117,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="18"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="@dimen/main_days_text_size"
             android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/main_days_margin_end"
             app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
             app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
         <TextView
@@ -127,7 +127,7 @@
             android:layout_height="wrap_content"
             android:text="오늘"
             android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/main_today_text_size"
             app:layout_constraintBottom_toTopOf="@id/tv_dayOfSecond"
             app:layout_constraintStart_toStartOf="@id/tv_dayOfSecond"
             app:layout_constraintEnd_toEndOf="@id/tv_dayOfSecond"/>
@@ -135,7 +135,7 @@
             android:id="@+id/rv_habitList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/main_habit_list_margin_top"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintTop_toBottomOf="@id/txt_habit"/>
