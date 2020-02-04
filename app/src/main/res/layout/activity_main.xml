@@ -13,6 +13,52 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/txt_setupNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임을 정해주세요"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/txt_nicknameExplain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="케익 선물을 보낼때 발송인의 닉네임이 표시됩니다."
+            android:textColor="@color/textColorBlackSub"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_setupNickname"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="00자 이하의 달콤한 닉네임"
+            android:textColor="@color/textColorBlack"
+            android:backgroundTint="@color/textColorHint"
+            android:textColorHint="@color/textColorHint"
+            android:layout_marginTop="@dimen/_38sdp"
+            android:paddingStart="@dimen/_4sdp"
+            android:paddingEnd="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_nicknameExplain"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_54sdp"
+            android:text="시작하기"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@color/textColorBlackSub"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
