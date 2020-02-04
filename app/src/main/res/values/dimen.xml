@@ -49,6 +49,7 @@
     <!-- item main add habit -->
     <dimen name="item_main_add_habit_item_height">54dp</dimen>
     <dimen name="item_main_add_habit_text_size">20sp</dimen>
+    <dimen name="item_main_add_habit_item_margin_top">20dp</dimen>
 
     <!-- formation habit -->
     <dimen name="formation_habit_guide_start">20dp</dimen>
