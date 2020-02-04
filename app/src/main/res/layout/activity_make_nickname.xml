@@ -2,12 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.make_nickname.MakeNicknameActivity">
 
     <data>
         <variable
             name="vm"
-            type="com.nexters.moss.ui.main.MainViewModel" />
+            type="com.nexters.moss.ui.make_nickname.MakeNicknameViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
