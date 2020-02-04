@@ -22,7 +22,7 @@ class DiaryPieceFragment : BaseFragment<FragmentPieceBinding>() {
 
     override val vm: DiaryPieceViewModel by viewModel()
     override fun getLayoutRes(): Int = R.layout.fragment_piece
-    override fun setUpBinding() {
+    override fun setupBinding() {
         binding.vm = vm
     }
 

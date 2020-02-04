@@ -21,7 +21,7 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
 
     override val vm : DiaryWholeViewModel by viewModel()
     override fun getLayoutRes(): Int = R.layout.fragment_whole
-    override fun setUpBinding() {
+    override fun setupBinding() {
         binding.vm = vm
     }
 
