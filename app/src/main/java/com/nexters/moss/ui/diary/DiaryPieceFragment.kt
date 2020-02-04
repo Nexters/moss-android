@@ -30,7 +30,7 @@ class DiaryPieceFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_piece_no, container,false)
+        return inflater.inflate(R.layout.fragment_piece, container,false)
 
 
 //        binding = DataBindingUtil.inflate(

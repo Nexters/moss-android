@@ -26,7 +26,7 @@ class DiaryPieceRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : Recycl
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.item_diary_no, parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_diary, parent,false)
         return Holder(view)
     }
 

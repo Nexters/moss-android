@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.ui.diary.adapter.DiaryPieceRecyclerAdapter
-import kotlinx.android.synthetic.main.fragment_piece.*
+import kotlinx.android.synthetic.main.fragment_whole.*
 
 class DiaryWholeFragment : Fragment() {
 
@@ -38,7 +38,7 @@ class DiaryWholeFragment : Fragment() {
         val recyclerAdapter = DiaryPieceRecyclerAdapter(cakeList)
         val recyclerManager = LinearLayoutManager(context!!)
 
-        with(layout_diary_piece_recycler) {
+        with(layout_diary_whole_recycler) {
             adapter = recyclerAdapter
             layoutManager = recyclerManager
             setHasFixedSize(false)

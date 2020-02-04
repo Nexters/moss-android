@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/layout_diary_piece_recycler"
+            android:id="@+id/layout_diary_whole_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
