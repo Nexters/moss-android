@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.send.SendActivity" />
+        <activity android:name=".ui.diary.DiaryActivity"/>
     </application>
 
 </manifest>
