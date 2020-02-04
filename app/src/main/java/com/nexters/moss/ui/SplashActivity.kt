@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Handler().postDelayed({
-            startActivity(Intent(applicationContext, FormationHabitActivity::class.java))
+            startActivity(Intent(applicationContext, MainActivity::class.java))
         },500)
     }
 }

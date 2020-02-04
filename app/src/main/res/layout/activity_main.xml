@@ -11,135 +11,217 @@
             type="com.nexters.moss.ui.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/dl_settingDrawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guide_start"
-            android:layout_width="0.1dp"
-            android:layout_height="0.1dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/main_guide_start" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guide_end"
-            android:layout_width="0.1dp"
-            android:layout_height="0.1dp"
-            android:orientation="vertical"
-            app:layout_constraintGuide_end="@dimen/main_guide_end" />
+        android:layout_height="match_parent"
+        app:isDrawerOpen="@{vm.isOpenDrawer}">
 
-        <ImageButton
-            android:id="@+id/btn_openSettingDrawer"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
-            android:layout_marginTop="@dimen/main_open_drawer_margin_top"
-            android:background="#000"
-            app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toTopOf="parent"/>
-        <ImageButton
-            android:id="@+id/btn_receiveCake"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
-            android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
-            android:background="#000"
-            app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
-            app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer"/>
-        <ImageButton
-            android:id="@+id/btn_sendCake"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_18sdp"
-            android:background="#000"
-            app:layout_constraintEnd_toEndOf="@id/guide_end"
-            app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer"/>
-        <TextView
-            android:id="@+id/txt_habit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="습관"
-            android:textColor="@color/textColorBlackDeep"
-            android:textSize="@dimen/main_text_habit_text_size"
-            android:layout_marginTop="@dimen/main_text_habit_margin_top"
-            app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toBottomOf="@id/btn_openSettingDrawer"/>
-        <TextView
-            android:id="@+id/tv_editHabit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="편집"
-            android:textColor="@color/black"
-            android:textSize="@dimen/main_edit_habit_text_size"
-            android:layout_marginStart="@dimen/main_edit_habit_margin_start"
-            app:layout_constraintStart_toEndOf="@id/txt_habit"
-            app:layout_constraintBottom_toBottomOf="@id/txt_habit"
-            app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_dayOfFifth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="22"
-            android:textSize="@dimen/main_days_text_size"
-            android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/main_days_margin_end"
-            app:layout_constraintEnd_toEndOf="@id/guide_end"
-            app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
-        <TextView
-            android:id="@+id/tv_dayOfFourth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="21"
-            android:textSize="@dimen/main_days_text_size"
-            android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/main_days_margin_end"
-            app:layout_constraintEnd_toStartOf="@id/tv_dayOfFifth"
-            app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
-        <TextView
-            android:id="@+id/tv_dayOfThird"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="20"
-            android:textSize="@dimen/main_days_text_size"
-            android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/main_days_margin_end"
-            app:layout_constraintEnd_toStartOf="@id/tv_dayOfFourth"
-            app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
-        <TextView
-            android:id="@+id/tv_dayOfSecond"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="19"
-            android:textSize="@dimen/main_days_text_size"
-            android:textColor="@color/textColorBlack"
-            android:layout_marginEnd="@dimen/main_days_margin_end"
-            app:layout_constraintEnd_toStartOf="@id/tv_dayOfThird"
-            app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
-        <TextView
-            android:id="@+id/tv_dayOfFirst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="18"
-            android:textSize="@dimen/main_days_text_size"
-            android:textColor="@color/textColorBlackSub"
-            android:layout_marginEnd="@dimen/main_days_margin_end"
-            app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
-            app:layout_constraintTop_toTopOf="@id/tv_editHabit"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오늘"
-            android:textColor="@color/black"
-            android:textSize="@dimen/main_today_text_size"
-            app:layout_constraintBottom_toTopOf="@id/tv_dayOfSecond"
-            app:layout_constraintStart_toStartOf="@id/tv_dayOfSecond"
-            app:layout_constraintEnd_toEndOf="@id/tv_dayOfSecond"/>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_habitList"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/main_habit_list_margin_top"
-            app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintEnd_toEndOf="@id/guide_end"
-            app:layout_constraintTop_toBottomOf="@id/txt_habit"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_start"
+                android:layout_width="0.1dp"
+                android:layout_height="0.1dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/main_guide_start" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_end"
+                android:layout_width="0.1dp"
+                android:layout_height="0.1dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/main_guide_end" />
 
+            <ImageButton
+                android:id="@+id/btn_openSettingDrawer"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginTop="@dimen/main_open_drawer_margin_top"
+                android:background="#000"
+                android:onClick="@{() -> vm.openDrawer()}"
+                app:layout_constraintStart_toStartOf="@id/guide_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_receiveCake"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
+                android:background="#000"
+                app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
+                app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
+
+            <ImageButton
+                android:id="@+id/btn_sendCake"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:background="#000"
+                app:layout_constraintEnd_toEndOf="@id/guide_end"
+                app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
+
+            <TextView
+                android:id="@+id/txt_habit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_text_habit_margin_top"
+                android:text="습관"
+                android:textColor="@color/textColorBlackDeep"
+                android:textSize="@dimen/main_text_habit_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/guide_start"
+                app:layout_constraintTop_toBottomOf="@id/btn_openSettingDrawer" />
+
+            <TextView
+                android:id="@+id/tv_editHabit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_edit_habit_margin_start"
+                android:text="편집"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_edit_habit_text_size"
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"
+                app:layout_constraintBottom_toBottomOf="@id/txt_habit"
+                app:layout_constraintStart_toEndOf="@id/txt_habit" />
+
+            <TextView
+                android:id="@+id/tv_dayOfFifth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:text="22"
+                android:textColor="@color/textColorBlackSub"
+                android:textSize="@dimen/main_days_text_size"
+                app:layout_constraintEnd_toEndOf="@id/guide_end"
+                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+
+            <TextView
+                android:id="@+id/tv_dayOfFourth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:text="21"
+                android:textColor="@color/textColorBlackSub"
+                android:textSize="@dimen/main_days_text_size"
+                app:layout_constraintEnd_toStartOf="@id/tv_dayOfFifth"
+                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+
+            <TextView
+                android:id="@+id/tv_dayOfThird"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:text="20"
+                android:textColor="@color/textColorBlackSub"
+                android:textSize="@dimen/main_days_text_size"
+                app:layout_constraintEnd_toStartOf="@id/tv_dayOfFourth"
+                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+
+            <TextView
+                android:id="@+id/tv_dayOfSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:text="19"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/main_days_text_size"
+                app:layout_constraintEnd_toStartOf="@id/tv_dayOfThird"
+                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+
+            <TextView
+                android:id="@+id/tv_dayOfFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:text="18"
+                android:textColor="@color/textColorBlackSub"
+                android:textSize="@dimen/main_days_text_size"
+                app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
+                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘"
+                android:textColor="@color/black"
+                android:textSize="@dimen/main_today_text_size"
+                app:layout_constraintBottom_toTopOf="@id/tv_dayOfSecond"
+                app:layout_constraintEnd_toEndOf="@id/tv_dayOfSecond"
+                app:layout_constraintStart_toStartOf="@id/tv_dayOfSecond" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_habitList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_habit_list_margin_top"
+                app:layout_constraintEnd_toEndOf="@id/guide_end"
+                app:layout_constraintStart_toStartOf="@id/guide_start"
+                app:layout_constraintTop_toBottomOf="@id/txt_habit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/main_drawer_item_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="닉네임"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/main_drawer_nickname_text_size"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/main_drawer_nickname_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_nickname_margin_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그아웃"
+                android:textSize="@dimen/main_drawer_logout_text_size"
+                android:textColor="#b33a4657"
+                android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_nickname"
+                app:layout_constraintBottom_toBottomOf="@id/tv_nickname"/>
+            <TextView
+                android:id="@+id/txt_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="푸시설정"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/main_drawer_left_items_text_size"
+                android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_push_margin_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_nickname" />
+            <Switch
+                android:layout_width="@dimen/main_drawer_push_switch_width"
+                android:layout_height="@dimen/main_drawer_push_switch_height"
+                android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txt_push"
+                app:layout_constraintBottom_toBottomOf="@id/txt_push"/>
+            <TextView
+                android:id="@+id/txt_withdraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="탈퇴하기"
+                android:textSize="@dimen/main_drawer_left_items_text_size"
+                android:textColor="@color/textColorBlack"
+                android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_left_items_margin_top"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_push"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

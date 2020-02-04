@@ -1,8 +1,8 @@
 package com.nexters.moss.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
+import android.view.View
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
@@ -24,6 +24,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
 
         setupHabitRecyclerView()
+        setupDrawerLayout()
+    }
+
+    override fun onBackPressed() {
+        if (vm.isOpenDrawer.value!!) {
+            vm.setDrawerState(false)
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private fun setupHabitRecyclerView() {
@@ -41,6 +50,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             layoutManager = LinearLayoutManager(this@MainActivity)
             habitItemTouchCallback.attachItemTouchAdapter(habitListAdapter)
             itemTouchHelper.attachToRecyclerView(this)
+        }
+    }
+
+    private fun setupDrawerLayout() {
+        with(binding.dlSettingDrawer) {
+            addDrawerListener(object : DrawerLayout.DrawerListener {
+                override fun onDrawerStateChanged(newState: Int) = Unit
+                override fun onDrawerSlide(drawerView: View, slideOffset: Float) = Unit
+                override fun onDrawerClosed(drawerView: View) {
+                    vm.setDrawerState(false)
+                }
+                override fun onDrawerOpened(drawerView: View) {
+                    vm.setDrawerState(true)
+                }
+            })
+
+            setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         }
     }
 }
