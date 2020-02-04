@@ -7,8 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
+import java.util.*
+import kotlin.collections.ArrayList
 
-class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
+    HabitItemTouchHelper.OnItemTouchListener {
+
     private var itemList = ArrayList<String>()
     private lateinit var context: Context
 
@@ -51,6 +55,11 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        Collections.swap(itemList, fromPosition, toPosition)
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
     fun refreshItemList(list: ArrayList<String>) {
         itemList = list
     }
@@ -58,9 +67,11 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
+
     class HabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val habitName: TextView = itemView.findViewById(R.id.tv_habitName)
     }
+
     class EditHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     }
