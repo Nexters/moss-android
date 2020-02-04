@@ -1,5 +1,6 @@
 package com.nexters.moss.di
 
+import com.nexters.moss.ui.main.MainViewModel
 import com.nexters.moss.ui.make_nickname.MakeNicknameViewModel
 import com.nexters.moss.ui.send.SendViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,4 +15,5 @@ val appModule = module {
 val viewModelModule = module {
     viewModel { MakeNicknameViewModel() }
     viewModel { SendViewModel() }
+    viewModel { MainViewModel() }
 }

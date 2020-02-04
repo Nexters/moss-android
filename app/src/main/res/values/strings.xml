@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Moss</string>
-    
-    
+
+
     <!-- send cake -->
     <string name="send_cake_title">케익 보내기</string>
     <string name="send_cake_button">보내기</string>
