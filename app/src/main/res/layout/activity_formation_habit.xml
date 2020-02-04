@@ -27,7 +27,7 @@
             app:layout_constraintGuide_end="@dimen/_20sdp"/>
 
         <TextView
-            android:id="@+id/txt_selectHabit"
+            android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="습관 고르기"
@@ -47,7 +47,7 @@
             android:textColor="#B33a3f46"
             android:letterSpacing="-0.04"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toBottomOf="@id/txt_selectHabit"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_title"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_formationHabitList"
             android:layout_width="0dp"

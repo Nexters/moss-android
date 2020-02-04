@@ -51,6 +51,16 @@
     <dimen name="item_main_add_habit_text_size">20sp</dimen>
 
     <!-- formation habit -->
+    <dimen name="formation_habit_guide_start">20dp</dimen>
+    <dimen name="formation_habit_guide_end">20dp</dimen>
+    <dimen name="formation_habit_title_text_Size">18sp</dimen>
+    <dimen name="formation_habit_explain_text_size">14sp</dimen>
+    <dimen name="formation_habit_formation_item_list_margin_top">24dp</dimen>
+    <dimen name="formation_habit_make_habit_height">54dp</dimen>
+    <dimen name="formation_habit_make_habit_text_size">16sp</dimen>
+    <dimen name="formation_habit_make_habit_margin_horizontal">16dp</dimen>
+    <dimen name="formation_habit_make_habit_margin_bottom">30dp</dimen>
+
     <!-- item formation habit -->
     <!-- make nickname -->
 
