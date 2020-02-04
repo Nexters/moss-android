@@ -23,7 +23,7 @@ abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
 
     @LayoutRes
     abstract fun getLayoutRes(): Int
-    abstract fun setUpBinding()
+    abstract fun setupBinding()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,7 +38,7 @@ abstract class BaseFragment<T: ViewDataBinding> : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        setUpBinding()
+        setupBinding()
         binding.lifecycleOwner = this
     }
 
