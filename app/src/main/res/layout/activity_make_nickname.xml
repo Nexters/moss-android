@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:id="@+id/txt_setupNickname"
+            android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="닉네임을 정해주세요"
@@ -30,7 +30,7 @@
             android:textColor="@color/textColorBlackSub"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_setupNickname"/>
+            app:layout_constraintTop_toBottomOf="@id/txt_title"/>
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"

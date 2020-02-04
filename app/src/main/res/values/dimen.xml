@@ -24,4 +24,26 @@
     <dimen name="diary_tab_layout_title">16sp</dimen>
     <dimen name="diary_item_txt_clear">14sp</dimen>
     <dimen name="diary_item_txt_cake_name">20sp</dimen>
+
+    <!-- main -->
+    <dimen name="main_guide_start">16dp</dimen>
+    <dimen name="main_guide_end">16dp</dimen>
+    <dimen name="main_open_drawer_margin_top">30dp</dimen>
+    <dimen name="main_receive_cake_margin_end">30dp</dimen>
+    <dimen name="main_text_habit_text_size">36sp</dimen>
+    <dimen name="main_text_habit_margin_top">25dp</dimen>
+    <dimen name="main_edit_habit_text_size">12sp</dimen>
+    <dimen name="main_edit_habit_margin_start">6dp</dimen>
+    <dimen name="main_days_text_size">16sp</dimen>
+    <dimen name="main_days_margin_end">14dp</dimen>
+    <dimen name="main_today_text_size">12sp</dimen>
+    <dimen name="main_habit_list_margin_top">6dp</dimen>
+
+    <!-- item main habit -->
+    <!-- item main add habit -->
+    <!-- formation habit -->
+    <!-- item formation habit -->
+    <!-- make nickname -->
+
+
 </resources>
