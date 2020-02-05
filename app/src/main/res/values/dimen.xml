@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="size_20sp">20sp</dimen>
+    <dimen name="size_18sp">18sp</dimen>
+    <dimen name="size_16sp">16sp</dimen>
+    <dimen name="size_12sp">12sp</dimen>
+
+    <!-- onboarding -->
+    <dimen name="onboarding_img_height">380dp</dimen>
+    <dimen name="onboarding_viewPager_height">500dp</dimen>
+    <dimen name="onboarding_padding_txt_top">30dp</dimen>
+
+    <dimen name="onboarding_txt_title">20sp</dimen>
+    <dimen name="onboarding_txt_description">16sp</dimen>
 
     <!-- receive cake -->
     <dimen name="receive_padding_top_bottom">18dp</dimen>
