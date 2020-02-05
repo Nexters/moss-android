@@ -1,5 +1,9 @@
 package com.nexters.moss.di
 
+import com.nexters.moss.ui.formation_habit.FormationHabitViewModel
+import com.nexters.moss.ui.diary.DiaryPieceViewModel
+import com.nexters.moss.ui.diary.DiaryViewModel
+import com.nexters.moss.ui.diary.DiaryWholeViewModel
 import com.nexters.moss.ui.main.MainViewModel
 import com.nexters.moss.ui.receive.ReceiveViewModel
 import com.nexters.moss.ui.make_nickname.MakeNicknameViewModel
@@ -15,7 +19,14 @@ val appModule = module {
 
 val viewModelModule = module {
     viewModel { MakeNicknameViewModel() }
-    viewModel { SendViewModel() }
+
     viewModel { MainViewModel() }
+    viewModel { FormationHabitViewModel() }
+
+    viewModel { SendViewModel() }
     viewModel { ReceiveViewModel() }
+
+    viewModel { DiaryViewModel() }
+    viewModel { DiaryPieceViewModel() }
+    viewModel { DiaryWholeViewModel() }
 }
