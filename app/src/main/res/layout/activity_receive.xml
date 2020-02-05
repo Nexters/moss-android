@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.nexters.moss.ui.receive.ReceiveActivity" />
+            type="com.nexters.moss.ui.receive.ReceiveViewModel" />
     </data>
 
     <RelativeLayout
@@ -147,7 +147,7 @@
                             android:layout_height="wrap_content"
                             android:text="산책은 머리를 맑게 해준대요~"
                             android:textColor="@color/receive_cheer_message_content"
-                            android:textSize="@dimen/receive_txt_normal"></TextView>
+                            android:textSize="@dimen/receive_txt_normal"/>
                     </LinearLayout>
 
                 </LinearLayout>
