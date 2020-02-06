@@ -157,8 +157,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/layout_receive_cake_main_img"
-                android:paddingTop="@dimen/receive_padding_report_top">
+                android:layout_below="@id/layout_receive_cake_main_img">
 
                 <Button
                     android:id="@+id/btn_receive_report"
@@ -166,6 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:text="@string/receive_btn_report"
+                    android:onClick="@{()->vm.clickBtnReport()}"
                     android:background="@color/transparent"
                     android:textColor="@color/white"
                     android:textSize="@dimen/receive_txt_small" />

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.ContextThemeWrapper
 import android.widget.RadioGroup
+import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityReceiveBinding
@@ -19,9 +20,12 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        btn_receive_report.setOnClickListener {
-            showDialog()
-        }
+
+        vm.report.observe(this, Observer {
+            if(vm.report.value!!){
+                showDialog()
+            }
+        })
 
     }
 
@@ -54,10 +58,12 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
             setPositiveButton("확인") { _, _ ->
                 toast("alert confirm")
+                vm.setBtnReportStatus(false)
             }
 
             setNegativeButton("취소") { _, _ ->
                 toast("alert cancel")
+                vm.setBtnReportStatus(false)
             }
 
             show()
