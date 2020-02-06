@@ -37,5 +37,5 @@
     <string name="report_txt_other">기타</string>
     <string name="report_txt_cancel">취소</string>
     <string name="report_txt_submit">확인</string>
-    <string name="report_txt_success_alert">신고가 접수되었습니다.</string>
+    <string name="report_txt_complete_alert">신고가 접수되었습니다.</string>
 </resources>

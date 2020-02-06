@@ -116,4 +116,5 @@
     <!-- report -->
     <dimen name="report_title">20sp</dimen>
     <dimen name="report_txt_normal">16sp</dimen>
+    <dimen name="report_txt_toast_complete">16sp</dimen>
 </resources>

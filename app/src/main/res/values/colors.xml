@@ -33,4 +33,7 @@
     <color name="receive_cheer_message_content">#333333</color>
     <color name="receive_cake_name_subjective">#B33a4657</color>
     <color name="receive_cake_name">#3a4657</color>
+
+    <!-- report -->
+    <color name="report_toast_background">#E62a313c</color>
 </resources>

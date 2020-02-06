@@ -3,12 +3,13 @@ package com.nexters.moss.ui.receive
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.ContextThemeWrapper
+import android.view.Gravity
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityReceiveBinding
-import kotlinx.android.synthetic.main.activity_receive.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
@@ -22,7 +23,7 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
         super.onCreate(savedInstanceState)
 
         vm.report.observe(this, Observer {
-            if(vm.report.value!!){
+            if (vm.report.value!!) {
                 showDialog()
             }
         })
@@ -31,7 +32,7 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
     private fun showDialog() {
 
-        val dialogView = layoutInflater.inflate(R.layout.dialog_report, null)
+        val dialogView = layoutInflater.inflate(R.layout.layout_dialog_report, null)
 
         dialogView.findViewById<RadioGroup>(R.id.radio_group_report)
             .apply {
@@ -57,12 +58,11 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
             setView(dialogView)
 
             setPositiveButton("확인") { _, _ ->
-                toast("alert confirm")
                 vm.setBtnReportStatus(false)
+                showToastReportCompleted()
             }
 
             setNegativeButton("취소") { _, _ ->
-                toast("alert cancel")
                 vm.setBtnReportStatus(false)
             }
 
@@ -70,6 +70,15 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
         }
     }
 
+    private fun showToastReportCompleted() {
+
+        Toast(applicationContext).apply {
+            view = layoutInflater.inflate(R.layout.layout_toast_report, null)
+            duration = Toast.LENGTH_LONG
+            setGravity(Gravity.TOP, Gravity.CENTER, Gravity.TOP)
+            show()
+        }
+    }
 }
 
 
