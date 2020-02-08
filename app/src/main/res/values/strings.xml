@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Moss</string>
 
-
     <!-- send cake -->
     <string name="send_cake_title">케익 보내기</string>
     <string name="send_cake_button">보내기</string>
@@ -22,4 +21,21 @@
     <string name="diary_title">케익 다이어리</string>
     <string name="diary_title_piece_cake">조각케이크</string>
     <string name="diary_title_whole_cake">홀케이크</string>
+
+    <!-- receive cake -->
+    <string name="receive_title">케익 도착</string>
+    <string name="receive_btn_go_diary">케익 보러가기</string>
+    <string name="receive_btn_send_cake">나도 할래요, 선물 보내기!</string>
+    <string name="receive_btn_report">신고하기</string>
+    <string name="receive_from_who">님이 보낸 응원</string>
+
+    <!-- report -->
+    <string name="report_txt_title">신고사유</string>
+    <string name="report_txt_offensive">욕설, 비속어</string>
+    <string name="report_txt_inappropriate">음란언어</string>
+    <string name="report_txt_spam">광고, 홍보</string>
+    <string name="report_txt_other">기타</string>
+    <string name="report_txt_cancel">취소</string>
+    <string name="report_txt_submit">확인</string>
+    <string name="report_txt_complete_alert">신고가 접수되었습니다.</string>
 </resources>

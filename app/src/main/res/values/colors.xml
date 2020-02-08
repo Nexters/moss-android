@@ -22,4 +22,18 @@
     <!-- onboarding -->
     <color name="indicator_default_dot">#d8d8d8</color>
     <color name="indicator_select_dot">#333333</color>
+
+    <!-- cake -->
+    <color name="cake_green_tea">#49874c</color>
+
+
+    <!-- receive -->
+    <color name="receive_btn">#3a4657</color>
+    <color name="receive_cheer_message_from">#ec303f</color>
+    <color name="receive_cheer_message_content">#333333</color>
+    <color name="receive_cake_name_subjective">#B33a4657</color>
+    <color name="receive_cake_name">#3a4657</color>
+
+    <!-- report -->
+    <color name="report_toast_background">#E62a313c</color>
 </resources>
