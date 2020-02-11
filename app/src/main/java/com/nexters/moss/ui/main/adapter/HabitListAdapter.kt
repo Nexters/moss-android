@@ -1,6 +1,7 @@
 package com.nexters.moss.ui.main.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
+import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -38,7 +40,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         when (holder) {
             is AddHabitViewHolder -> {
                 holder.itemView.setOnClickListener {
-                    Toast.makeText(context, "추가", Toast.LENGTH_SHORT).show()
+                    context.startActivity(Intent(context, FormationHabitActivity::class.java))
                 }
             }
             is HabitViewHolder -> {
