@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityMainBinding
+import com.nexters.moss.ui.dialog_logout.LogoutDialog
 import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
 import com.nexters.moss.ui.main.adapter.HabitListAdapter
@@ -43,6 +44,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             isWithDraw.observe(this@MainActivity, Observer {
                 if (it) {
                     WithdrawDialog().show(supportFragmentManager, "")
+                }
+            })
+
+            isLogout.observe(this@MainActivity, Observer {
+                if (it) {
+                    LogoutDialog().show(supportFragmentManager, "")
                 }
             })
         }

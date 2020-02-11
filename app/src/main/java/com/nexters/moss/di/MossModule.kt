@@ -1,5 +1,6 @@
 package com.nexters.moss.di
 
+import com.nexters.moss.ui.dialog_logout.LogoutViewModel
 import com.nexters.moss.ui.dialog_withdraw.WithdrawViewModel
 import com.nexters.moss.ui.formation_habit.FormationHabitViewModel
 import com.nexters.moss.ui.diary.DiaryPieceViewModel
@@ -32,4 +33,5 @@ val viewModelModule = module {
     viewModel { DiaryWholeViewModel() }
 
     viewModel { WithdrawViewModel() }
+    viewModel { LogoutViewModel() }
 }

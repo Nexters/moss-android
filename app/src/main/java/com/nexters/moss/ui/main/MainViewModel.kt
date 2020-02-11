@@ -12,6 +12,9 @@ class MainViewModel : ViewModel() {
     private val _isWithDraw = MutableLiveData<Boolean>(false)
     val isWithDraw: LiveData<Boolean> get() = _isWithDraw
 
+    private val _isLogout = MutableLiveData<Boolean>(false)
+    val isLogout: LiveData<Boolean> get() = _isLogout
+
     fun openDrawer() {
         DLog.d("open drawer")
         _isOpenDrawer.value = true
@@ -25,6 +28,12 @@ class MainViewModel : ViewModel() {
         setDrawerState(false)
         _isWithDraw.value = true
         _isWithDraw.value = false
+    }
+
+    fun logout() {
+        setDrawerState(false)
+        _isLogout.value = true
+        _isLogout.value = false
     }
 
 }
