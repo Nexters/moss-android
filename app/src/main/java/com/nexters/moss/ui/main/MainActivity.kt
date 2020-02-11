@@ -54,6 +54,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             })
         }
+
+        // 임시 첫 선물 팝업 띄우기 기능
+        binding.txtPush.setOnClickListener {
+            FirstGiftDialog().show(supportFragmentManager, "")
+        }
     }
 
     private fun setupHabitRecyclerView() {
