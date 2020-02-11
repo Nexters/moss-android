@@ -17,6 +17,6 @@ class LogoutDialog : BaseDialog<DialogLogoutBinding>() {
         binding.vm = vm
     }
 
-    override fun getDialogWidth() = 280
-    override fun getDialogHeight() = 200
+    override fun getDialogWidth() = 340
+    override fun getDialogHeight() = 220
 }
