@@ -43,7 +43,10 @@ abstract class BaseDialog<T: ViewDataBinding> : DialogFragment() {
         setupBinding()
         binding.lifecycleOwner = this
 
-        dialog?.window?.setLayout(getDialogWidth(), getDialogHeight())
+        val width = (getDialogWidth() * resources.displayMetrics.density + 0.5f).toInt()
+        val height = (getDialogHeight() * resources.displayMetrics.density + 0.5f).toInt()
+
+        dialog?.window?.setLayout(width, height)
     }
 
     fun toast(content: String) {
