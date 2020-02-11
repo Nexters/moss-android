@@ -24,6 +24,8 @@ abstract class BaseDialog<T: ViewDataBinding> : DialogFragment() {
     @LayoutRes
     abstract fun getLayoutRes(): Int
     abstract fun setupBinding()
+    abstract fun getDialogWidth(): Int
+    abstract fun getDialogHeight(): Int
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +42,8 @@ abstract class BaseDialog<T: ViewDataBinding> : DialogFragment() {
         super.onActivityCreated(savedInstanceState)
         setupBinding()
         binding.lifecycleOwner = this
+
+        dialog?.window?.setLayout(getDialogWidth(), getDialogHeight())
     }
 
     fun toast(content: String) {
