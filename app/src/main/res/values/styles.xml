@@ -17,4 +17,9 @@
         <item name="android:paddingBottom">0dp</item>
     </style>
 
+    <style name="text14sp">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.04</item>
+    </style>
+
 </resources>
