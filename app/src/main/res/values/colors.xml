@@ -13,8 +13,25 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
 
+    <!-- UI -->
+    <color name="textColorSlate">#3a4657</color>
+    <color name="textColorSmall">#757d89</color>
+    <color name="uiColorDisable">#c2c6cb</color>
+    <color name="uiColorBackground">#f9f9fa</color>
+    <color name="uiColorMain">#ec303f</color>
+
+    <!-- GUI -->
+    <color name="blue">#2391a7</color>
+    <color name="coral">#e96361</color>
+    <color name="green">#49874c</color>
+    <color name="orange">#ffbb5b</color>
+    <color name="brown">#966b52</color>
+
+
     <!-- send cake -->
     <color name="sendBorder">#ECECEC</color>
+    <color name="sendBackground">#f5f5f6</color>
+
 
     <!-- item main habit -->
     <color name="itemHabitBackground">#f5f5f5</color>

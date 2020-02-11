@@ -8,24 +8,23 @@
     </data>
 
     <RelativeLayout
-        android:layout_margin="10dp"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/layout_send_cake_choice"
-            android:background="@color/colorPrimary"
-            android:layout_width="60dp"
+            android:background="@drawable/send_item_border"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:layout_centerInParent="true"
-                android:layout_width="30dp"
-                android:layout_height="50dp">
+                android:layout_width="60dp"
+                android:layout_height="60dp">
                 <ImageView
                     android:layout_centerInParent="true"
-                    android:src="@drawable/temp_cake"
+                    android:src="@drawable/send_select_watermelon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>

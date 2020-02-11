@@ -8,6 +8,7 @@ import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.model.CakeModel
 import com.nexters.moss.ui.send.adapter.SendAdapter
+import com.nexters.moss.ui.send.adapter.SendListDecoration
 import kotlinx.android.synthetic.main.activity_send.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,17 +39,14 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
     private fun setupCakeRecyclerView() {
 
-        with(layout_send_cake_recycler) {
-            // adapter 연결하기
+        layout_send_cake_recycler.apply {
             adapter = SendAdapter()
 
-            // layoutManager 연결하기
             layoutManager = LinearLayoutManager(
                 this@SendActivity, RecyclerView.HORIZONTAL, false
             )
 
-            // 리사이클러뷰 사이즈 고정
-            setHasFixedSize(true)
+            addItemDecoration(SendListDecoration())
         }
     }
 }

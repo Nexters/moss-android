@@ -24,7 +24,7 @@ class SendAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.activity_send_item, parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_send_select, parent,false)
         return Holder(view)
     }
 
