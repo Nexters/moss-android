@@ -2,6 +2,7 @@ package com.nexters.moss.ui.formation_habit
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nexters.moss.R
@@ -24,12 +25,24 @@ class FormationHabitActivity : BaseActivity<ActivityFormationHabitBinding>() {
         super.onCreate(savedInstanceState)
 
         setupFormationHabitRecyclerView()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        with(vm) {
+            isMakeHabit.observe(this@FormationHabitActivity, Observer {
+                toast("${selectedItem.value}을 고르셨습니다.")
+            })
+        }
     }
 
     private fun setupFormationHabitRecyclerView() {
         with(binding.rvFormationHabitList) {
             adapter = FormationHabitListAdapter().apply {
                 refreshItemList(vm.formationHabitList)
+                setOnItemClickListener {
+                    vm.selectItem(it)
+                }
             }
             layoutManager = GridLayoutManager(this@FormationHabitActivity, 2)
             addItemDecoration(FormationHabitListDecoration())

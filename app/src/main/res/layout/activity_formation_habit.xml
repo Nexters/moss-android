@@ -62,10 +62,12 @@
             android:text="습관 생성하기"
             android:textColor="@color/white"
             android:textSize="@dimen/formation_habit_make_habit_text_size"
-            android:backgroundTint="@color/textColorBlackSub"
+            android:background="@drawable/selector_make_habit_button"
             android:layout_marginStart="@dimen/formation_habit_make_habit_margin_horizontal"
             android:layout_marginEnd="@dimen/formation_habit_make_habit_margin_horizontal"
             android:layout_marginBottom="@dimen/formation_habit_make_habit_margin_bottom"
+            android:enabled="@{vm.selectedItem != null}"
+            android:onClick="@{() -> vm.makeHabit()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
