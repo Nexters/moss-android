@@ -117,4 +117,8 @@
     <dimen name="report_title">20sp</dimen>
     <dimen name="report_txt_normal">16sp</dimen>
     <dimen name="report_txt_toast_complete">16sp</dimen>
+
+    <!--  withdraw dialog  -->
+    <dimen name="withdraw_dialog_width">280dp</dimen>
+    <dimen name="withdraw_dialog_height">200dp</dimen>
 </resources>

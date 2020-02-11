@@ -189,6 +189,7 @@
                 android:textSize="@dimen/main_drawer_logout_text_size"
                 android:textColor="#b33a4657"
                 android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
+                android:onClick="@{() -> vm.logout()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_nickname"
                 app:layout_constraintBottom_toBottomOf="@id/tv_nickname"/>
@@ -217,6 +218,7 @@
                 android:text="탈퇴하기"
                 android:textSize="@dimen/main_drawer_left_items_text_size"
                 android:textColor="@color/textColorBlack"
+                android:onClick="@{() -> vm.withDraw()}"
                 android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
                 android:layout_marginTop="@dimen/main_drawer_left_items_margin_top"
                 app:layout_constraintStart_toStartOf="parent"
