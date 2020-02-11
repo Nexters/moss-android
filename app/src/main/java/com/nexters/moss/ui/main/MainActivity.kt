@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityMainBinding
+import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
 import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
