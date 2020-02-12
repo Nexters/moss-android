@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="vm"
+            type="com.nexters.moss.ui.dialog_first_gift.FirstGiftViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="280dp"
+        android:layout_height="360dp">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_firstGift"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll_buttonsWrapper"/>
+        <LinearLayout
+            android:id="@+id/ll_buttonsWrapper"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="닫기"
+                android:textSize="16sp"
+                android:textColor="@color/textColorBlack"
+                android:letterSpacing="-0.04"
+                android:background="@null"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.5"/>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/indicator_firstGift"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:tabIndicatorHeight="0dp"
+                app:tabBackground="@drawable/indicator_selector"
+                app:tabRippleColor="@color/transparent" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.5"/>
+            <Button
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="다음"
+                android:textSize="16sp"
+                android:textColor="@color/strawberry"
+                android:letterSpacing="-0.04"
+                android:background="@null"/>
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

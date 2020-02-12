@@ -3,11 +3,15 @@ package com.nexters.moss.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityMainBinding
+import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
+import com.nexters.moss.ui.dialog_logout.LogoutDialog
+import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
 import com.nexters.moss.ui.main.adapter.HabitListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,6 +29,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         setupHabitRecyclerView()
         setupDrawerLayout()
+        observeViewModel()
     }
 
     override fun onBackPressed() {
@@ -32,6 +37,27 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             vm.setDrawerState(false)
         } else {
             super.onBackPressed()
+        }
+    }
+
+    private fun observeViewModel() {
+        with(vm) {
+            isWithDraw.observe(this@MainActivity, Observer {
+                if (it) {
+                    WithdrawDialog().show(supportFragmentManager, "")
+                }
+            })
+
+            isLogout.observe(this@MainActivity, Observer {
+                if (it) {
+                    LogoutDialog().show(supportFragmentManager, "")
+                }
+            })
+        }
+
+        // 임시 첫 선물 팝업 띄우기 기능
+        binding.txtPush.setOnClickListener {
+            FirstGiftDialog().show(supportFragmentManager, "")
         }
     }
 

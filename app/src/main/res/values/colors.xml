@@ -5,7 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="textColorBlackDeep">#131313</color>
-    <color name="textColorBlack">#333333</color>
+    <color name="textColorBlack">#3a4657</color>
     <color name="textColorBlackSub">#999999</color>
     <color name="textColorHint">#c8c8c8</color>
 
@@ -33,11 +33,10 @@
     <color name="pale_orange">#fff1dd</color>
     <color name="pale_brown">#f8eae1</color>
 
-
+  
     <!-- send cake -->
     <color name="sendBorder">#ECECEC</color>
     <color name="sendBackground">#f5f5f6</color>
-
 
     <!-- item main habit -->
     <color name="itemHabitBackground">#f5f5f5</color>
@@ -48,7 +47,6 @@
 
     <!-- cake -->
     <color name="cake_green_tea">#49874c</color>
-
 
     <!-- receive -->
     <color name="receive_btn">#3a4657</color>
