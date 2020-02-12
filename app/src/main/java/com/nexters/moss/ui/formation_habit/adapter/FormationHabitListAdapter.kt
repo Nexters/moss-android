@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.nexters.moss.R
+import com.nexters.moss.constant.HabitListConstant
 
 class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter.FormationHabitListViewHolder>() {
     private var itemList = ArrayList<String>()
@@ -31,20 +31,17 @@ class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter
         val item = itemList[position]
 
         holder.habitName.text = item
+        holder.cakeImage.setImageResource(HabitListConstant.values()[position].getDrawableRes())
 
         holder.itemView.setOnClickListener {
             if (lastSelectedView != null) {
                 if (lastSelectedView == holder.cakeImage)
                     return@setOnClickListener
 
-                Glide.with(context)
-                    .load(context.getDrawable(R.drawable.icon_category_cake_greentea))
-                    .into(lastSelectedView!!)
+                lastSelectedView?.alpha = 0.2f
             }
 
-            Glide.with(context)
-                .load(context.getDrawable(R.drawable.icon_category_cake_greentea_selected))
-                .into(holder.cakeImage)
+            holder.cakeImage.alpha = 1f
             lastSelectedView = holder.cakeImage
             onItemClickListener?.onItemClick(itemList[position])
         }
