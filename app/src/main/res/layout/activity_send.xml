@@ -71,7 +71,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"
-                            android:src="@drawable/send_green_tea" />
+                            android:src="@drawable/send_watermelon" />
 
                         <LinearLayout
                             android:id="@+id/layout_send_main_cake_text"
@@ -136,7 +136,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/send_cake_message_hint"
-                                android:textColor="@color/textColorHint"
+                                android:textColor="@color/textColorSlate"
                                 android:textSize="@dimen/size_18sp" />
 
                             <TextView

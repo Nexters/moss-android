@@ -14,32 +14,36 @@
 
         <RelativeLayout
             android:id="@+id/layout_send_cake_choice"
-            android:background="@drawable/send_item_border"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/send_item_default">
 
             <RelativeLayout
-                android:layout_centerInParent="true"
                 android:layout_width="60dp"
-                android:layout_height="60dp">
+                android:layout_height="60dp"
+                android:layout_centerInParent="true">
+
                 <ImageView
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/send_select_watermelon"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/send_select_watermelon" />
             </RelativeLayout>
         </RelativeLayout>
 
 
         <RelativeLayout
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/layout_send_cake_choice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_send_cake_choice"
+            android:layout_centerHorizontal="true">
+
             <TextView
                 android:id="@+id/txt_send_recycler_habit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:letterSpacing="-0.04"
+                android:paddingTop="8dp"
                 android:text="습관"
                 android:textSize="@dimen/size_12sp" />
         </RelativeLayout>
