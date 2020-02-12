@@ -37,28 +37,31 @@
 
             <ImageButton
                 android:id="@+id/btn_openSettingDrawer"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_open_drawer_margin_top"
-                android:background="#000"
+                android:background="@null"
+                android:src="@drawable/btn_open_drawer"
                 android:onClick="@{() -> vm.openDrawer()}"
                 app:layout_constraintStart_toStartOf="@id/guide_start"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/btn_receiveCake"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
-                android:background="#000"
+                android:background="@null"
+                android:src="@drawable/btn_receive_cake"
                 app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
             <ImageButton
                 android:id="@+id/btn_sendCake"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp"
-                android:background="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/btn_send_cake"
                 app:layout_constraintEnd_toEndOf="@id/guide_end"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
