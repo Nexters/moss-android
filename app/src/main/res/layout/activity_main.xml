@@ -85,6 +85,7 @@
                 android:text="편집"
                 android:textColor="@color/black"
                 android:textSize="@dimen/main_edit_habit_text_size"
+                android:onClick="@{() -> vm.setEditMode(!vm.isEditMode)}"
                 app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"
                 app:layout_constraintBottom_toBottomOf="@id/txt_habit"
                 app:layout_constraintStart_toEndOf="@id/txt_habit" />
