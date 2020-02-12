@@ -19,6 +19,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val vm: MainViewModel by viewModel()
 
+    private val habitListAdapter = HabitListAdapter()
+
     override fun getLayoutRes() = R.layout.activity_main
     override fun setupBinding() {
         binding.vm = vm
@@ -53,6 +55,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     LogoutDialog().show(supportFragmentManager, "")
                 }
             })
+            isEditMode.observe(this@MainActivity, Observer {
+                habitListAdapter.setEditMode(it)
+            })
         }
 
         // 임시 첫 선물 팝업 띄우기 기능
@@ -62,7 +67,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupHabitRecyclerView() {
-        val habitListAdapter = HabitListAdapter()
         val habitItemTouchCallback = HabitItemTouchHelper()
         val itemTouchHelper = ItemTouchHelper(habitItemTouchCallback)
 
@@ -87,6 +91,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 override fun onDrawerClosed(drawerView: View) {
                     vm.setDrawerState(false)
                 }
+
                 override fun onDrawerOpened(drawerView: View) {
                     vm.setDrawerState(true)
                 }

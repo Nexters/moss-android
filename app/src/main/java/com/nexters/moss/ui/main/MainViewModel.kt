@@ -15,6 +15,9 @@ class MainViewModel : ViewModel() {
     private val _isLogout = MutableLiveData<Boolean>(false)
     val isLogout: LiveData<Boolean> get() = _isLogout
 
+    private val _isEditMode = MutableLiveData<Boolean>(false)
+    val isEditMode: LiveData<Boolean> get() = _isEditMode
+
     fun openDrawer() {
         DLog.d("open drawer")
         _isOpenDrawer.value = true
@@ -34,6 +37,11 @@ class MainViewModel : ViewModel() {
         setDrawerState(false)
         _isLogout.value = true
         _isLogout.value = false
+    }
+
+    fun setEditMode(enabled: Boolean) {
+        DLog.d("call $enabled")
+        _isEditMode.value = enabled
     }
 
 }

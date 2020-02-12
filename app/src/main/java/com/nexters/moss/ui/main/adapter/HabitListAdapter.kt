@@ -18,6 +18,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
     private var itemList = ArrayList<String>()
     private lateinit var context: Context
+    private var isEditMode = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
@@ -27,9 +28,18 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                     LayoutInflater.from(context).inflate(R.layout.item_main_habit, parent, false)
                 )
             }
+            VIEW_TYPE_EDIT_HABIT -> {
+                EditHabitViewHolder(
+                    LayoutInflater.from(context).inflate(R.layout.item_main_edit_habit, parent, false)
+                )
+            }
             else -> {
                 AddHabitViewHolder(
-                    LayoutInflater.from(context).inflate(R.layout.item_main_add_habit, parent, false)
+                    LayoutInflater.from(context).inflate(
+                        R.layout.item_main_add_habit,
+                        parent,
+                        false
+                    )
                 )
             }
         }
@@ -55,6 +65,8 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     override fun getItemViewType(position: Int): Int {
         return if (itemList.size == position) {
             VIEW_TYPE_ADD_HABIT
+        } else if (isEditMode) {
+            VIEW_TYPE_EDIT_HABIT
         } else {
             VIEW_TYPE_HABIT
         }
@@ -69,6 +81,11 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
     fun refreshItemList(list: ArrayList<String>) {
         itemList = list
+    }
+
+    fun setEditMode(enabled: Boolean) {
+        isEditMode = enabled
+        notifyDataSetChanged()
     }
 
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
