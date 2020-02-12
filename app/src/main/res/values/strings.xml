@@ -4,8 +4,8 @@
     <!-- send cake -->
     <string name="send_cake_title">케익 보내기</string>
     <string name="send_cake_button">보내기</string>
-    <string name="send_cake_message_hint">한줄 24자 최소 3자</string>
-    <string name="send_cake_message_alert">*욕설, 비방하지마세요. 신고당함</string>
+    <string name="send_cake_message_hint">케익처럼 달콤한 응원을 써주세요.</string>
+    <string name="send_cake_message_alert">욕설 및 부적절한 글은 신고를 받을 수 있어요.</string>
 
     <!-- onboarding -->
     <string name="onboarding_one_title">Habikery에 오신 걸 환영해요!</string>
