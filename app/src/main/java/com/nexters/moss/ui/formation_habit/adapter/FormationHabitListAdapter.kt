@@ -14,6 +14,7 @@ class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter
     private var itemList = ArrayList<String>()
     private lateinit var context: Context
     private var lastSelectedView: ImageView? = null
+    private var onItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -45,12 +46,25 @@ class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter
                 .load(context.getDrawable(R.drawable.icon_category_cake_greentea_selected))
                 .into(holder.cakeImage)
             lastSelectedView = holder.cakeImage
+            onItemClickListener?.onItemClick(itemList[position])
         }
     }
 
     fun refreshItemList(list: ArrayList<String>) {
         itemList = list
         notifyDataSetChanged()
+    }
+
+    fun setOnItemClickListener(listener: (String) -> Unit) {
+        onItemClickListener = object : OnItemClickListener {
+            override fun onItemClick(item: String) {
+                listener(item)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: String)
     }
 
     class FormationHabitListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
