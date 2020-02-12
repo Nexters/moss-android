@@ -20,13 +20,14 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     }
 
     private var cakeList = arrayListOf<CakeModel>(
-        CakeModel("하나"),
-        CakeModel("둘"),
-        CakeModel("셋"),
-        CakeModel("넷"),
-        CakeModel("다섯"),
-        CakeModel("여섯"),
-        CakeModel("일곱")
+        CakeModel("물마시기", R.drawable.send_select_watermelon),
+        CakeModel("스트레칭", R.drawable.send_select_cheese),
+        CakeModel("명상", R.drawable.send_select_cream),
+        CakeModel("산책", R.drawable.send_select_green_tea),
+        CakeModel("뉴스보기", R.drawable.send_select_coffee),
+        CakeModel("아침먹기", R.drawable.send_select_apple),
+        CakeModel("일기쓰기", R.drawable.send_select_chestnut),
+        CakeModel("책읽기", R.drawable.send_select_almond)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

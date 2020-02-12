@@ -27,6 +27,12 @@
     <color name="orange">#ffbb5b</color>
     <color name="brown">#966b52</color>
 
+    <color name="pale_blue">#e0f4f9</color>
+    <color name="pale_coral">#ffe7e9</color>
+    <color name="pale_green">#e3f1e4</color>
+    <color name="pale_orange">#fff1dd</color>
+    <color name="pale_brown">#f8eae1</color>
+
 
     <!-- send cake -->
     <color name="sendBorder">#ECECEC</color>

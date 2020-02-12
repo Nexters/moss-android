@@ -24,6 +24,7 @@
                 android:layout_centerInParent="true">
 
                 <ImageView
+                    android:id="@+id/img_cake_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -19,23 +20,24 @@ class SendAdapter :
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val habit = itemView.findViewById<TextView>(R.id.txt_send_recycler_habit)
-        private var itemBackground = itemView.findViewById<View>(R.id.layout_send_cake_choice)
+        private val image = itemView.findViewById<ImageView>(R.id.img_cake_image)
+        private val itemBackground = itemView.findViewById<View>(R.id.layout_send_cake_choice)
 
         fun bind(unit: CakeModel) {
             habit?.text = unit.habit
+            image?.setImageResource(unit.image!!)
         }
 
         fun changeSelectedBackground() {
             itemView.setOnClickListener {
-                Toast.makeText(context, " " + adapterPosition, Toast.LENGTH_SHORT).show()
-
                 if (lastView != null) {
                     lastView!!.setBackgroundResource(R.drawable.send_item_default)
                 }
 
-                itemBackground.setBackgroundResource(R.drawable.send_item_selected)
-                lastView = itemBackground
+                val itemBackColor = chooseColor(adapterPosition)
+                itemBackground.setBackgroundResource(itemBackColor)
 
+                lastView = itemBackground
             }
         }
     }
@@ -58,6 +60,17 @@ class SendAdapter :
     fun setCakeList(list: ArrayList<CakeModel>) {
         cakeList = list
         notifyDataSetChanged()
+    }
+
+    fun chooseColor(position : Int) : Int {
+        when (position) {
+            0, 5 -> return R.drawable.send_item_selected_coral
+            1, 7 -> return R.drawable.send_item_selected_orange
+            2, 6 -> return R.drawable.send_item_selected_blue
+            3 -> return R.drawable.send_item_selected_green
+            4 -> return R.drawable.send_item_selected_brown
+        }
+        return 0
     }
 
 }
