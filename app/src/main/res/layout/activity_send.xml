@@ -172,6 +172,7 @@
                 android:enabled="false"
                 android:padding="16dp"
                 android:text="@string/send_cake_button"
+                android:onClick="@{()->vm.goMain()}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/size_16sp" />
 

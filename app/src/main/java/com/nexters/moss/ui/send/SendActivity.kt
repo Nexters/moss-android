@@ -8,6 +8,7 @@ import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.model.CakeModel
+import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.send.adapter.SendAdapter
 import com.nexters.moss.ui.send.adapter.SendListDecoration
 import kotlinx.android.synthetic.main.activity_send.*
@@ -41,6 +42,12 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         vm.exit.observe(this, Observer {
             if(it) {
                 finish()
+            }
+        })
+
+        vm.main.observe(this, Observer {
+            if(it){
+                startActivity<MainActivity>()
             }
         })
 
