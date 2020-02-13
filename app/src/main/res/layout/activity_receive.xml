@@ -39,6 +39,7 @@
             <ImageButton
                 android:layout_width="17dp"
                 android:layout_height="17dp"
+                android:onClick="@{()->vm.exit()}"
                 android:layout_alignParentEnd="true"
                 android:background="@color/transparent"
                 android:src="@drawable/icon_exit" />

@@ -1,6 +1,7 @@
 package com.nexters.moss.ui.send
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
@@ -36,6 +37,13 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         setupCakeRecyclerView()
 
         vm.setCakeList(cakeList)
+
+        vm.exit.observe(this, Observer {
+            if(it) {
+                finish()
+            }
+        })
+
     }
 
     private fun setupCakeRecyclerView() {

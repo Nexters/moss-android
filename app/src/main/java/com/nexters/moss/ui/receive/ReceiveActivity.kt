@@ -28,6 +28,12 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
             }
         })
 
+        vm.exit.observe(this, Observer {
+            if(it) {
+                finish()
+            }
+        })
+
     }
 
     private fun showDialog() {
