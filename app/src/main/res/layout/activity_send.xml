@@ -135,8 +135,12 @@
                                 android:id="@+id/edit_txt_send_cake_message"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:backgroundTint="@color/uiColorDisable"
                                 android:hint="@string/send_cake_message_hint"
+                                android:inputType="textVisiblePassword"
+                                android:maxLength="24"
                                 android:textColor="@color/textColorSlate"
+                                android:textCursorDrawable="@drawable/edit_text_cursor"
                                 android:textSize="@dimen/size_18sp" />
 
                             <TextView
