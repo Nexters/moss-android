@@ -1,10 +1,7 @@
 package com.nexters.moss.ui.receive
 
-import android.app.AlertDialog
 import android.os.Bundle
-import android.view.ContextThemeWrapper
 import android.view.Gravity
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.nexters.moss.R
@@ -24,68 +21,33 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        vm.report.observe(this, Observer {
-            if (vm.report.value!!) {
-                showDialog()
-            }
-        })
-
-        vm.exit.observe(this, Observer {
-            if(it) {
-                finish()
-            }
-        })
-
-        vm.diary.observe(this, Observer {
-            if(it){
-                startActivity<DiaryActivity>()
-            }
-        })
-
-        vm.send.observe(this, Observer {
-            if(it){
-                startActivity<SendActivity>()
-            }
-        })
+        observeViewModel()
     }
 
-    private fun showDialog() {
+    private fun observeViewModel() {
+        with(vm) {
 
-        val dialogView = layoutInflater.inflate(R.layout.layout_dialog_report, null)
+            report.observe(this@ReceiveActivity, Observer {
 
-        dialogView.findViewById<RadioGroup>(R.id.radio_group_report)
-            .apply {
-                setOnCheckedChangeListener { _, id ->
-                    when (id) {
-                        R.id.btn_report_offensive -> toast("1")
-                        R.id.btn_report_inappropriate -> toast("2")
-                        R.id.btn_report_spam -> toast("3")
-                        R.id.btn_report_other -> toast("4")
-                    }
+            })
+
+            exit.observe(this@ReceiveActivity, Observer {
+                if (it) {
+                    finish()
                 }
-            }
+            })
 
-        AlertDialog.Builder(
-            ContextThemeWrapper(
-                this@ReceiveActivity,
-                R.style.Theme_AppCompat_Light_Dialog
-            )
-        ).apply {
+            diary.observe(this@ReceiveActivity, Observer {
+                if (it) {
+                    startActivity<DiaryActivity>()
+                }
+            })
 
-            setTitle("신고사유")
-
-            setView(dialogView)
-
-            setPositiveButton("확인") { _, _ ->
-                vm.setBtnReportStatus(false)
-                showToastReportCompleted()
-            }
-
-            setNegativeButton("취소") { _, _ ->
-                vm.setBtnReportStatus(false)
-            }
-
-            show()
+            send.observe(this@ReceiveActivity, Observer {
+                if (it) {
+                    startActivity<SendActivity>()
+                }
+            })
         }
     }
 

@@ -23,10 +23,6 @@ class ReceiveViewModel : ViewModel() {
         _report.value = true
     }
 
-    fun setBtnReportStatus(isClicked : Boolean){
-        _report.value = isClicked
-    }
-
     fun exit(){
         _exit.value = true
     }

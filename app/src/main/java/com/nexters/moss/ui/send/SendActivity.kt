@@ -35,22 +35,27 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupCakeRecyclerView()
-
         vm.setCakeList(cakeList)
 
-        vm.exit.observe(this, Observer {
-            if(it) {
-                finish()
-            }
-        })
+        setupCakeRecyclerView()
+        observeViewModel()
+    }
 
-        vm.main.observe(this, Observer {
-            if(it){
-                startActivity<MainActivity>()
-            }
-        })
+    private fun observeViewModel() {
+        with(vm) {
 
+            vm.exit.observe(this@SendActivity, Observer {
+                if (it) {
+                    finish()
+                }
+            })
+
+            main.observe(this@SendActivity, Observer {
+                if (it) {
+                    startActivity<MainActivity>()
+                }
+            })
+        }
     }
 
     private fun setupCakeRecyclerView() {
