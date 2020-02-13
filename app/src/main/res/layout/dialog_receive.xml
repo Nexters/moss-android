@@ -150,6 +150,7 @@
                 android:background="@null"
                 android:letterSpacing="-0.04"
                 android:text="취소"
+                android:onClick="@{()->vm.cancel()}"
                 android:textColor="@color/textColorSlate"
                 android:textSize="16sp" />
 
@@ -163,6 +164,7 @@
                 android:letterSpacing="-0.04"
                 android:padding="14dp"
                 android:text="확인"
+                android:onClick="@{()->vm.submit()}"
                 android:textColor="@color/uiColorMain"
                 android:textSize="16sp" />
         </LinearLayout>
