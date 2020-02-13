@@ -15,9 +15,9 @@
 
     <!-- diary -->
     <dimen name="diary_padding_title_start_end">23dp</dimen>
-    <dimen name="diary_padding_title_bottom">15sp</dimen>
+    <dimen name="diary_padding_title_bottom">15dp</dimen>
     <dimen name="diary_item_card_height">144dp</dimen>
-    <dimen name="diary_item_img_height">96dp</dimen>
+    <dimen name="diary_item_img_height">100dp</dimen>
     <dimen name="diary_item_padding_start_end">20dp</dimen>
 
     <dimen name="diary_txt_title">18sp</dimen>

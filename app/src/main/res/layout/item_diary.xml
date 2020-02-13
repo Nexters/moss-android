@@ -2,12 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/uiColorBackground"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/diary_item_card_height"
-        android:padding="@dimen/diary_item_padding_start_end">
+        android:background="@drawable/bg_box_shadow"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="@dimen/diary_item_padding_start_end"
+        android:layout_marginEnd="@dimen/diary_item_padding_start_end"
+        android:paddingStart="@dimen/diary_item_padding_start_end"
+        android:paddingEnd="@dimen/diary_item_padding_start_end"
+        android:paddingTop="34dp"
+        android:paddingBottom="34dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -20,21 +28,27 @@
                 android:id="@+id/txt_diary_item_clear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="스트레칭 클리어!"
+                android:letterSpacing="-0.04"
+                android:text="스트레칭"
+                android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/diary_item_txt_clear" />
 
             <TextView
                 android:id="@+id/txt_diary_item_cake_subjective"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="쭉쭉 늘어나는"
+                android:letterSpacing="-0.04"
+                android:text="싱그러운 마음"
+                android:textColor="@color/textColorSlate"
                 android:textSize="@dimen/diary_item_txt_cake_name" />
 
             <TextView
                 android:id="@+id/txt_diary_item_cake_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:letterSpacing="-0.04"
                 android:text="치즈케이크"
+                android:textColor="@color/textColorSlate"
                 android:textSize="@dimen/diary_item_txt_cake_name" />
         </LinearLayout>
 
