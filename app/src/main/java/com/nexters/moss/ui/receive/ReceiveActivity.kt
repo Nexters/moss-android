@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityReceiveBinding
+import com.nexters.moss.ui.receive_dialog.ReceiveDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
@@ -24,7 +25,7 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
         vm.report.observe(this, Observer {
             if (vm.report.value!!) {
-                showDialog()
+                ReceiveDialog().show(supportFragmentManager, "")
             }
         })
 

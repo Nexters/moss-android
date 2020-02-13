@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.nexters.moss.ui.receive_dialog.ReceiveDialogViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="344dp"
+        android:background="@drawable/bg_box_square">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/layout_report_bottom"
+            android:paddingStart="24dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="24dp">
+
+            <RelativeLayout
+                android:id="@+id/layout_report_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="-0.04"
+                    android:text="@string/report_txt_title"
+                    android:textColor="@color/textColorSlate"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout_report_title"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp">
+
+                <RadioGroup
+                    android:id="@+id/radio_group_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="28dp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="28dp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="28dp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="28dp" />
+                </RadioGroup>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="24dp"
+                    android:layout_toEndOf="@id/radio_group_report"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="-0.04"
+                        android:text="@string/report_txt_offensive"
+                        android:textColor="@color/textColorSlate"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="-0.04"
+                        android:text="@string/report_txt_inappropriate"
+                        android:textColor="@color/textColorSlate"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:letterSpacing="-0.04"
+                        android:text="@string/report_txt_spam"
+                        android:textColor="@color/textColorSlate"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="@string/report_txt_other"
+                        android:inputType="textVisiblePassword"
+                        android:maxLength="12"
+                        android:textColor="@color/textColorSlate"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layout_report_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_dialog_border"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:letterSpacing="-0.04"
+                android:text="취소"
+                android:textColor="@color/textColorSlate"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:letterSpacing="-0.04"
+                android:padding="14dp"
+                android:text="확인"
+                android:textColor="@color/uiColorMain"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>
