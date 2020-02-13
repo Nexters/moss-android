@@ -1,6 +1,8 @@
 package com.nexters.moss.ui.send
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
@@ -36,6 +38,11 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         setupCakeRecyclerView()
 
         vm.setCakeList(cakeList)
+        textChangeListener()
+
+        btn_send_cake_send.setOnClickListener {
+            toast("click")
+        }
     }
 
     private fun setupCakeRecyclerView() {
@@ -50,4 +57,23 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             addItemDecoration(SendListDecoration())
         }
     }
+
+    private fun textChangeListener() {
+        edit_txt_send_cake_message.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (p0!!.length > 2) {
+                    vm.isTextLengthEnough(true)
+                } else {
+                    vm.isTextLengthEnough(false)
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
+    }
+
 }

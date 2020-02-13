@@ -176,7 +176,8 @@
                 android:padding="16dp"
                 android:text="@string/send_cake_button"
                 android:textColor="@color/white"
-                android:textSize="@dimen/size_16sp" />
+                android:textSize="@dimen/size_16sp"
+                app:isBtnEnabled="@{vm.isEditEnable}" />
 
         </LinearLayout>
 
