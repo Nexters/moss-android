@@ -71,6 +71,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:onClick="@{()->vm.exit()}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_exit_black" />

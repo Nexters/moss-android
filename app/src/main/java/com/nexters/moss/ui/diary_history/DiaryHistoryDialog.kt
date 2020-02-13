@@ -1,6 +1,7 @@
 package com.nexters.moss.ui.diary_history
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
@@ -35,6 +36,17 @@ class DiaryHistoryDialog : BaseDialog<DialogDiaryHistoryBinding>() {
         super.onActivityCreated(savedInstanceState)
 
         setRecyclerView()
+        observeViewModel()
+    }
+
+    private fun observeViewModel(){
+        with(vm){
+            exit.observe(viewLifecycleOwner, Observer {
+                if(it) {
+                    dismiss()
+                }
+            })
+        }
     }
 
     private fun setRecyclerView() {
