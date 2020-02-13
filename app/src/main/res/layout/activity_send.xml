@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/send_btn_selector"
-                android:enabled="false"
+                android:enabled="true"
                 android:padding="16dp"
                 android:text="@string/send_cake_button"
                 android:textColor="@color/white"
