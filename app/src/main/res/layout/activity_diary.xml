@@ -45,7 +45,7 @@
                 android:id="@+id/layout_diary_view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/uiColorBackground"
+                android:background="@color/uiColorBgGrey"
                 android:paddingTop="19dp">
 
             </androidx.viewpager.widget.ViewPager>

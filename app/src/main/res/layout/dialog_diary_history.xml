@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.nexters.moss.ui.diary_history.DiaryHistoryViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="536dp"
+        android:background="@drawable/bg_"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="310dp"
+            android:background="@color/uiColorBgGrey"
+            android:orientation="vertical"
+            android:paddingTop="40dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/temp_cake" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:id="@+id/txt_history_habit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="명상하기"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorSmall" />
+
+                <TextView
+                    android:id="@+id/txt_history_cake_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="부드러운 생크림케익"
+                    android:textAlignment="center"
+                    android:textColor="@color/textColorSlate"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/layout_history_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_exit_black" />
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>
