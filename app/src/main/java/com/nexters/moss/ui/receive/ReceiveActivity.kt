@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityReceiveBinding
+import com.nexters.moss.ui.diary.DiaryActivity
+import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
@@ -34,6 +36,17 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
             }
         })
 
+        vm.diary.observe(this, Observer {
+            if(it){
+                startActivity<DiaryActivity>()
+            }
+        })
+
+        vm.send.observe(this, Observer {
+            if(it){
+                startActivity<SendActivity>()
+            }
+        })
     }
 
     private fun showDialog() {
