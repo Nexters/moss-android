@@ -45,8 +45,10 @@
         </RelativeLayout>
 
         <ScrollView
+            android:id="@+id/layout_send_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="70dp"
             android:layout_below="@id/layout_send_top">
 
             <RelativeLayout
@@ -135,8 +137,12 @@
                                 android:id="@+id/edit_txt_send_cake_message"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:backgroundTint="@color/uiColorDisable"
                                 android:hint="@string/send_cake_message_hint"
+                                android:inputType="textVisiblePassword"
+                                android:maxLength="24"
                                 android:textColor="@color/textColorSlate"
+                                android:textCursorDrawable="@drawable/edit_text_cursor"
                                 android:textSize="@dimen/size_18sp" />
 
                             <TextView
@@ -168,11 +174,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/send_btn_selector"
-                android:enabled="false"
+                android:enabled="true"
                 android:padding="16dp"
                 android:text="@string/send_cake_button"
                 android:textColor="@color/white"
-                android:textSize="@dimen/size_16sp" />
+                android:textSize="@dimen/size_16sp"
+                app:isBtnEnabled="@{vm.isEditEnable}" />
 
         </LinearLayout>
 
