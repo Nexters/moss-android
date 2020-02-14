@@ -11,6 +11,8 @@ import com.nexters.moss.ui.diary_history.DiaryHistoryViewModel
 import com.nexters.moss.ui.main.MainViewModel
 import com.nexters.moss.ui.receive.ReceiveViewModel
 import com.nexters.moss.ui.make_nickname.MakeNicknameViewModel
+import com.nexters.moss.ui.receive.ReceiveActivity
+import com.nexters.moss.ui.receive_dialog.ReceiveDialogViewModel
 import com.nexters.moss.ui.send.SendViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -29,6 +31,7 @@ val viewModelModule = module {
 
     viewModel { SendViewModel() }
     viewModel { ReceiveViewModel() }
+    viewModel { ReceiveDialogViewModel() }
 
     viewModel { DiaryViewModel() }
     viewModel { DiaryPieceViewModel() }
