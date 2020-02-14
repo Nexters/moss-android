@@ -58,7 +58,11 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     private fun setupCakeRecyclerView() {
 
         layout_send_cake_recycler.apply {
-            adapter = SendAdapter()
+            adapter = SendAdapter().apply{
+                setOnItemClickListener { position->
+                    toast(" "+position)
+                }
+            }
 
             layoutManager = LinearLayoutManager(
                 this@SendActivity, RecyclerView.HORIZONTAL, false

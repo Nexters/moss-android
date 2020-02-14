@@ -18,6 +18,7 @@ class SendAdapter :
     private var lastView: View? = null
     private var firstView: View? = null
 
+    private var onClick : OnItemClickListener? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val habit = itemView.findViewById<TextView>(R.id.txt_send_recycler_habit)
@@ -48,6 +49,8 @@ class SendAdapter :
                 itemBackground.setBackgroundResource(itemBackColor)
 
                 lastView = itemBackground
+
+                onClick?.onItemClick(adapterPosition)
             }
         }
     }
@@ -81,6 +84,20 @@ class SendAdapter :
             4 -> return R.drawable.send_item_selected_brown
         }
         return 0
+    }
+
+
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
+        onClick = object : OnItemClickListener {
+            override fun onItemClick(item: Int) {
+                listener(item)
+            }
+        }
+    }
+
+
+    interface OnItemClickListener {
+        fun onItemClick(position : Int)
     }
 
 }
