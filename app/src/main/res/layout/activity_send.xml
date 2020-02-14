@@ -6,6 +6,7 @@
 
     <data>
 
+        <import type="android.view.View"/>
         <variable
             name="vm"
             type="com.nexters.moss.ui.send.SendViewModel" />
@@ -48,7 +49,6 @@
             android:id="@+id/layout_send_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="70dp"
             android:layout_below="@id/layout_send_top">
 
             <RelativeLayout
@@ -175,6 +175,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/send_btn_selector"
                 android:enabled="true"
+                android:visibility="@{vm.isVisible ? View.VISIBLE : View.GONE}"
                 android:padding="16dp"
                 android:text="@string/send_cake_button"
                 android:textColor="@color/white"

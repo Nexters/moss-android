@@ -13,6 +13,9 @@ class SendViewModel : ViewModel() {
     private val _isEditEnable = MutableLiveData<Boolean>().apply { value = false }
     val isEditEnable: LiveData<Boolean> get() = _isEditEnable
 
+    private val _isVisible = MutableLiveData<Boolean>().apply{ value = true }
+    val isVisible : LiveData<Boolean> get() = _isVisible
+
     fun setCakeList(list: ArrayList<CakeModel>) {
         _cakeList.value = list
     }
@@ -21,4 +24,7 @@ class SendViewModel : ViewModel() {
         _isEditEnable.value = enough
     }
 
+    fun isBtnVisible(visible : Boolean){
+        _isVisible.value = visible
+    }
 }
