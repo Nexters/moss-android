@@ -1,6 +1,8 @@
 package com.nexters.moss.ui.send
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
@@ -9,6 +11,7 @@ import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.model.CakeModel
 import com.nexters.moss.ui.send.adapter.SendAdapter
 import com.nexters.moss.ui.send.adapter.SendListDecoration
+import com.nexters.moss.ui.send.keyboard.KeyboardEventVisibility
 import kotlinx.android.synthetic.main.activity_send.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,6 +21,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     override fun setupBinding() {
         binding.vm = vm
     }
+
+    private lateinit var keyboardVisibility: KeyboardEventVisibility
 
     private var cakeList = arrayListOf<CakeModel>(
         CakeModel("물마시기", R.drawable.send_select_watermelon),
@@ -36,6 +41,18 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         setupCakeRecyclerView()
 
         vm.setCakeList(cakeList)
+        textChangeListener()
+
+        btn_send_cake_send.setOnClickListener {
+            toast("click")
+        }
+
+        detectKeyBoard()
+    }
+
+    override fun onDestroy() {
+        keyboardVisibility.detachKeyboardListeners()
+        super.onDestroy()
     }
 
     private fun setupCakeRecyclerView() {
@@ -50,4 +67,32 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             addItemDecoration(SendListDecoration())
         }
     }
+
+    private fun textChangeListener() {
+        edit_txt_send_cake_message.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                if (p0!!.length > 2) {
+                    vm.isTextLengthEnough(true)
+                } else {
+                    vm.isTextLengthEnough(false)
+                }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+        })
+    }
+
+    private fun detectKeyBoard() {
+        keyboardVisibility = KeyboardEventVisibility(window,
+            onShowKeyboard = { keyboardHeight ->
+                layout_send_scroll.run {
+                    smoothScrollTo(scrollX, scrollY + keyboardHeight)
+                }
+            })
+    }
+
 }

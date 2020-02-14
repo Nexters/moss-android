@@ -15,7 +15,7 @@ class SendListDecoration : RecyclerView.ItemDecoration() {
     ) {
         super.getItemOffsets(outRect, view, parent, state)
 
-        val horizontalStartValue = TypedValue.applyDimension(
+        val horizontalStartEndValue = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             20f,
             view.resources.displayMetrics
@@ -27,10 +27,10 @@ class SendListDecoration : RecyclerView.ItemDecoration() {
             view.resources.displayMetrics
         ).toInt()
 
-        if (parent.getChildLayoutPosition(view) == 0) {
-            outRect.set(horizontalStartValue, 0, horizontalValue, 0)
-        } else {
-            outRect.set(0, 0, horizontalValue, 0)
+        when (parent.getChildLayoutPosition(view)) {
+            0 -> outRect.set(horizontalStartEndValue, 0, horizontalValue, 0)
+            state.itemCount - 1 -> outRect.set(0, 0, horizontalStartEndValue, 0)
+            else -> outRect.set(0, 0, horizontalValue, 0)
         }
     }
 }
