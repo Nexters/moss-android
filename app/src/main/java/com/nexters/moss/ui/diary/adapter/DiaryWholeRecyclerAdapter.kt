@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.ui.diary.DiaryWholeFragment
+import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
 
-class DiaryPieceRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : RecyclerView.Adapter<DiaryPieceRecyclerAdapter.Holder>() {
+class DiaryWholeRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : RecyclerView.Adapter<DiaryWholeRecyclerAdapter.Holder>() {
     private var context : Context? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,13 +36,7 @@ class DiaryPieceRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : Recycl
         holder.bind(cakeList[position])
     }
 
-
     override fun getItemCount(): Int {
         return cakeList.size
     }
-
-//    fun setCakeList(list : ArrayList<DiaryCakeModel>){
-//        cakeList = list
-//        notifyDataSetChanged()
- //   }
 }

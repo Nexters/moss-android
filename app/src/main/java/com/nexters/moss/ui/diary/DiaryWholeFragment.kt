@@ -8,6 +8,8 @@ import com.nexters.moss._base.BaseFragment
 import com.nexters.moss.databinding.FragmentWholeBinding
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.ui.diary.adapter.DiaryPieceRecyclerAdapter
+import com.nexters.moss.ui.diary.adapter.DiaryWholeRecyclerAdapter
+import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
 import kotlinx.android.synthetic.main.fragment_whole.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -30,13 +32,17 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
 
         vm.setCakeList(cakeList)
         setRecyclerView()
+
+        btn_dialog.setOnClickListener {
+            DiaryHistoryDialog().show(childFragmentManager, "")
+        }
     }
 
     private fun setRecyclerView() {
-        val recyclerAdapter = DiaryPieceRecyclerAdapter(cakeList)
+        val recyclerAdapter = DiaryWholeRecyclerAdapter(cakeList)
         val recyclerManager = LinearLayoutManager(context!!)
 
-        with(layout_diary_whole_recycler) {
+        layout_diary_whole_recycler.apply {
             adapter = recyclerAdapter
             layoutManager = recyclerManager
             setHasFixedSize(false)

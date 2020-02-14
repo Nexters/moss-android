@@ -28,9 +28,8 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>() {
 
         layout_diary_view_pager.adapter = diaryAdapter
 
-        with(layout_diary_tab_layout) {
+        layout_diary_tab_layout.apply {
             setupWithViewPager(layout_diary_view_pager)
-            clearOnTabSelectedListeners()
         }
     }
 }

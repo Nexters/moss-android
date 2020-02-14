@@ -7,6 +7,7 @@ import com.nexters.moss.ui.formation_habit.FormationHabitViewModel
 import com.nexters.moss.ui.diary.DiaryPieceViewModel
 import com.nexters.moss.ui.diary.DiaryViewModel
 import com.nexters.moss.ui.diary.DiaryWholeViewModel
+import com.nexters.moss.ui.diary_history.DiaryHistoryViewModel
 import com.nexters.moss.ui.main.MainViewModel
 import com.nexters.moss.ui.receive.ReceiveViewModel
 import com.nexters.moss.ui.make_nickname.MakeNicknameViewModel
@@ -32,6 +33,7 @@ val viewModelModule = module {
     viewModel { DiaryViewModel() }
     viewModel { DiaryPieceViewModel() }
     viewModel { DiaryWholeViewModel() }
+    viewModel { DiaryHistoryViewModel() }
 
     viewModel { WithdrawViewModel() }
     viewModel { LogoutViewModel() }
