@@ -16,6 +16,7 @@ class SendAdapter :
     private var context: Context? = null
     private var cakeList = ArrayList<CakeModel>()
     private var lastView: View? = null
+    private var firstView: View? = null
 
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,14 +24,23 @@ class SendAdapter :
         private val image = itemView.findViewById<ImageView>(R.id.img_cake_image)
         private val itemBackground = itemView.findViewById<View>(R.id.layout_send_cake_choice)
 
-        fun bind(unit: CakeModel) {
+        fun bind(unit: CakeModel, position : Int) {
             habit?.text = unit.habit
             image?.setImageResource(unit.image!!)
+
+            if(position == 0){
+                firstView = itemBackground
+                firstView?.setBackgroundResource(R.drawable.send_item_selected_coral)
+            }
         }
 
         fun changeSelectedBackground() {
             itemView.setOnClickListener {
-                if (lastView != null) {
+
+                if(lastView == null){
+                    firstView!!.setBackgroundResource(R.drawable.send_item_default)
+                }
+                else {
                     lastView!!.setBackgroundResource(R.drawable.send_item_default)
                 }
 
@@ -49,7 +59,7 @@ class SendAdapter :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(cakeList[position])
+        holder.bind(cakeList[position], position)
         holder.changeSelectedBackground()
     }
 
