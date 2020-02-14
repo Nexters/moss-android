@@ -3,8 +3,6 @@ package com.nexters.moss.ui.send
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
@@ -98,6 +96,10 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                 vm.isBtnVisible(false)
             })
 
+        keyboardVisibility = KeyboardEventVisibility(window,
+            onHideKeyboard = {
+                vm.isBtnVisible(true)
+            })
     }
 
 }
