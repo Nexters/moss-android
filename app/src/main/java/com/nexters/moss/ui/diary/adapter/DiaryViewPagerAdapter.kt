@@ -27,8 +27,8 @@ class DiaryViewPagerAdapter(fm: FragmentManager) :
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
-            0->"조각 케이크"
-            else->"홀케이크"
+            0->"   조각케익   "
+            else->"   홀케익   "
         }
     }
 }

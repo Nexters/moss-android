@@ -18,6 +18,7 @@
     <color name="textColorSmall">#757d89</color>
     <color name="uiColorDisable">#c2c6cb</color>
     <color name="uiColorBackground">#f9f9fa</color>
+    <color name="uiColorBgGrey">#ebecee</color>
     <color name="uiColorMain">#ec303f</color>
 
     <!-- GUI -->
@@ -32,7 +33,6 @@
     <color name="pale_green">#e3f1e4</color>
     <color name="pale_orange">#fff1dd</color>
     <color name="pale_brown">#f8eae1</color>
-
 
     <color name="strawberry">#ec303f</color>
   
