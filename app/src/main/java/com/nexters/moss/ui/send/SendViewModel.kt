@@ -16,6 +16,9 @@ class SendViewModel : ViewModel() {
     private val _isVisible = MutableLiveData<Boolean>().apply{ value = true }
     val isVisible : LiveData<Boolean> get() = _isVisible
 
+    private val _cakeImage = MutableLiveData<Int>()
+    val cakeImage : LiveData<Int> get() = _cakeImage
+
     fun setCakeList(list: ArrayList<CakeModel>) {
         _cakeList.value = list
     }
@@ -26,5 +29,9 @@ class SendViewModel : ViewModel() {
 
     fun isBtnVisible(visible : Boolean){
         _isVisible.value = visible
+    }
+
+    fun changeCakeImage(image : Int){
+        _cakeImage.value = image
     }
 }
