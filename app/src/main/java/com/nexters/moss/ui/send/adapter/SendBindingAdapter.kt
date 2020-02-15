@@ -1,6 +1,7 @@
 package com.nexters.moss.ui.send.adapter
 
 import android.widget.Button
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.model.CakeModel
@@ -21,6 +22,12 @@ class SendBindingAdapter {
         @BindingAdapter("isBtnEnabled")
         fun isBtnEnabled(btn: Button, enabled: Boolean) {
             btn.isEnabled = enabled
+        }
+
+        @JvmStatic
+        @BindingAdapter("changeImage")
+        fun changeCakeImage(image: ImageView, src : Int){
+            image.setImageResource(src)
         }
     }
 }

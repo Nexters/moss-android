@@ -66,7 +66,25 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     private fun setupCakeRecyclerView() {
 
         layout_send_cake_recycler.apply {
-            adapter = SendAdapter()
+            adapter = SendAdapter().apply{
+                setOnFirstItemListener {
+                    vm.changeCakeImage(R.drawable.send_watermelon)
+                }
+
+                setOnItemClickListener { position->
+                    toast(" "+position)
+                    when(position){
+                        0->vm.changeCakeImage(R.drawable.send_watermelon)
+                        1->vm.changeCakeImage(R.drawable.send_cheese)
+                        2->vm.changeCakeImage(R.drawable.send_cream)
+                        3->vm.changeCakeImage(R.drawable.send_green_tea)
+                        4->vm.changeCakeImage(R.drawable.send_coffee)
+                        5->vm.changeCakeImage(R.drawable.send_apple)
+                        6->vm.changeCakeImage(R.drawable.send_chestnut)
+                        7->vm.changeCakeImage(R.drawable.send_almond)
+                    }
+                }
+            }
 
             layoutManager = LinearLayoutManager(
                 this@SendActivity, RecyclerView.HORIZONTAL, false
@@ -100,7 +118,13 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                 layout_send_scroll.run {
                     smoothScrollTo(scrollX, scrollY + keyboardHeight)
                 }
+
+                vm.isBtnVisible(false)
+            })
+
+        keyboardVisibility = KeyboardEventVisibility(window,
+            onHideKeyboard = {
+                vm.isBtnVisible(true)
             })
     }
-
 }

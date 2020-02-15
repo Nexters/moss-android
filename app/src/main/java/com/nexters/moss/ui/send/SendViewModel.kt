@@ -13,6 +13,12 @@ class SendViewModel : ViewModel() {
     private val _isEditEnable = MutableLiveData<Boolean>().apply { value = false }
     val isEditEnable: LiveData<Boolean> get() = _isEditEnable
 
+    private val _isVisible = MutableLiveData<Boolean>().apply{ value = true }
+    val isVisible : LiveData<Boolean> get() = _isVisible
+
+    private val _cakeImage = MutableLiveData<Int>()
+    val cakeImage : LiveData<Int> get() = _cakeImage
+
     private val _exit = MutableLiveData<Boolean>().apply{ value = false }
     val exit : LiveData<Boolean> get() = _exit
 
@@ -28,6 +34,14 @@ class SendViewModel : ViewModel() {
         _isEditEnable.value = enough
     }
 
+    fun isBtnVisible(visible : Boolean){
+        _isVisible.value = visible
+    }
+
+    fun changeCakeImage(image : Int){
+        _cakeImage.value = image
+    }
+
     fun exit(){
         _exit.value = true
     }
@@ -35,5 +49,4 @@ class SendViewModel : ViewModel() {
     fun goMain(){
         _main.value = true
     }
-
 }
