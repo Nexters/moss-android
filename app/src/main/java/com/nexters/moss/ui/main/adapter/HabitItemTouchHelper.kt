@@ -12,13 +12,18 @@ class HabitItemTouchHelper : ItemTouchHelper.Callback() {
     ): Int {
         val dragFlag = ItemTouchHelper.UP or ItemTouchHelper.DOWN
         val position = viewHolder.adapterPosition
+        val adapter = recyclerView.adapter as HabitListAdapter
 
-        return if (position == recyclerView.childCount - 1) {
+        return if (adapter.getEditMode()) {
             makeMovementFlags(0, 0)
+        } else {
+            if (position == recyclerView.childCount - 1) {
+                makeMovementFlags(0, 0)
+            } else {
+                makeMovementFlags(dragFlag, 0)
+            }
         }
-        else {
-            makeMovementFlags(dragFlag, 0)
-        }
+
     }
 
     override fun onMove(

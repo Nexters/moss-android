@@ -2,6 +2,7 @@ package com.nexters.moss.ui.main
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -21,6 +22,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private val habitListAdapter = HabitListAdapter()
 
+    private var lastBackPressedTime = -1L
+    private var finishToast: Toast? = null
+
     override fun getLayoutRes() = R.layout.activity_main
     override fun setupBinding() {
         binding.vm = vm
@@ -38,7 +42,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         if (vm.isOpenDrawer.value!!) {
             vm.setDrawerState(false)
         } else {
-            super.onBackPressed()
+            if (System.currentTimeMillis() > lastBackPressedTime + 2000) {
+                lastBackPressedTime = System.currentTimeMillis()
+                finishToast = Toast.makeText(this, "뒤로가기 버튼을 한번 더 누를시 종료됩니다.", Toast.LENGTH_SHORT)
+                finishToast?.show()
+            } else {
+                finishToast?.cancel()
+                super.onBackPressed()
+            }
         }
     }
 

@@ -19,6 +19,13 @@ class SendViewModel : ViewModel() {
     private val _cakeImage = MutableLiveData<Int>()
     val cakeImage : LiveData<Int> get() = _cakeImage
 
+    private val _exit = MutableLiveData<Boolean>().apply{ value = false }
+    val exit : LiveData<Boolean> get() = _exit
+
+    private val _main = MutableLiveData<Boolean>().apply{ value = false }
+    val main : LiveData<Boolean> get() = _main
+
+
     fun setCakeList(list: ArrayList<CakeModel>) {
         _cakeList.value = list
     }
@@ -33,5 +40,13 @@ class SendViewModel : ViewModel() {
 
     fun changeCakeImage(image : Int){
         _cakeImage.value = image
+    }
+
+    fun exit(){
+        _exit.value = true
+    }
+
+    fun goMain(){
+        _main.value = true
     }
 }
