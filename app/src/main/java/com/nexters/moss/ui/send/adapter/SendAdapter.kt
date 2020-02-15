@@ -32,9 +32,8 @@ class SendAdapter :
             if (position == 0) {
                 firstView = itemBackground
                 firstView?.setBackgroundResource(R.drawable.send_item_selected_coral)
+                firstCake?.onSetFirstItem()
             }
-
-            firstCake?.onSetFirstItem()
         }
 
         fun changeSelectedBackground() {

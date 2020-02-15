@@ -44,6 +44,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
         setupCakeRecyclerView()
         observeViewModel()
+        textChangeListener()
+        detectKeyBoard()
     }
 
     private fun observeViewModel() {

@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/uiColorMain</item>
         <item name="android:fontFamily">@font/noto_sans_medium</item>
+        <item name="android:letterSpacing">-0.04</item>
     </style>
 
     <!-- Onboardig TabTheme -->
