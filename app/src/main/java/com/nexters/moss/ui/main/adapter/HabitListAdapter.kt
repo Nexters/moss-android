@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
+import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import java.util.*
 import kotlin.collections.ArrayList
@@ -59,7 +60,10 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                 }
             }
             is HabitViewHolder -> {
-                holder.habitName.text = itemList[position]
+                val item = itemList[position]
+                holder.habitName.text = item
+                val color = context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+                holder.habitName.setTextColor(color)
             }
             is EditHabitViewHolder -> {
 

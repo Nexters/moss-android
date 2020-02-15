@@ -84,8 +84,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         with(binding.rvHabitList) {
             adapter = habitListAdapter.apply {
                 refreshItemList(ArrayList<String>().apply {
-                    add("야식먹기")
-                    add("늦잠자기")
+                    add("산책")
+                    add("스트레칭")
                 })
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
