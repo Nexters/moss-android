@@ -12,6 +12,9 @@ class FormationHabitViewModel : ViewModel() {
     private val _isMakeHabit = MutableLiveData<Boolean>()
     val isMakeHabit: LiveData<Boolean> get() = _isMakeHabit
 
+    private val _isClose = MutableLiveData<Boolean>()
+    val isClose: LiveData<Boolean> get() = _isClose
+
 //    val formationHabitList = arrayListOf(
 //        "물마시기", "스트레칭", "명상", "산책",
 //        "뉴스보기", "아침식사", "일기쓰기", "책읽기"
@@ -34,5 +37,9 @@ class FormationHabitViewModel : ViewModel() {
     fun makeHabit() {
         _isMakeHabit.value = true
         _isMakeHabit.value = false
+    }
+
+    fun closeDisplay() {
+        _isClose.value = true
     }
 }

@@ -25,6 +25,15 @@
             android:layout_height="0.1dp"
             android:orientation="vertical"
             app:layout_constraintGuide_end="@dimen/formation_habit_guide_end"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@drawable/icon_exit_black"
+            android:onClick="@{() -> vm.closeDisplay()}"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 
         <TextView
             android:id="@+id/txt_title"
@@ -66,6 +75,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="@dimen/formation_habit_make_habit_margin_bottom"
+            android:stateListAnimator="@null"
             android:enabled="@{vm.selectedItem != null}"
             android:onClick="@{() -> vm.makeHabit()}"
             app:layout_constraintStart_toStartOf="parent"
