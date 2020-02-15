@@ -6,6 +6,7 @@
 
     <data>
 
+        <import type="android.view.View"/>
         <variable
             name="vm"
             type="com.nexters.moss.ui.send.SendViewModel" />
@@ -36,6 +37,7 @@
 
             <ImageButton
                 android:id="@+id/btn_send_cake_exit"
+                android:onClick="@{()->vm.exit()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -48,7 +50,6 @@
             android:id="@+id/layout_send_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="70dp"
             android:layout_below="@id/layout_send_top">
 
             <RelativeLayout
@@ -73,7 +74,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"
-                            android:src="@drawable/send_watermelon" />
+                            android:src="@drawable/send_watermelon"
+                            app:changeImage="@{vm.cakeImage}"/>
 
                         <LinearLayout
                             android:id="@+id/layout_send_main_cake_text"
@@ -175,8 +177,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/send_btn_selector"
                 android:enabled="true"
+                android:visibility="@{vm.isVisible ? View.VISIBLE : View.GONE}"
                 android:padding="16dp"
                 android:text="@string/send_cake_button"
+                android:onClick="@{()->vm.goMain()}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/size_16sp"
                 app:isBtnEnabled="@{vm.isEditEnable}" />

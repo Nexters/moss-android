@@ -3,12 +3,14 @@ package com.nexters.moss.ui.send
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.model.CakeModel
+import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.send.adapter.SendAdapter
 import com.nexters.moss.ui.send.adapter.SendListDecoration
 import com.nexters.moss.ui.send.keyboard.KeyboardEventVisibility
@@ -38,27 +40,51 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupCakeRecyclerView()
-
         vm.setCakeList(cakeList)
-        textChangeListener()
 
-        btn_send_cake_send.setOnClickListener {
-            toast("click")
-        }
-
-        detectKeyBoard()
+        setupCakeRecyclerView()
+        observeViewModel()
     }
 
-    override fun onDestroy() {
-        keyboardVisibility.detachKeyboardListeners()
-        super.onDestroy()
+    private fun observeViewModel() {
+        with(vm) {
+
+            vm.exit.observe(this@SendActivity, Observer {
+                if (it) {
+                    finish()
+                }
+            })
+
+            main.observe(this@SendActivity, Observer {
+                if (it) {
+                    startActivity<MainActivity>()
+                }
+            })
+        }
     }
 
     private fun setupCakeRecyclerView() {
 
         layout_send_cake_recycler.apply {
-            adapter = SendAdapter()
+            adapter = SendAdapter().apply{
+                setOnFirstItemListener {
+                    vm.changeCakeImage(R.drawable.send_watermelon)
+                }
+
+                setOnItemClickListener { position->
+                    toast(" "+position)
+                    when(position){
+                        0->vm.changeCakeImage(R.drawable.send_watermelon)
+                        1->vm.changeCakeImage(R.drawable.send_cheese)
+                        2->vm.changeCakeImage(R.drawable.send_cream)
+                        3->vm.changeCakeImage(R.drawable.send_green_tea)
+                        4->vm.changeCakeImage(R.drawable.send_coffee)
+                        5->vm.changeCakeImage(R.drawable.send_apple)
+                        6->vm.changeCakeImage(R.drawable.send_chestnut)
+                        7->vm.changeCakeImage(R.drawable.send_almond)
+                    }
+                }
+            }
 
             layoutManager = LinearLayoutManager(
                 this@SendActivity, RecyclerView.HORIZONTAL, false
@@ -92,7 +118,13 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                 layout_send_scroll.run {
                     smoothScrollTo(scrollX, scrollY + keyboardHeight)
                 }
+
+                vm.isBtnVisible(false)
+            })
+
+        keyboardVisibility = KeyboardEventVisibility(window,
+            onHideKeyboard = {
+                vm.isBtnVisible(true)
             })
     }
-
 }

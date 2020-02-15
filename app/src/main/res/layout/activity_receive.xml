@@ -39,6 +39,7 @@
             <ImageButton
                 android:layout_width="17dp"
                 android:layout_height="17dp"
+                android:onClick="@{()->vm.exit()}"
                 android:layout_alignParentEnd="true"
                 android:background="@color/transparent"
                 android:src="@drawable/icon_exit" />
@@ -186,6 +187,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/receive_btn"
                 android:padding="@dimen/receive_padding_btn"
+                android:onClick="@{()->vm.goDiary()}"
                 android:text="@string/receive_btn_go_diary"
                 android:textColor="@color/white"
                 android:textSize="@dimen/receive_txt_normal" />
@@ -193,6 +195,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="@{()->vm.goSend()}"
                 android:background="@color/transparent"
                 android:padding="@dimen/receive_padding_btn"
                 android:text="@string/receive_btn_send_cake"
