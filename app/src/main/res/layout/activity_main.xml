@@ -48,12 +48,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/btn_receiveCake"
+                android:id="@+id/btn_diary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
                 android:background="@null"
                 android:src="@drawable/btn_receive_cake"
+                android:onClick="@{() -> vm.openDiary()}"
                 app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
@@ -63,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:src="@drawable/btn_send_cake"
+                android:onClick="@{() -> vm.openSend()}"
                 app:layout_constraintEnd_toEndOf="@id/guide_end"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 

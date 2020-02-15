@@ -13,8 +13,10 @@ import com.nexters.moss.databinding.ActivityMainBinding
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
 import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
+import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
 import com.nexters.moss.ui.main.adapter.HabitListAdapter
+import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -68,6 +70,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             })
             isEditMode.observe(this@MainActivity, Observer {
                 habitListAdapter.setEditMode(it)
+            })
+            intentDiary.observe(this@MainActivity, Observer {
+                if (it) {
+                    startActivity<DiaryActivity>()
+                }
+            })
+            intentSend.observe(this@MainActivity, Observer {
+                if (it) {
+                    startActivity<SendActivity>()
+                }
             })
         }
 
