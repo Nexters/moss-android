@@ -18,6 +18,12 @@ class MainViewModel : ViewModel() {
     private val _isEditMode = MutableLiveData<Boolean>(false)
     val isEditMode: LiveData<Boolean> get() = _isEditMode
 
+    private val _intentDiary = MutableLiveData<Boolean>(false)
+    val intentDiary: LiveData<Boolean> get() = _intentDiary
+
+    private val _intentSend = MutableLiveData<Boolean>(false)
+    val intentSend: LiveData<Boolean> get() = _intentSend
+
     fun openDrawer() {
         DLog.d("open drawer")
         _isOpenDrawer.value = true
@@ -42,6 +48,14 @@ class MainViewModel : ViewModel() {
     fun setEditMode(enabled: Boolean) {
         DLog.d("call $enabled")
         _isEditMode.value = enabled
+    }
+
+    fun openDiary() {
+        _intentDiary.value = true
+    }
+
+    fun openSend() {
+        _intentSend.value = true
     }
 
 }

@@ -19,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/itemHabitBackground">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_start"
@@ -47,12 +48,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/btn_receiveCake"
+                android:id="@+id/btn_diary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
                 android:background="@null"
                 android:src="@drawable/btn_receive_cake"
+                android:onClick="@{() -> vm.openDiary()}"
                 app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
@@ -62,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:src="@drawable/btn_send_cake"
+                android:onClick="@{() -> vm.openSend()}"
                 app:layout_constraintEnd_toEndOf="@id/guide_end"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
@@ -160,8 +163,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_habit_list_margin_top"
-                app:layout_constraintEnd_toEndOf="@id/guide_end"
-                app:layout_constraintStart_toStartOf="@id/guide_start"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_habit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

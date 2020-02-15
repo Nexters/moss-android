@@ -41,7 +41,7 @@
     <color name="sendBackground">#f5f5f6</color>
 
     <!-- item main habit -->
-    <color name="itemHabitBackground">#f5f5f5</color>
+    <color name="itemHabitBackground">#f9f9fa</color>
 
     <!-- onboarding -->
     <color name="indicator_default_dot">#d8d8d8</color>

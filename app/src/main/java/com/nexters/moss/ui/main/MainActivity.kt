@@ -13,8 +13,10 @@ import com.nexters.moss.databinding.ActivityMainBinding
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
 import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
+import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
 import com.nexters.moss.ui.main.adapter.HabitListAdapter
+import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -69,6 +71,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             isEditMode.observe(this@MainActivity, Observer {
                 habitListAdapter.setEditMode(it)
             })
+            intentDiary.observe(this@MainActivity, Observer {
+                if (it) {
+                    startActivity<DiaryActivity>()
+                }
+            })
+            intentSend.observe(this@MainActivity, Observer {
+                if (it) {
+                    startActivity<SendActivity>()
+                }
+            })
         }
 
         // 임시 첫 선물 팝업 띄우기 기능
@@ -84,8 +96,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         with(binding.rvHabitList) {
             adapter = habitListAdapter.apply {
                 refreshItemList(ArrayList<String>().apply {
-                    add("야식먹기")
-                    add("늦잠자기")
+                    add("산책")
+                    add("스트레칭")
                 })
             }
             layoutManager = LinearLayoutManager(this@MainActivity)
