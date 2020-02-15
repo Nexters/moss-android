@@ -3,6 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_main_habit_item_height"
+    android:layout_marginStart="13dp"
+    android:layout_marginEnd="13dp"
     android:background="@drawable/background_white_shadow"
     android:gravity="center_vertical">
     <TextView
@@ -17,42 +19,31 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_weight="1"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="o"
-        android:textSize="@dimen/_22sdp"
-        android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="o"
-        android:textColor="@color/textColorBlack"
-        android:textSize="@dimen/_22sdp"
-        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="o"
-        android:textSize="@dimen/_22sdp"
-        android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="o"
-        android:textSize="@dimen/_22sdp"
-        android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="o"
-        android:textSize="@dimen/_22sdp"
-        android:textColor="@color/textColorHint"
-        android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
 
-
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_disable_unchecked"
+        android:layout_marginEnd="14dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_disable_unchecked"
+        android:layout_marginEnd="14dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_disable_unchecked"
+        android:layout_marginEnd="14dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_disable_unchecked"
+        android:layout_marginEnd="14dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_disable_unchecked"
+        android:layout_marginEnd="14dp"/>
 
 </LinearLayout>

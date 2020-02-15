@@ -95,9 +95,9 @@
 
             <TextView
                 android:id="@+id/tv_dayOfFifth"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:layout_marginEnd="17dp"
                 android:text="22"
                 android:textColor="@color/textColorBlackSub"
                 android:textSize="@dimen/main_days_text_size"
@@ -106,7 +106,7 @@
 
             <TextView
                 android:id="@+id/tv_dayOfFourth"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="21"
@@ -117,7 +117,7 @@
 
             <TextView
                 android:id="@+id/tv_dayOfThird"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="20"
@@ -128,7 +128,7 @@
 
             <TextView
                 android:id="@+id/tv_dayOfSecond"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="19"
@@ -139,12 +139,13 @@
 
             <TextView
                 android:id="@+id/tv_dayOfFirst"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="18"
                 android:textColor="@color/textColorBlackSub"
                 android:textSize="@dimen/main_days_text_size"
+                android:gravity="center"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
                 app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
 
@@ -163,8 +164,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_habit_list_margin_top"
-                android:layout_marginStart="9dp"
-                android:layout_marginEnd="9dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_habit" />

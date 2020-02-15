@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_main_habit_item_height"
     android:background="@drawable/background_white_shadow"
+    android:layout_marginStart="13dp"
+    android:layout_marginEnd="13dp"
     android:gravity="center_vertical">
     <TextView
         android:id="@+id/tv_habitName"
