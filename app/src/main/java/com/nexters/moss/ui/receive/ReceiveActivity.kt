@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityReceiveBinding
+import com.nexters.moss.ui.receive_dialog.ReceiveDialog
 import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,13 +23,17 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
         super.onCreate(savedInstanceState)
 
         observeViewModel()
+
+        vm.report.observe(this, Observer {
+            if (vm.report.value!!) {
+                ReceiveDialog().show(supportFragmentManager, "")
+            }
+        })
     }
 
     private fun observeViewModel() {
         with(vm) {
-
             report.observe(this@ReceiveActivity, Observer {
-
             })
 
             exit.observe(this@ReceiveActivity, Observer {
