@@ -19,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/itemHabitBackground">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_start"
@@ -160,8 +161,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_habit_list_margin_top"
-                app:layout_constraintEnd_toEndOf="@id/guide_end"
-                app:layout_constraintStart_toStartOf="@id/guide_start"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_habit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
