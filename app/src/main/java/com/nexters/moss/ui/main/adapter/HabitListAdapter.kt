@@ -45,7 +45,12 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         }
     }
 
-    override fun getItemCount() = itemList.size + 1
+    override fun getItemCount(): Int {
+        return if (isEditMode)
+            itemList.size
+        else
+            itemList.size + 1
+    }
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is AddHabitViewHolder -> {
@@ -87,6 +92,8 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         isEditMode = enabled
         notifyDataSetChanged()
     }
+
+    fun getEditMode() = isEditMode
 
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
