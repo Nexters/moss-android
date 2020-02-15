@@ -21,26 +21,31 @@
         android:layout_weight="1"/>
 
     <ImageView
+        android:id="@+id/iv_dayOfFirst"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_disable_unchecked"
         android:layout_marginEnd="14dp"/>
     <ImageView
+        android:id="@+id/iv_dayOfSecond"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_disable_unchecked"
         android:layout_marginEnd="14dp"/>
     <ImageView
+        android:id="@+id/iv_dayOfThird"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_disable_unchecked"
         android:layout_marginEnd="14dp"/>
     <ImageView
+        android:id="@+id/iv_dayOfFourth"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_disable_unchecked"
         android:layout_marginEnd="14dp"/>
     <ImageView
+        android:id="@+id/iv_dayOfFifth"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_disable_unchecked"

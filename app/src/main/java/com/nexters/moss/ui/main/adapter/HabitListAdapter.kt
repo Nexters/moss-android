@@ -5,12 +5,16 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
+import com.nexters.moss.constant.CheckIconColorConstant
+import com.nexters.moss.constant.CheckIconConstant
 import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
+import com.nexters.moss.utils.DLog
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -31,7 +35,11 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
             }
             VIEW_TYPE_EDIT_HABIT -> {
                 EditHabitViewHolder(
-                    LayoutInflater.from(context).inflate(R.layout.item_main_edit_habit, parent, false)
+                    LayoutInflater.from(context).inflate(
+                        R.layout.item_main_edit_habit,
+                        parent,
+                        false
+                    )
                 )
             }
             else -> {
@@ -52,6 +60,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         else
             itemList.size + 1
     }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is AddHabitViewHolder -> {
@@ -62,8 +71,33 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
             is HabitViewHolder -> {
                 val item = itemList[position]
                 holder.habitName.text = item
-                val color = context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+                val color =
+                    context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
                 holder.habitName.setTextColor(color)
+
+                val stateList = arrayOf(
+                    CheckIconConstant.CHECKED,
+                    CheckIconConstant.CHECKED_CAKE,
+                    CheckIconConstant.CHECKED,
+                    CheckIconConstant.UNCHECKED_CAKE,
+                    CheckIconConstant.UNCHECKED
+                )
+
+                var habit = HabitListConstant.DRINK_WATER
+                for (h in HabitListConstant.values()) {
+                    if (h.getValue() == item) {
+                        habit = h
+                    }
+                }
+                var isToday: Boolean
+                for (i in holder.iconArr.indices) {
+                    isToday = false
+                    if (i == 1)
+                        isToday = true
+                    holder.iconArr[i].setImageResource(getCheckIcon(stateList[i], habit, isToday))
+                }
+
+
             }
             is EditHabitViewHolder -> {
 
@@ -99,10 +133,156 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
     fun getEditMode() = isEditMode
 
+    @DrawableRes
+    private fun getCheckIcon(icon: CheckIconConstant, habit: HabitListConstant, isToday: Boolean): Int {
+        val colorConstants = CheckIconColorConstant.values()
+        val habitConstants = HabitListConstant.values()
+
+        var color = colorConstants[0]
+
+        if (isToday){
+            for (i in habitConstants.indices) {
+                if (habitConstants[i] == habit) {
+                    color = when {
+                        i <= 4 -> colorConstants[i]
+                        i == 5 -> colorConstants[0]
+                        i == 6 -> colorConstants[2]
+                        else -> colorConstants[1]
+                    }
+                    break
+                }
+            }
+        }
+        else {
+            color = CheckIconColorConstant.DISABLED
+        }
+
+
+        return when (icon) {
+            CheckIconConstant.CHECKED -> {
+                getCheckedColorIcon(color)
+            }
+            CheckIconConstant.UNCHECKED -> {
+                getUnCheckedColorIcon(color)
+            }
+            CheckIconConstant.CHECKED_CAKE -> {
+                getCheckedCakeColorIcon(color)
+            }
+            CheckIconConstant.UNCHECKED_CAKE -> {
+                getUnCheckedCakeColorIcon(color)
+            }
+        }
+    }
+
+    @DrawableRes
+    private fun getCheckedColorIcon(color: CheckIconColorConstant): Int {
+        return when (color) {
+            CheckIconColorConstant.DISABLED -> {
+                R.drawable.icon_disable_checked
+            }
+            CheckIconColorConstant.STRAWBERRY -> {
+                R.drawable.icon_strawberry_checked
+            }
+            CheckIconColorConstant.ORANGE -> {
+                R.drawable.icon_orange_checked
+            }
+            CheckIconColorConstant.BLUE -> {
+                R.drawable.icon_blue_checked
+            }
+            CheckIconColorConstant.GREEN -> {
+                R.drawable.icon_green_checked
+            }
+            CheckIconColorConstant.BROWN -> {
+                R.drawable.icon_brown_checked
+            }
+        }
+    }
+
+    @DrawableRes
+    private fun getUnCheckedColorIcon(color: CheckIconColorConstant): Int {
+        return when (color) {
+            CheckIconColorConstant.DISABLED -> {
+                R.drawable.icon_disable_unchecked
+            }
+            CheckIconColorConstant.STRAWBERRY -> {
+                R.drawable.icon_strawberry_unchecked
+            }
+            CheckIconColorConstant.ORANGE -> {
+                R.drawable.icon_orange_unchecked
+            }
+            CheckIconColorConstant.BLUE -> {
+                R.drawable.icon_blue_unchecked
+            }
+            CheckIconColorConstant.GREEN -> {
+                R.drawable.icon_green_unchecked
+            }
+            CheckIconColorConstant.BROWN -> {
+                R.drawable.icon_brown_unchecked
+            }
+        }
+    }
+
+    @DrawableRes
+    private fun getCheckedCakeColorIcon(color: CheckIconColorConstant): Int {
+        return when (color) {
+            CheckIconColorConstant.DISABLED -> {
+                R.drawable.icon_disable_cake_checked
+            }
+            CheckIconColorConstant.STRAWBERRY -> {
+                R.drawable.icon_strawberry_cake_checked
+            }
+            CheckIconColorConstant.ORANGE -> {
+                R.drawable.icon_orange_cake_checked
+            }
+            CheckIconColorConstant.BLUE -> {
+                R.drawable.icon_blue_cake_checked
+            }
+            CheckIconColorConstant.GREEN -> {
+                R.drawable.icon_green_cake_checked
+            }
+            CheckIconColorConstant.BROWN -> {
+                R.drawable.icon_brown_cake_checked
+            }
+        }
+    }
+
+    @DrawableRes
+    private fun getUnCheckedCakeColorIcon(color: CheckIconColorConstant): Int {
+        return when (color) {
+            CheckIconColorConstant.DISABLED -> {
+                R.drawable.icon_disable_cake_unchecked
+            }
+            CheckIconColorConstant.STRAWBERRY -> {
+                R.drawable.icon_strawberry_cake_unchecked
+            }
+            CheckIconColorConstant.ORANGE -> {
+                R.drawable.icon_orange_cake_unchecked
+            }
+            CheckIconColorConstant.BLUE -> {
+                R.drawable.icon_blue_cake_unchecked
+            }
+            CheckIconColorConstant.GREEN -> {
+                R.drawable.icon_green_cake_unchecked
+            }
+            CheckIconColorConstant.BROWN -> {
+                R.drawable.icon_brown_cake_unchecked
+            }
+        }
+    }
+
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     class HabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val habitName: TextView = itemView.findViewById(R.id.tv_habitName)
+        private val first: ImageView = itemView.findViewById(R.id.iv_dayOfFirst)
+        val second: ImageView = itemView.findViewById(R.id.iv_dayOfSecond)
+        private val third: ImageView = itemView.findViewById(R.id.iv_dayOfThird)
+        private val fourth: ImageView = itemView.findViewById(R.id.iv_dayOfFourth)
+        private val fifth: ImageView = itemView.findViewById(R.id.iv_dayOfFifth)
+
+        val iconArr = arrayOf(
+            first, second, third, fourth, fifth
+        )
     }
 
     class EditHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
