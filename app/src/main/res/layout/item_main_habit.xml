@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
-        android:textSize="@dimen/_22sdp"
+        android:textSize="22sp"
         android:textColor="@color/textColorHint"
         android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
@@ -29,27 +29,27 @@
         android:layout_height="wrap_content"
         android:text="o"
         android:textColor="@color/textColorBlack"
-        android:textSize="@dimen/_22sdp"
+        android:textSize="22sp"
         android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
-        android:textSize="@dimen/_22sdp"
+        android:textSize="22sp"
         android:textColor="@color/textColorHint"
         android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
-        android:textSize="@dimen/_22sdp"
+        android:textSize="22sp"
         android:textColor="@color/textColorHint"
         android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="o"
-        android:textSize="@dimen/_22sdp"
+        android:textSize="22sp"
         android:textColor="@color/textColorHint"
         android:layout_marginEnd="@dimen/item_main_habit_check_margin_end"/>
 

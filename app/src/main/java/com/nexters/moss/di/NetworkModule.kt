@@ -1,6 +1,7 @@
 package com.nexters.moss.di
 
 import com.nexters.moss.api.HabitApi
+import com.nexters.moss.api.UserApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -30,8 +31,17 @@ val networkModule = module {
         Retrofit.Builder()
             .client(get())
             .addConverterFactory(get())
-            .baseUrl("http://49.50.167.14/api/v2/api-docs/")
+            .baseUrl("http://49.50.167.14/")
             .build()
             .create(HabitApi::class.java)
+    }
+
+    single {
+        Retrofit.Builder()
+            .client(get())
+            .addConverterFactory(get())
+            .baseUrl("http://49.50.167.14/")
+            .build()
+            .create(UserApi::class.java)
     }
 }

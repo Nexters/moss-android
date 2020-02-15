@@ -20,7 +20,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { MakeNicknameViewModel() }
 
-    viewModel { MainViewModel() }
+    viewModel { MainViewModel(get()) }
     viewModel { FormationHabitViewModel() }
 
     viewModel { SendViewModel() }

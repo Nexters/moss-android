@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import com.nexters.moss.di.networkModule
+import com.nexters.moss.di.repositoryModule
 import com.nexters.moss.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -34,6 +35,7 @@ class MossApplication : Application() {
             androidContext(this@MossApplication)
             modules(viewModelModule)
             modules(networkModule)
+            modules(repositoryModule)
         }
     }
 
