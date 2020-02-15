@@ -77,7 +77,6 @@
                 android:textColor="@color/textColorBlackDeep"
                 android:textSize="@dimen/main_text_habit_text_size"
                 android:textStyle="bold"
-                android:onClick="@{() -> vm.join()}"
                 app:layout_constraintStart_toStartOf="@id/guide_start"
                 app:layout_constraintTop_toBottomOf="@id/btn_openSettingDrawer" />
 

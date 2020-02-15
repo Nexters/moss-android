@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nexters.moss.repository.HabitRepository
+import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.DLog
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val habitRepo: HabitRepository) : ViewModel() {
+class MainViewModel(private val userRepo: UserRepository) : ViewModel() {
     private val _isOpenDrawer = MutableLiveData<Boolean>().apply { value = false }
     val isOpenDrawer: LiveData<Boolean> get() = _isOpenDrawer
 

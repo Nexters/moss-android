@@ -21,7 +21,7 @@ val viewModelModule = module {
     viewModel { MakeNicknameViewModel() }
 
     viewModel { MainViewModel(get()) }
-    viewModel { FormationHabitViewModel() }
+    viewModel { FormationHabitViewModel(get()) }
 
     viewModel { SendViewModel() }
     viewModel { ReceiveViewModel() }
