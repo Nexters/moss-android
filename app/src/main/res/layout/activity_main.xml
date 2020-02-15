@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_text_habit_margin_top"
                 android:text="습관"
-                android:textColor="@color/textColorBlackDeep"
+                android:textColor="@color/textColorSlate"
                 android:textSize="@dimen/main_text_habit_text_size"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/guide_start"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/main_edit_habit_margin_start"
                 android:text="편집"
-                android:textColor="@color/black"
+                android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_edit_habit_text_size"
                 android:onClick="@{() -> vm.setEditMode(!vm.isEditMode)}"
                 app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"
@@ -95,56 +95,57 @@
 
             <TextView
                 android:id="@+id/tv_dayOfFifth"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:layout_marginEnd="17dp"
                 android:text="22"
-                android:textColor="@color/textColorBlackSub"
+                android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toEndOf="@id/guide_end"
                 app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
 
             <TextView
                 android:id="@+id/tv_dayOfFourth"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="21"
-                android:textColor="@color/textColorBlackSub"
+                android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfFifth"
                 app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
 
             <TextView
                 android:id="@+id/tv_dayOfThird"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="20"
-                android:textColor="@color/textColorBlackSub"
+                android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfFourth"
                 app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
 
             <TextView
                 android:id="@+id/tv_dayOfSecond"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="19"
-                android:textColor="@color/textColorBlack"
+                android:textColor="@color/textColorSlate"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfThird"
                 app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
 
             <TextView
                 android:id="@+id/tv_dayOfFirst"
-                android:layout_width="wrap_content"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
                 android:text="18"
-                android:textColor="@color/textColorBlackSub"
+                android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
+                android:gravity="center"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
                 app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
 
@@ -163,8 +164,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_habit_list_margin_top"
-                android:layout_marginStart="9dp"
-                android:layout_marginEnd="9dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_habit" />
