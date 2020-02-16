@@ -7,15 +7,17 @@
     android:layout_marginBottom="10dp"
     android:gravity="center">
     <ImageView
+        android:id="@+id/iv_cakeImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_cake_watermelon"/>
     <TextView
+        android:id="@+id/tv_cakeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="수박케이크"
         android:textSize="14sp"
-        android:textColor="@color/textColorBlack"
+        android:textColor="@color/textColorSmall"
         android:letterSpacing="-0.04"
         android:layout_marginTop="6dp"/>
 
