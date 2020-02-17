@@ -25,7 +25,7 @@ class FormationHabitViewModel : ViewModel() {
 
         ArrayList<String>().apply {
             for (value in values) {
-                add(value.getValue())
+                add(value.getHabitName())
             }
         }
     }

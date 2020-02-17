@@ -9,6 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 enum class HabitListConstant(
     private val habitName: String,
+    private val cakeName: String,
     @ColorRes private val personalColor: Int,
     @ColorRes private val secondaryColor: Int,
     @DrawableRes private val imageRes: Int,
@@ -16,6 +17,7 @@ enum class HabitListConstant(
 ) : Parcelable {
     DRINK_WATER(
         "물마시기",
+        "수박케익",
         R.color.strawberry,
         R.color.pale_coral,
         R.drawable.icon_category_cake_watermelon,
@@ -23,6 +25,7 @@ enum class HabitListConstant(
     ),
     STRETCHING(
         "스트레칭",
+        "치즈케익",
         R.color.orange,
         R.color.pale_orange,
         R.drawable.icon_category_cake_cheese,
@@ -30,6 +33,7 @@ enum class HabitListConstant(
     ),
     MEDITATION(
         "명상",
+        "크림케익",
         R.color.blue,
         R.color.pale_blue,
         R.drawable.icon_category_cake_cream,
@@ -37,6 +41,7 @@ enum class HabitListConstant(
     ),
     WALK(
         "산책",
+        "녹차케익",
         R.color.green,
         R.color.pale_green,
         R.drawable.icon_category_cake_greentea,
@@ -44,6 +49,7 @@ enum class HabitListConstant(
     ),
     WATCH_NEWS(
         "뉴스보기",
+        "커피케익",
         R.color.brown,
         R.color.pale_brown,
         R.drawable.icon_category_cake_coffee,
@@ -51,6 +57,7 @@ enum class HabitListConstant(
     ),
     HAVE_BREAKFAST(
         "아침식사",
+        "딸기케익",
         R.color.strawberry,
         R.color.pale_coral,
         R.drawable.icon_category_cake_apple,
@@ -58,6 +65,7 @@ enum class HabitListConstant(
     ),
     WRITE_DIARY(
         "일기쓰기",
+        "밤케익",
         R.color.blue,
         R.color.pale_blue,
         R.drawable.icon_category_cake_chestnut,
@@ -65,13 +73,15 @@ enum class HabitListConstant(
     ),
     READ_BOOK(
         "책읽기",
+        "아몬드케익",
         R.color.orange,
         R.color.pale_orange,
         R.drawable.icon_category_cake_,
         R.drawable.icon_cake_amond_bg_secondary
     );
 
-    fun getValue() = habitName
+    fun getHabitName() = habitName
+    fun getCakeName() = cakeName
 
     @DrawableRes
     fun getDrawableRes() = imageRes

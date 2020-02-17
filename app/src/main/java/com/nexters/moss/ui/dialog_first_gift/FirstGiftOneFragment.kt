@@ -29,9 +29,11 @@ class FirstGiftOneFragment : Fragment() {
 
             val color = it.getSecondaryColor()
             val cakeImage = it.getBgImage()
+            val cakeName = it.getCakeName()
 
-            v.iv_cake.setBackgroundResource(color)
+            v.ll_cakeWrapper.setBackgroundResource(color)
             v.iv_cake.setImageResource(cakeImage)
+            v.tv_cakeName.text = cakeName
         }
     }
 

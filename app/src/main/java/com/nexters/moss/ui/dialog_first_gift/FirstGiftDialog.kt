@@ -5,6 +5,7 @@ import android.widget.ImageView
 import androidx.viewpager.widget.ViewPager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
+import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.databinding.DialogFirstGiftBinding
 import com.nexters.moss.ui.dialog_first_gift.adapter.FirstGiftAdapter
 import kotlinx.android.synthetic.main.dialog_first_gift.view.*
@@ -30,10 +31,8 @@ class FirstGiftDialog : BaseDialog<DialogFirstGiftBinding>() {
     }
 
     private fun setupViewPager() {
-        val first =
-
         with(binding.vpFirstGift) {
-            adapter = FirstGiftAdapter(childFragmentManager)
+            adapter = FirstGiftAdapter(childFragmentManager, HabitListConstant.WALK)
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) = Unit
 
