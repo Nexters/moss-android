@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
@@ -99,7 +100,11 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
             }
             is EditHabitViewHolder -> {
-
+                val item = itemList[position]
+                holder.habitName.text = item
+                val color =
+                    context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+                holder.habitName.setTextColor(color)
             }
         }
     }
@@ -285,7 +290,8 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     }
 
     class EditHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        val habitName: TextView = itemView.findViewById(R.id.tv_habitName)
+        val deleteButton: ImageButton = itemView.findViewById(R.id.btn_removeHabit)
     }
 
     companion object {
