@@ -1,6 +1,7 @@
 package com.nexters.moss.ui.send.adapter
 
 import android.content.Context
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,13 +42,19 @@ class SendAdapter :
 
                 if (lastView == null) {
                     firstView!!.setBackgroundResource(R.drawable.send_item_default)
+                    habit?.setTypeface(null, Typeface.NORMAL)
 
                 } else {
                     lastView!!.setBackgroundResource(R.drawable.send_item_default)
+                    habit?.setTypeface(null, Typeface.NORMAL)
                 }
 
                 val itemBackColor = chooseColor(adapterPosition)
                 itemBackground.setBackgroundResource(itemBackColor)
+                habit.setTypeface(null, Typeface.BOLD)
+
+                //Typeface typeFace = Typeface.createFromAsset(getAssets(), "저장되어있는폰트파일"));
+                //Typeface.createFromAsset()
 
                 lastView = itemBackground
 
@@ -97,7 +104,7 @@ class SendAdapter :
     }
 
     fun setOnFirstItemListener(listener: () -> Unit) {
-        firstCake  = object : OnSetFirstItemListener {
+        firstCake = object : OnSetFirstItemListener {
             override fun onSetFirstItem() {
                 listener()
             }
