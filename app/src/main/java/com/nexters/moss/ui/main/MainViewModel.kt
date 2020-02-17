@@ -3,9 +3,12 @@ package com.nexters.moss.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.DLog
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(private val userRepo: UserRepository) : ViewModel() {
     private val _isOpenDrawer = MutableLiveData<Boolean>().apply { value = false }
     val isOpenDrawer: LiveData<Boolean> get() = _isOpenDrawer
 
@@ -57,5 +60,4 @@ class MainViewModel : ViewModel() {
     fun openSend() {
         _intentSend.value = true
     }
-
 }

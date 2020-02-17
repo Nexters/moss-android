@@ -2,6 +2,7 @@ package com.nexters.moss.ui.diary
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseFragment
@@ -31,10 +32,6 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
 
         vm.setCakeList(cakeList)
         setRecyclerView()
-
-        btn_dialog.setOnClickListener {
-            DiaryHistoryDialog().show(childFragmentManager, "")
-        }
     }
 
     private fun setRecyclerView() {
@@ -42,7 +39,12 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
         val recyclerManager = LinearLayoutManager(context!!)
 
         layout_diary_whole_recycler.apply {
-            adapter = recyclerAdapter
+            adapter = recyclerAdapter.apply{
+                setOnItemClickListener {
+                    //Toast.makeText(context, "click!!"+it, Toast.LENGTH_LONG).show()
+                    DiaryHistoryDialog().show(childFragmentManager, "")
+                }
+            }
             layoutManager = recyclerManager
             setHasFixedSize(false)
         }
