@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
 import com.nexters.moss.model.DiaryCakeModel
@@ -13,6 +14,7 @@ import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
 
 class DiaryWholeRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : RecyclerView.Adapter<DiaryWholeRecyclerAdapter.Holder>() {
     private var context : Context? = null
+    private var onClick: OnItemClickListener? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtClear = itemView.findViewById<TextView>(R.id.txt_diary_item_clear)
@@ -24,6 +26,12 @@ class DiaryWholeRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : Recycl
             txtSubjective?.text = item.cakeSubjective
             txtCakeName?.text = item.cakeName
         }
+
+        fun clickEvent(){
+            itemView.setOnClickListener {
+                onClick?.onItemClick(adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -34,9 +42,24 @@ class DiaryWholeRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : Recycl
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bind(cakeList[position])
+        holder.clickEvent()
     }
 
     override fun getItemCount(): Int {
         return cakeList.size
     }
+
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
+        onClick = object : OnItemClickListener {
+            override fun onItemClick(item: Int) {
+                listener(item)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Int)
+    }
+
+
 }
