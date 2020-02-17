@@ -1,5 +1,7 @@
 package com.nexters.moss.ui.diary_history
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,11 +31,13 @@ class DiaryHistoryDialog : BaseDialog<DialogDiaryHistoryBinding>() {
         binding.vm = vm
     }
 
-    override fun getDialogWidth() = 400
-    override fun getDialogHeight() = 550
+    override fun getDialogWidth() = 370
+    override fun getDialogHeight() = 560
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         setRecyclerView()
         observeViewModel()

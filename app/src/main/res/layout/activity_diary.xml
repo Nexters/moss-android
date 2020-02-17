@@ -35,25 +35,25 @@
                 android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/noto_sans_bold"
-                android:textColor="@color/textColorSlate"
                 android:padding="@dimen/diary_padding_title_bottom"
                 android:text="@string/diary_title"
+                android:textColor="@color/textColorSlate"
                 android:textSize="@dimen/diary_txt_title" />
 
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="@color/uiColorBgGrey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layout_tab_layout">
+            android:layout_below="@id/layout_tab_layout"
+            android:background="@color/uiColorBgGrey">
 
             <ImageView
-                android:src="@drawable/diary_no_cake"
-                android:layout_marginTop="100dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/diary_no_cake" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/layout_diary_view_pager"
