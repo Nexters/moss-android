@@ -14,7 +14,6 @@ import com.nexters.moss.constant.CheckIconColorConstant
 import com.nexters.moss.constant.CheckIconConstant
 import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
-import com.nexters.moss.utils.DLog
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -85,7 +84,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
                 var habit = HabitListConstant.DRINK_WATER
                 for (h in HabitListConstant.values()) {
-                    if (h.getValue() == item) {
+                    if (h.getHabitName() == item) {
                         habit = h
                     }
                 }

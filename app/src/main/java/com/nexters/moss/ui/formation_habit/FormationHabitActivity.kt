@@ -33,6 +33,9 @@ class FormationHabitActivity : BaseActivity<ActivityFormationHabitBinding>() {
             isMakeHabit.observe(this@FormationHabitActivity, Observer {
                 toast("${selectedItem.value}을 고르셨습니다.")
             })
+            isClose.observe(this@FormationHabitActivity, Observer {
+                finish()
+            })
         }
     }
 

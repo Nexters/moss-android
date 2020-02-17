@@ -27,36 +27,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
-            <Button
-                android:layout_width="80dp"
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/iv_firstIndicator"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/icon_indicator_selected"/>
+                <ImageView
+                    android:id="@+id/iv_secondIndicator"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/icon_indicator_default"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:text="닫기"
                 android:textSize="16sp"
                 android:textColor="@color/textColorBlack"
-                android:letterSpacing="-0.04"
-                android:background="@null"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="0.5"/>
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/indicator_firstGift"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:tabIndicatorHeight="0dp"
-                app:tabBackground="@drawable/indicator_selector"
-                app:tabRippleColor="@color/transparent" />
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="0.5"/>
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="다음"
-                android:textSize="16sp"
-                android:textColor="@color/strawberry"
                 android:letterSpacing="-0.04"
                 android:background="@null"/>
 

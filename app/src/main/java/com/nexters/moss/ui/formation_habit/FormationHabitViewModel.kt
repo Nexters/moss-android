@@ -17,12 +17,15 @@ class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewMode
     private val _isMakeHabit = MutableLiveData<Boolean>()
     val isMakeHabit: LiveData<Boolean> get() = _isMakeHabit
 
+    private val _isClose = MutableLiveData<Boolean>()
+    val isClose: LiveData<Boolean> get() = _isClose
+
     val formationHabitList by lazy {
         val values = HabitListConstant.values()
 
         ArrayList<String>().apply {
             for (value in values) {
-                add(value.getValue())
+                add(value.getHabitName())
             }
         }
     }
@@ -38,5 +41,9 @@ class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewMode
         viewModelScope.launch {
             DLog.d(habitRepo.createHabit(1, 1).toString())
         }
+    }
+
+    fun closeDisplay() {
+        _isClose.value = true
     }
 }

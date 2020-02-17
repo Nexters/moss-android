@@ -3,7 +3,6 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_main_add_habit_item_height"
-    android:layout_marginTop="@dimen/item_main_add_habit_item_margin_top"
     android:background="@drawable/background_white_shadow"
     android:gravity="center"
     android:layout_marginStart="13dp"
