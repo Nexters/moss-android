@@ -3,9 +3,14 @@ package com.nexters.moss.ui.formation_habit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.moss.constant.HabitListConstant
+import com.nexters.moss.repository.HabitRepository
+import com.nexters.moss.repository.UserRepository
+import com.nexters.moss.utils.DLog
+import kotlinx.coroutines.launch
 
-class FormationHabitViewModel : ViewModel() {
+class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewModel() {
     private val _selectedItem = MutableLiveData<String>()
     val selectedItem: LiveData<String> get() = _selectedItem
 
@@ -14,11 +19,6 @@ class FormationHabitViewModel : ViewModel() {
 
     private val _isClose = MutableLiveData<Boolean>()
     val isClose: LiveData<Boolean> get() = _isClose
-
-//    val formationHabitList = arrayListOf(
-//        "물마시기", "스트레칭", "명상", "산책",
-//        "뉴스보기", "아침식사", "일기쓰기", "책읽기"
-//    )
 
     val formationHabitList by lazy {
         val values = HabitListConstant.values()
@@ -37,6 +37,10 @@ class FormationHabitViewModel : ViewModel() {
     fun makeHabit() {
         _isMakeHabit.value = true
         _isMakeHabit.value = false
+
+        viewModelScope.launch {
+            DLog.d(habitRepo.createHabit(1, 1).toString())
+        }
     }
 
     fun closeDisplay() {
