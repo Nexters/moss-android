@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:letterSpacing="-0.04"
                 android:text="스트레칭"
+                android:paddingBottom="4dp"
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/diary_item_txt_clear" />
 
@@ -53,8 +54,8 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/diary_item_img_height"
+            android:layout_height="@dimen/diary_item_img_height"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true">
 
