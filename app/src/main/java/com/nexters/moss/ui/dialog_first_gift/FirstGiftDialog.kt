@@ -31,8 +31,10 @@ class FirstGiftDialog : BaseDialog<DialogFirstGiftBinding>() {
     }
 
     private fun setupViewPager() {
+        val cake = arguments?.getParcelable(KIND_OF_CAKE) ?: HabitListConstant.WALK
+
         with(binding.vpFirstGift) {
-            adapter = FirstGiftAdapter(childFragmentManager, HabitListConstant.WALK)
+            adapter = FirstGiftAdapter(childFragmentManager, cake)
             addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
                 override fun onPageScrollStateChanged(state: Int) = Unit
 
@@ -56,6 +58,20 @@ class FirstGiftDialog : BaseDialog<DialogFirstGiftBinding>() {
                     }
                 }
             })
+        }
+    }
+
+    companion object {
+        private const val KIND_OF_CAKE = "kind_of_cake"
+
+        @JvmStatic
+        fun newInstance(cake: HabitListConstant): FirstGiftDialog {
+            val args = Bundle()
+            args.putParcelable(KIND_OF_CAKE, cake)
+
+            return FirstGiftDialog().apply {
+                arguments = args
+            }
         }
     }
 }
