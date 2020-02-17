@@ -27,6 +27,9 @@ class FirstGiftDialog : BaseDialog<DialogFirstGiftBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        binding.btnCancel.setOnClickListener {
+            dismiss()
+        }
         setupViewPager()
     }
 
