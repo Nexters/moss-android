@@ -45,6 +45,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         if (vm.isOpenDrawer.value!!) {
             vm.setDrawerState(false)
         } else {
+            if (vm.isEditMode.value!!) {
+                vm.setEditMode(false)
+                return
+            }
+
             if (System.currentTimeMillis() > lastBackPressedTime + 2000) {
                 lastBackPressedTime = System.currentTimeMillis()
                 finishToast = Toast.makeText(this, "뒤로가기 버튼을 한번 더 누를시 종료됩니다.", Toast.LENGTH_SHORT)
