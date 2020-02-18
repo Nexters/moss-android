@@ -8,7 +8,7 @@
     <!-- onboarding -->
     <dimen name="onboarding_img_height">380dp</dimen>
     <dimen name="onboarding_viewPager_height">500dp</dimen>
-    <dimen name="onboarding_padding_txt_top">30dp</dimen>
+    <dimen name="onboarding_padding_txt_top">59dp</dimen>
 
     <dimen name="onboarding_txt_title">20sp</dimen>
     <dimen name="onboarding_txt_description">16sp</dimen>

@@ -39,6 +39,7 @@
             <ImageButton
                 android:layout_width="17dp"
                 android:layout_height="17dp"
+                android:layout_centerVertical="true"
                 android:onClick="@{()->vm.exit()}"
                 android:layout_alignParentEnd="true"
                 android:background="@color/transparent"
@@ -65,24 +66,20 @@
                     android:layout_height="358dp">
 
                     <RelativeLayout
+                        android:id="@+id/layout_cake"
                         android:layout_above="@id/layout_cake_name"
                         android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/cake_green_tea"
-                            android:layout_width="232dp"
-                            android:layout_height="165dp"/>
-
                     </RelativeLayout>
 
                     <RelativeLayout
                         android:id="@+id/layout_cake_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/receive_padding_card_top"
+                        android:layout_marginTop="@dimen/receive_padding_card_top"
                         android:layout_alignParentBottom="true"
-                        android:paddingBottom="@dimen/receive_padding_card_bottom">
+                        android:layout_marginBottom="@dimen/receive_padding_card_bottom">
 
                         <TextView
                             android:id="@+id/txt_receive_cake_name_subjective"

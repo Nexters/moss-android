@@ -8,8 +8,8 @@
             <corners android:radius="4dp" />
 
             <size
-                android:width="10dp"
-                android:height="10dp" />
+                android:width="50dp"
+                android:height="50dp" />
             <solid android:color="@color/indicator_default_dot" />
         </shape>
     </item>
