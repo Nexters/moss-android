@@ -88,7 +88,9 @@
                 android:text="편집"
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_edit_habit_text_size"
-                android:onClick="@{() -> vm.setEditMode(!vm.isEditMode)}"
+                android:onClick="@{() -> vm.setEditMode(true)}"
+                android:paddingTop="10dp"
+                android:paddingEnd="6dp"
                 app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"
                 app:layout_constraintBottom_toBottomOf="@id/txt_habit"
                 app:layout_constraintStart_toEndOf="@id/txt_habit" />
@@ -102,7 +104,7 @@
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toEndOf="@id/guide_end"
-                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_editHabit" />
 
             <TextView
                 android:id="@+id/tv_dayOfFourth"
@@ -113,7 +115,7 @@
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfFifth"
-                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+                app:layout_constraintTop_toTopOf="@id/tv_dayOfFifth" />
 
             <TextView
                 android:id="@+id/tv_dayOfThird"
@@ -124,7 +126,7 @@
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfFourth"
-                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+                app:layout_constraintTop_toTopOf="@id/tv_dayOfFifth" />
 
             <TextView
                 android:id="@+id/tv_dayOfSecond"
@@ -135,7 +137,7 @@
                 android:textColor="@color/textColorSlate"
                 android:textSize="@dimen/main_days_text_size"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfThird"
-                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+                app:layout_constraintTop_toTopOf="@id/tv_dayOfFifth" />
 
             <TextView
                 android:id="@+id/tv_dayOfFirst"
@@ -147,7 +149,7 @@
                 android:textSize="@dimen/main_days_text_size"
                 android:gravity="center"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
-                app:layout_constraintTop_toTopOf="@id/tv_editHabit" />
+                app:layout_constraintTop_toTopOf="@id/tv_dayOfFifth" />
 
             <TextView
                 android:layout_width="wrap_content"
