@@ -1,57 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.onboarding.OnboardingActivity">
 
     <RelativeLayout
+        android:id="@+id/layout_onboarding_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="0.7">
 
-        <RelativeLayout
-            android:id="@+id/layout_onboarding_view"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/onboarding_viewPager_height">
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/layout_onboarding_view_pager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/layout_onboarding_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layout_onboarding_view">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/indicator_onboarding"
-                app:tabIndicatorHeight="0dp"
-                app:tabBackground="@drawable/indicator_selector"
-                android:layout_centerHorizontal="true"
-                app:tabRippleColor="@color/transparent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_onboarding_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/indicator_onboarding"
+            app:tabIndicatorHeight="0dp"
+            app:tabBackground="@drawable/indicator_selector"
+            android:layout_centerHorizontal="true"
+            app:tabRippleColor="@color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:text="카카오 계정으로 시작하기" />
-    </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>
