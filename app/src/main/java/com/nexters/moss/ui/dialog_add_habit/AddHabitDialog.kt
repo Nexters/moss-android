@@ -1,5 +1,6 @@
 package com.nexters.moss.ui.dialog_add_habit
 
+import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
@@ -17,4 +18,11 @@ class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
     override fun getDialogWidth() = 340
     override fun getDialogHeight() = 220
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        binding.btnCancel.setOnClickListener {
+            dismiss()
+        }
+    }
 }
