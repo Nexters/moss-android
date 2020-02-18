@@ -38,9 +38,9 @@ class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewMode
         _isMakeHabit.value = true
         _isMakeHabit.value = false
 
-        viewModelScope.launch {
-            DLog.d(habitRepo.createHabit(1, 1).toString())
-        }
+//        viewModelScope.launch {
+//            DLog.d(habitRepo.createHabit(1, 1).toString())
+//        }
     }
 
     fun closeDisplay() {

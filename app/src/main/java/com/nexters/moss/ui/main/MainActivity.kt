@@ -1,5 +1,6 @@
 package com.nexters.moss.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -17,6 +18,7 @@ import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
 import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
 import com.nexters.moss.ui.main.adapter.HabitListAdapter
+import com.nexters.moss.ui.receive.ReceiveActivity
 import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,6 +38,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        binding.tvNickname.setOnClickListener {
+            startActivity<ReceiveActivity>()
+        }
         setupHabitRecyclerView()
         setupDrawerLayout()
         observeViewModel()
@@ -84,7 +90,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             })
             intentSend.observe(this@MainActivity, Observer {
                 if (it) {
-                    startActivity<SendActivity>()
+                    startActivity(Intent(applicationContext, SendActivity::class.java).apply {
+                        putExtra(SendActivity.COME_FROM, SendActivity.FROM_MAIN_SEND_CAKE)
+                    })
                 }
             })
         }

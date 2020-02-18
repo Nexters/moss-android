@@ -26,8 +26,7 @@ class MakeNicknameViewModel(private val userRepo: UserRepository) : ViewModel() 
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
-            _intentMain.value = true
         }
+        _intentMain.value = true
     }
 }

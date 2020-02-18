@@ -1,5 +1,7 @@
 package com.nexters.moss.ui.receive
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Gravity
@@ -21,6 +23,7 @@ import com.nexters.moss.databinding.ActivityReceiveBinding
 import com.nexters.moss.ui.receive_dialog.ReceiveDialog
 import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.send.SendActivity
+import com.nexters.moss.utils.DLog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import javax.sql.DataSource
 
@@ -89,6 +92,24 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            REQUEST_SEND_CAKE -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    finish()
+                }
+            }
+
+            REQUEST_CAKE_DIARY -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    finish()
+                }
+            }
+        }
+    }
+
     private fun observeViewModel() {
         with(vm) {
             report.observe(this@ReceiveActivity, Observer {
@@ -102,13 +123,16 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
 
             diary.observe(this@ReceiveActivity, Observer {
                 if (it) {
-                    startActivity<DiaryActivity>()
+//                    startActivity<DiaryActivity>()
+                    startActivityForResult(Intent(applicationContext, DiaryActivity::class.java), REQUEST_CAKE_DIARY)
                 }
             })
 
             send.observe(this@ReceiveActivity, Observer {
                 if (it) {
-                    startActivity<SendActivity>()
+                    startActivityForResult(Intent(applicationContext, SendActivity::class.java).apply {
+                        putExtra(SendActivity.COME_FROM, SendActivity.FROM_RECEIVE_CAKE)
+                    }, REQUEST_SEND_CAKE)
                 }
             })
         }
@@ -122,6 +146,11 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
             setGravity(Gravity.TOP, Gravity.CENTER, Gravity.TOP)
             show()
         }
+    }
+
+    companion object {
+        const val REQUEST_SEND_CAKE = 1000
+        const val REQUEST_CAKE_DIARY = 2000
     }
 }
 

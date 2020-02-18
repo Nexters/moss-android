@@ -24,8 +24,10 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
     private fun observeViewModel() {
         with(vm) {
             intentMain.observe(this@MakeNicknameActivity, Observer {
-                if (it)
+                if (it) {
                     startActivity<MainActivity>()
+                    finish()
+                }
             })
         }
     }
