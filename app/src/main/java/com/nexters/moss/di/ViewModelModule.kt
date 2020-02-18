@@ -1,7 +1,10 @@
 package com.nexters.moss.di
 
+import com.nexters.moss.ui.dialog_add_habit.AddHabitViewModel
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftViewModel
 import com.nexters.moss.ui.dialog_logout.LogoutViewModel
+import com.nexters.moss.ui.dialog_receive_cake.ReceiveCakeViewModel
+import com.nexters.moss.ui.dialog_remove_habit.RemoveHabitViewModel
 import com.nexters.moss.ui.dialog_withdraw.WithdrawViewModel
 import com.nexters.moss.ui.formation_habit.FormationHabitViewModel
 import com.nexters.moss.ui.diary.DiaryPieceViewModel
@@ -35,4 +38,8 @@ val viewModelModule = module {
     viewModel { WithdrawViewModel() }
     viewModel { LogoutViewModel() }
     viewModel { FirstGiftViewModel() }
+
+    viewModel { AddHabitViewModel() }
+    viewModel { ReceiveCakeViewModel() }
+    viewModel { RemoveHabitViewModel() }
 }

@@ -1,17 +1,16 @@
-package com.nexters.moss.ui.dialog_withdraw
+package com.nexters.moss.ui.dialog_add_habit
 
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
-import com.nexters.moss.databinding.DialogWithdrawBinding
+import com.nexters.moss.databinding.DialogAddHabitBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WithdrawDialog : BaseDialog<DialogWithdrawBinding>() {
-    override val vm: WithdrawViewModel by viewModel()
+class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
+    override val vm: AddHabitViewModel by viewModel()
 
-    override fun getLayoutRes() = R.layout.dialog_withdraw
+    override fun getLayoutRes() = R.layout.dialog_add_habit
     override fun setupBinding() {
         binding.vm = vm
     }
