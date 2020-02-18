@@ -25,6 +25,12 @@ class SendViewModel : ViewModel() {
     private val _main = MutableLiveData<Boolean>().apply{ value = false }
     val main : LiveData<Boolean> get() = _main
 
+    private val _toYou = MutableLiveData<String>()
+    val toYou: LiveData<String> get() = _toYou
+
+    private val _cakeName = MutableLiveData<String>()
+    val cakeName: LiveData<String> get() = _cakeName
+
 
     fun setCakeList(list: ArrayList<CakeModel>) {
         _cakeList.value = list
@@ -48,5 +54,13 @@ class SendViewModel : ViewModel() {
 
     fun goMain(){
         _main.value = true
+    }
+
+    fun changeString(toYou: String) {
+        _toYou.value = toYou
+    }
+
+    fun changeCakeName(cakeName : String){
+        _cakeName.value = cakeName
     }
 }
