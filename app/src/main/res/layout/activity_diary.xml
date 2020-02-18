@@ -23,15 +23,22 @@
             android:paddingStart="@dimen/diary_padding_title_start_end"
             android:paddingEnd="@dimen/diary_padding_title_start_end">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_home" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
+                android:fontFamily="@font/noto_sans_bold"
                 android:padding="@dimen/diary_padding_title_bottom"
                 android:text="@string/diary_title"
-                android:textSize="@dimen/diary_txt_title"
-                android:textStyle="bold" />
+                android:textColor="@color/textColorSlate"
+                android:textSize="@dimen/diary_txt_title" />
 
 
         </RelativeLayout>
@@ -39,13 +46,19 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layout_tab_layout">
+            android:layout_below="@id/layout_tab_layout"
+            android:background="@color/uiColorBgGrey">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/diary_no_cake" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/layout_diary_view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/uiColorBgGrey"
                 android:paddingTop="19dp">
 
             </androidx.viewpager.widget.ViewPager>
@@ -62,9 +75,9 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/layout_diary_tab_layout"
                 style="@style/AppTabLayout"
-                app:tabPaddingBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                app:tabPaddingBottom="5dp"
                 app:tabTextAppearance="@style/AppTabTextAppearance" />
         </RelativeLayout>
 

@@ -8,7 +8,6 @@ import com.nexters.moss.R
 import com.nexters.moss._base.BaseFragment
 import com.nexters.moss.databinding.FragmentWholeBinding
 import com.nexters.moss.model.DiaryCakeModel
-import com.nexters.moss.ui.diary.adapter.DiaryPieceRecyclerAdapter
 import com.nexters.moss.ui.diary.adapter.DiaryWholeRecyclerAdapter
 import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
 import kotlinx.android.synthetic.main.fragment_whole.*

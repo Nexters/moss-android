@@ -19,4 +19,12 @@ class LogoutDialog : BaseDialog<DialogLogoutBinding>() {
 
     override fun getDialogWidth() = 340
     override fun getDialogHeight() = 220
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        binding.btnCancel.setOnClickListener {
+            dismiss()
+        }
+    }
 }

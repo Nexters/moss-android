@@ -6,7 +6,8 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.nexters.moss.ui.send.SendViewModel" />
@@ -26,10 +27,20 @@
             android:background="@color/sendBackground"
             android:padding="20dp">
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@color/transparent"
+                android:src="@drawable/icon_back"
+                tools:text="나가기" />/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:fontFamily="@font/noto_sans_bold"
                 android:letterSpacing="-0.04"
                 android:text="@string/send_cake_title"
                 android:textColor="@color/textColorSlate"
@@ -37,11 +48,12 @@
 
             <ImageButton
                 android:id="@+id/btn_send_cake_exit"
-                android:onClick="@{()->vm.exit()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:background="@color/transparent"
+                android:onClick="@{()->vm.exit()}"
                 android:src="@drawable/icon_exit_black"
                 tools:text="나가기" />
         </RelativeLayout>
@@ -75,7 +87,7 @@
                             android:layout_height="wrap_content"
                             android:background="@color/transparent"
                             android:src="@drawable/send_watermelon"
-                            app:changeImage="@{vm.cakeImage}"/>
+                            app:changeImage="@{vm.cakeImage}" />
 
                         <LinearLayout
                             android:id="@+id/layout_send_main_cake_text"
@@ -89,8 +101,9 @@
                                 android:id="@+id/txt_send_cake_name_adjective"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="2dp"
                                 android:letterSpacing="-0.04"
-                                android:text="물마시는 너에게"
+                                android:text="@{@string/toYou(vm.toYou)}"
                                 android:textAlignment="center"
                                 android:textColor="@color/textColorSmall"
                                 android:textSize="14sp" />
@@ -100,7 +113,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:letterSpacing="-0.04"
-                                android:text="수박 케이크"
+                                android:text="@{@string/cakeName(vm.cakeName)}"
                                 android:textAlignment="center"
                                 android:textColor="@color/textColorSlate"
                                 android:textSize="@dimen/size_20sp" />
@@ -142,8 +155,11 @@
                                 android:backgroundTint="@color/uiColorDisable"
                                 android:hint="@string/send_cake_message_hint"
                                 android:inputType="textVisiblePassword"
-                                android:maxLength="24"
+                                android:letterSpacing="-0.04"
+                                android:maxLength="14"
+                                android:paddingBottom="20dp"
                                 android:textColor="@color/textColorSlate"
+                                android:textColorHint="@color/uiColorDisable"
                                 android:textCursorDrawable="@drawable/edit_text_cursor"
                                 android:textSize="@dimen/size_18sp" />
 
@@ -153,7 +169,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="3dp"
                                 android:text="@string/send_cake_message_alert"
-                                android:textColor="@color/textColorSlate"
+                                android:textColor="@color/textColorGrey"
                                 android:textSize="@dimen/size_12sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -169,7 +185,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="20dp"
+            android:paddingBottom="30dp">
 
             <Button
                 android:id="@+id/btn_send_cake_send"
@@ -177,12 +194,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/send_btn_selector"
                 android:enabled="true"
-                android:visibility="@{vm.isVisible ? View.VISIBLE : View.GONE}"
-                android:padding="16dp"
-                android:text="@string/send_cake_button"
                 android:onClick="@{()->vm.goMain()}"
+                android:padding="16dp"
+                android:shadowColor="@null"
+                android:text="@string/send_cake_button"
                 android:textColor="@color/white"
                 android:textSize="@dimen/size_16sp"
+                android:visibility="@{vm.isVisible ? View.VISIBLE : View.GONE}"
                 app:isBtnEnabled="@{vm.isEditEnable}" />
 
         </LinearLayout>

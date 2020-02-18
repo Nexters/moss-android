@@ -44,12 +44,14 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
         setupCakeRecyclerView()
         observeViewModel()
+        textChangeListener()
+        detectKeyBoard()
     }
 
     private fun observeViewModel() {
         with(vm) {
 
-            vm.exit.observe(this@SendActivity, Observer {
+            exit.observe(this@SendActivity, Observer {
                 if (it) {
                     finish()
                 }
@@ -66,22 +68,38 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     private fun setupCakeRecyclerView() {
 
         layout_send_cake_recycler.apply {
-            adapter = SendAdapter().apply{
+            adapter = SendAdapter().apply {
                 setOnFirstItemListener {
-                    vm.changeCakeImage(R.drawable.send_watermelon)
+                    changeItems(R.drawable.send_watermelon,"물마시는", "수박")
                 }
 
-                setOnItemClickListener { position->
-                    toast(" "+position)
-                    when(position){
-                        0->vm.changeCakeImage(R.drawable.send_watermelon)
-                        1->vm.changeCakeImage(R.drawable.send_cheese)
-                        2->vm.changeCakeImage(R.drawable.send_cream)
-                        3->vm.changeCakeImage(R.drawable.send_green_tea)
-                        4->vm.changeCakeImage(R.drawable.send_coffee)
-                        5->vm.changeCakeImage(R.drawable.send_apple)
-                        6->vm.changeCakeImage(R.drawable.send_chestnut)
-                        7->vm.changeCakeImage(R.drawable.send_almond)
+                setOnItemClickListener { position ->
+                    //toast(" " + position)
+                    when (position) {
+                        0 -> {
+                            changeItems(R.drawable.send_watermelon, "물마시는", "수박")
+                        }
+                        1 -> {
+                            changeItems(R.drawable.send_cheese, "스트레칭하는","치즈")
+                        }
+                        2 -> {
+                            changeItems(R.drawable.send_cream, "명상하는", "생크림")
+                        }
+                        3 -> {
+                            changeItems(R.drawable.send_green_tea, "산책하는", "녹차")
+                        }
+                        4 -> {
+                            changeItems(R.drawable.send_coffee, "뉴스보는", "커피")
+                        }
+                        5 -> {
+                            changeItems(R.drawable.send_apple, "아침먹는", "사과")
+                        }
+                        6 -> {
+                            changeItems(R.drawable.send_chestnut, "일기쓰는", "밤")
+                        }
+                        7 -> {
+                            changeItems(R.drawable.send_almond, "책을읽는", "아몬드")
+                        }
                     }
                 }
             }
@@ -91,6 +109,14 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             )
 
             addItemDecoration(SendListDecoration())
+        }
+    }
+
+    private fun changeItems(img : Int, toYou :String, cakeName:String){
+        vm.apply{
+            changeCakeImage(img)
+            changeString(toYou)
+            changeCakeName(cakeName)
         }
     }
 
