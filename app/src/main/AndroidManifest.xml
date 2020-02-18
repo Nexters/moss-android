@@ -26,6 +26,7 @@
         <activity android:name=".ui.send.SendActivity" />
         <activity android:name=".ui.diary.DiaryActivity"/>
         <activity android:name=".ui.receive.ReceiveActivity" />
+        <activity android:name=".ui.onboarding.OnboardingActivity" />
     </application>
 
 </manifest>

@@ -14,6 +14,6 @@ interface UserApi {
 
     @DELETE("/api/user")
     suspend fun leave(
-        @Header("accessToken") accessToken: String
+        @Header("habikeryToken") accessToken: String
     ): Any
 }

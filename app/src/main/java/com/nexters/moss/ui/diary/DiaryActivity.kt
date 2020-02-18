@@ -1,5 +1,6 @@
 package com.nexters.moss.ui.diary
 
+import android.app.Activity
 import android.os.Bundle
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
@@ -20,7 +21,15 @@ class DiaryActivity : BaseActivity<ActivityDiaryBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setupView()
         setViewPager()
+    }
+
+    private fun setupView() {
+        btn_home.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
     }
 
     private fun setViewPager(){

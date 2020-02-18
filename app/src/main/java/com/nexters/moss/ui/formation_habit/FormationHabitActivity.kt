@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivityFormationHabitBinding
+import com.nexters.moss.ui.dialog_add_habit.AddHabitDialog
 import com.nexters.moss.ui.formation_habit.adapter.FormationHabitListAdapter
 import com.nexters.moss.ui.formation_habit.adapter.FormationHabitListDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,11 +31,11 @@ class FormationHabitActivity : BaseActivity<ActivityFormationHabitBinding>() {
 
     private fun observeViewModel() {
         with(vm) {
-            isMakeHabit.observe(this@FormationHabitActivity, Observer {
-                toast("${selectedItem.value}을 고르셨습니다.")
-            })
             isClose.observe(this@FormationHabitActivity, Observer {
                 finish()
+            })
+            isMakeHabit.observe(this@FormationHabitActivity, Observer {
+                AddHabitDialog().show(supportFragmentManager, "")
             })
         }
     }

@@ -1,8 +1,10 @@
 package com.nexters.moss.ui.send
 
+import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +12,7 @@ import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.model.CakeModel
+import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.send.adapter.SendAdapter
 import com.nexters.moss.ui.send.adapter.SendListDecoration
@@ -23,6 +26,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     override fun setupBinding() {
         binding.vm = vm
     }
+
+    private lateinit var from: String
 
     private lateinit var keyboardVisibility: KeyboardEventVisibility
 
@@ -42,20 +47,71 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
         vm.setCakeList(cakeList)
 
+        from = intent.getStringExtra(COME_FROM)!!
+
+        val back = btn_send_cake_back
+        val close = btn_send_cake_exit
+
+        when (from) {
+            FROM_ADD_HABIT -> {
+                back.visibility = View.VISIBLE
+                close.visibility = View.INVISIBLE
+            }
+            FROM_MAIN_SEND_CAKE -> {
+                back.visibility = View.INVISIBLE
+                close.visibility = View.VISIBLE
+            }
+            FROM_RECEIVE_CAKE -> {
+                back.visibility = View.VISIBLE
+                close.visibility = View.VISIBLE
+            }
+        }
+
+        setupView()
         setupCakeRecyclerView()
         observeViewModel()
         textChangeListener()
         detectKeyBoard()
     }
 
+    override fun onBackPressed() {
+        onClose()
+//        super.onBackPressed()
+    }
+
+    private fun setupView() {
+        binding.btnSendCakeBack.setOnClickListener {
+            onClose()
+        }
+        binding.btnSendCakeExit.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            onClose()
+        }
+    }
+
+    private fun onClose() {
+        when (from) {
+            FROM_ADD_HABIT -> {
+                startActivity<FormationHabitActivity>()
+                finish()
+            }
+            FROM_MAIN_SEND_CAKE -> {
+                finish()
+            }
+            FROM_RECEIVE_CAKE -> {
+                finish()
+            }
+        }
+    }
+
     private fun observeViewModel() {
         with(vm) {
 
-            exit.observe(this@SendActivity, Observer {
-                if (it) {
-                    finish()
-                }
-            })
+//            exit.observe(this@SendActivity, Observer {
+//                if (it) {
+//                    finish()
+//                }
+//            })
 
             main.observe(this@SendActivity, Observer {
                 if (it) {
@@ -152,5 +208,13 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             onHideKeyboard = {
                 vm.isBtnVisible(true)
             })
+    }
+
+    companion object {
+        const val COME_FROM = "come_from"
+
+        const val FROM_ADD_HABIT = "from_add_habit"
+        const val FROM_RECEIVE_CAKE = "from_receive_habit"
+        const val FROM_MAIN_SEND_CAKE = "from_main_send_cake"
     }
 }
