@@ -39,7 +39,12 @@
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@={vm.nickname}"
             android:hint="달콤한 닉네임을 지어주세요."
+            android:maxLines="1"
+            android:maxLength="10"
+            android:inputType="text"
+            android:imeOptions="actionNone"
             android:textColor="@color/textColorBlack"
             android:backgroundTint="@color/textColorHint"
             android:textColorHint="@color/textColorHint"
@@ -62,6 +67,8 @@
             android:layout_marginEnd="20dp"
             android:stateListAnimator="@null"
             android:background="@drawable/selector_make_habit_button"
+            android:enabled="@{!vm.nickname.isEmpty()}"
+            android:onClick="@{() -> vm.makeNickname()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

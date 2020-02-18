@@ -6,4 +6,8 @@ class UserRepository(private val userApi: UserApi) {
     suspend fun join(accessToken: String, nickname: String): Any {
         return userApi.join(accessToken, nickname)
     }
+
+    suspend fun leave(accessToken: String): Any {
+        return userApi.leave(accessToken)
+    }
 }
