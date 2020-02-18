@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
+import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.databinding.ActivityMainBinding
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
@@ -85,7 +86,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         // 임시 첫 선물 팝업 띄우기 기능
         binding.txtPush.setOnClickListener {
-            FirstGiftDialog().show(supportFragmentManager, "")
+            FirstGiftDialog.newInstance(HabitListConstant.READ_BOOK).show(supportFragmentManager, "")
         }
     }
 

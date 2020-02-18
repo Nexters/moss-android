@@ -21,6 +21,8 @@
     <color name="uiColorBgGrey">#ebecee</color>
     <color name="uiColorMain">#ec303f</color>
 
+    <color name="textColorGrey">#757D89</color>
+
     <!-- GUI -->
     <color name="blue">#2391a7</color>
     <color name="coral">#e96361</color>

@@ -3,32 +3,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView
-        android:id="@+id/iv_cake"
+    <LinearLayout
+        android:id="@+id/ll_cakeWrapper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="180"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintVertical_weight="190"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/ll_textWrapper"/>
+        app:layout_constraintBottom_toTopOf="@id/ll_textWrapper">
+        <ImageView
+            android:id="@+id/iv_cake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_cakeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:textSize="14sp"
+            android:textColor="@color/textColorSlate"
+            android:letterSpacing="-0.04" />
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/ll_textWrapper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        app:layout_constraintVertical_weight="130"
+        app:layout_constraintVertical_weight="120"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_cake"
+        app:layout_constraintTop_toBottomOf="@id/ll_cakeWrapper"
         app:layout_constraintBottom_toBottomOf="parent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="첫 체크 기념 조각케익 선물!"
             android:textSize="20sp"
-            android:textColor="@color/textColorBlack"
+            android:textColor="@color/textColorSlate"
             android:letterSpacing="-0.04"
             android:layout_marginTop="20dp"/>
         <TextView
@@ -36,7 +52,7 @@
             android:layout_height="wrap_content"
             android:text="각 습관마다 해당하는 케익이 있어요.\n다른 케익도 둘러볼까요?"
             android:textSize="14sp"
-            android:textColor="@color/textColorBlack"
+            android:textColor="@color/textColorSlate"
             android:letterSpacing="-0.04"
             android:gravity="center_horizontal"
             android:layout_marginTop="6dp"/>

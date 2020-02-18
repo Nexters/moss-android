@@ -1,4 +1,4 @@
-package com.nexters.moss.ui.dialog_first_gift
+package com.nexters.moss.ui.dialog_first_gift.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

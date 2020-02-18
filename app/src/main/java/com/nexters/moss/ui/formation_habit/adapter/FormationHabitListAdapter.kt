@@ -16,6 +16,9 @@ class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter
     private var lastSelectedView: ImageView? = null
     private var onItemClickListener: OnItemClickListener? = null
 
+    private var lastSelectedText: View? = null
+    private val itemViews = ArrayList<TextView>()
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -28,10 +31,25 @@ class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter
     }
     override fun getItemCount() = itemList.size
     override fun onBindViewHolder(holder: FormationHabitListViewHolder, position: Int) {
+        if (itemViews.size < itemList.size) {
+            itemViews.add(holder.habitName)
+        }
+
         val item = itemList[position]
 
         holder.habitName.text = item
         holder.cakeImage.setImageResource(HabitListConstant.values()[position].getDrawableRes())
+
+        var color: Int
+
+        if (lastSelectedView != null) {
+            color = if (lastSelectedView == holder.cakeImage) {
+                context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+            } else {
+                context.resources.getColor(R.color.textColorSmall, null)
+            }
+            holder.habitName.setTextColor(color)
+        }
 
         holder.itemView.setOnClickListener {
             if (lastSelectedView != null) {
@@ -43,7 +61,18 @@ class FormationHabitListAdapter : RecyclerView.Adapter<FormationHabitListAdapter
 
             holder.cakeImage.alpha = 1f
             lastSelectedView = holder.cakeImage
+            lastSelectedText = holder.habitName
             onItemClickListener?.onItemClick(itemList[position])
+
+            for (itemView in itemViews) {
+                color = if (itemView == lastSelectedText) {
+                    context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+                }
+                else {
+                    context.resources.getColor(R.color.uiColorDisable, null)
+                }
+                itemView.setTextColor(color)
+            }
         }
     }
 
