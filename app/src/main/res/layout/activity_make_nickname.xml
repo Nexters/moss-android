@@ -68,6 +68,7 @@
             android:stateListAnimator="@null"
             android:background="@drawable/selector_make_habit_button"
             android:enabled="@{!vm.nickname.isEmpty()}"
+            android:onClick="@{() -> vm.makeNickname()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
