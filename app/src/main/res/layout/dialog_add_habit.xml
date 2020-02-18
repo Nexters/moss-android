@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -7,10 +8,61 @@
             type="com.nexters.moss.ui.dialog_add_habit.AddHabitViewModel" />
     </data>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_box_square">
+        <TextView
+            android:id="@+id/txt_confirmWithdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="새로운 습관 추가"
+            android:textSize="20sp"
+            android:textColor="@color/textColorBlack"
+            android:letterSpacing="-0.04"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_cancel"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="새로운 습관을 추가하려면\n누군가에게 케익을 보내주세요!"
+            android:textSize="14sp"
+            android:textColor="@color/textColorBlack"
+            android:letterSpacing="-0.04"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_confirmWithdraw"/>
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:textColor="@color/textColorBlack"
+            android:text="취소"
+            android:textSize="16sp"
+            android:letterSpacing="-0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_submit"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:textColor="@color/strawberry"
+            android:text="보내기"
+            android:textSize="16sp"
+            android:letterSpacing="-0.04"
+            app:layout_constraintStart_toEndOf="@id/btn_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
