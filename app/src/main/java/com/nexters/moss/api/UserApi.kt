@@ -1,9 +1,8 @@
 package com.nexters.moss.api
 
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.Header
-import retrofit2.http.POST
+import com.nexters.moss.model.response.GetUserInfoResponseModel
+import com.nexters.moss.model.response.LoginResponseModel
+import retrofit2.http.*
 
 interface UserApi {
     @POST("/api/user")
@@ -12,8 +11,18 @@ interface UserApi {
         @Body nickname: String
     ): Any
 
+    @POST("/api/token")
+    suspend fun login(
+        @Header("accessToken") accessToken: String
+    ): LoginResponseModel
+
     @DELETE("/api/user")
     suspend fun leave(
         @Header("habikeryToken") accessToken: String
     ): Any
+
+    @GET("/api/user")
+    suspend fun getUserInfo(
+        @Header("habikeryToken") accessToken: String
+    ): GetUserInfoResponseModel
 }

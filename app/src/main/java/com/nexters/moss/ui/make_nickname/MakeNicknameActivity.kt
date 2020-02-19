@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
+import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivityMakeNicknameBinding
+import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,10 +27,25 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
         with(vm) {
             intentMain.observe(this@MakeNicknameActivity, Observer {
                 if (it) {
+                    setTokenInSharedPreference()
                     startActivity<MainActivity>()
                     finish()
                 }
             })
         }
+    }
+
+    private fun setTokenInSharedPreference() {
+        val sp = getUserSharedPreference()
+        sp.edit().run {
+            putString(
+                SharedPreferenceConstant.ACCESS_TOKEN.getValue(),
+                vm.getAccessToken()
+            )
+            putString(
+                SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
+                vm.getHabikeryToken()
+            )
+        }.apply()
     }
 }
