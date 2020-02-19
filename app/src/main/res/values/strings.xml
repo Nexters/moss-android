@@ -8,6 +8,7 @@
     <string name="send_cake_message_alert">욕설 및 부적절한 글은 신고를 받을 수 있어요.</string>
     <string name="toYou">%s 너에게</string>
     <string name="cakeName">%s케익</string>
+    <string name="send_txt_complete_alert">선물 보내기가 완료 되었습니다!</string>
 
     <!-- onboarding -->
     <string name="onboarding_one_title">Habikery에 오신 걸 환영해요!</string>
