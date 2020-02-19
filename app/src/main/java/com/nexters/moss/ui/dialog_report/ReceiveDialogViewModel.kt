@@ -1,4 +1,4 @@
-package com.nexters.moss.ui.receive_dialog
+package com.nexters.moss.ui.dialog_report
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

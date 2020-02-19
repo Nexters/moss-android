@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.nexters.moss.ui.receive_dialog.ReceiveDialogViewModel" />
+            type="com.nexters.moss.ui.dialog_report.ReceiveDialogViewModel" />
     </data>
 
 
