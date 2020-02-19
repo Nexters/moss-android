@@ -27,6 +27,9 @@ class MainViewModel(private val userRepo: UserRepository) : ViewModel() {
     private val _intentSend = MutableLiveData<Boolean>(false)
     val intentSend: LiveData<Boolean> get() = _intentSend
 
+    private val _nickname = MutableLiveData<String>("미확인")
+    val nickname: LiveData<String> get() = _nickname
+
     fun openDrawer() {
         DLog.d("open drawer")
         _isOpenDrawer.value = true
@@ -59,5 +62,13 @@ class MainViewModel(private val userRepo: UserRepository) : ViewModel() {
 
     fun openSend() {
         _intentSend.value = true
+    }
+
+    fun setNickname(habikeryToken: String) {
+        viewModelScope.launch {
+            val response = userRepo.getUserInfo(habikeryToken)
+
+            _nickname.value = response.nickname ?: "unknown"
+        }
     }
 }

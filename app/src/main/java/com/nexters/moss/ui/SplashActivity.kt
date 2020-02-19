@@ -43,8 +43,8 @@ class SplashActivity : AppCompatActivity() {
 
         val accessToken = sp.getString(
             SharedPreferenceConstant.ACCESS_TOKEN.getValue(),
-            SharedPreferenceConstant.UNKNOWN.getValue()
-        ) ?: ""
+            null
+        ) ?: SharedPreferenceConstant.UNKNOWN.getValue()
 
         val isExist = accessToken != SharedPreferenceConstant.UNKNOWN.getValue()
 

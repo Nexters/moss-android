@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.constant.HabitListConstant
+import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivityMainBinding
+import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
 import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
@@ -43,6 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.tvNickname.setOnClickListener {
             startActivity<ReceiveActivity>()
         }
+        setupNickname()
         setupHabitRecyclerView()
         setupDrawerLayout()
         observeViewModel()
@@ -137,6 +140,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
             setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         }
+    }
+
+    private fun setupNickname() {
+        val sp = getUserSharedPreference()
+        val habikeryToken = sp.getString(
+            SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
+            null
+        ) ?: return
+
+        vm.setNickname(habikeryToken)
     }
 
     fun withdrawFinish() {
