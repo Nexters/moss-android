@@ -35,7 +35,7 @@ val viewModelModule = module {
     viewModel { DiaryWholeViewModel() }
     viewModel { DiaryHistoryViewModel() }
 
-    viewModel { WithdrawViewModel() }
+    viewModel { WithdrawViewModel(get()) }
     viewModel { LogoutViewModel() }
     viewModel { FirstGiftViewModel() }
 

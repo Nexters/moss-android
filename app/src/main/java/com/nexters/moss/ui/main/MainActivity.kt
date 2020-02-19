@@ -18,6 +18,7 @@ import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
 import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
 import com.nexters.moss.ui.main.adapter.HabitListAdapter
+import com.nexters.moss.ui.onboarding.OnboardingActivity
 import com.nexters.moss.ui.receive.ReceiveActivity
 import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -136,5 +137,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
             setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         }
+    }
+
+    fun withdrawFinish() {
+        startActivity<OnboardingActivity>()
+        finish()
     }
 }
