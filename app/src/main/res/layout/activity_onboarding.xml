@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
         android:id="@+id/layout_onboarding_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.75">
+        android:layout_weight="0.78">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/layout_onboarding_view_pager"
@@ -24,23 +23,53 @@
         android:id="@+id/layout_onboarding_bottom"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.25"
+        android:layout_weight="0.22"
         android:orientation="vertical">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/indicator_onboarding"
-            app:tabIndicatorHeight="0dp"
-            app:tabBackground="@drawable/indicator_selector"
-            android:layout_centerHorizontal="true"
-            app:tabRippleColor="@color/transparent"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/firstIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/icon_indicator_selected" />
+
+            <ImageView
+                android:id="@+id/secondIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/icon_indicator_default" />
+
+            <ImageView
+                android:id="@+id/thirdIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/icon_indicator_default" />
+
+            <ImageView
+                android:id="@+id/fourthIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/icon_indicator_default" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_startByKakao"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
             android:text="카카오 계정으로 시작하기" />
     </RelativeLayout>
 

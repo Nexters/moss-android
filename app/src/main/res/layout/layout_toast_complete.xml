@@ -11,7 +11,7 @@
         android:layout_centerVertical="true"
         android:background="@color/report_toast_background"
         android:padding="16dp"
-        android:text="@string/report_txt_complete_alert"
+        android:text="@string/send_txt_complete_alert"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/report_txt_toast_complete" />
