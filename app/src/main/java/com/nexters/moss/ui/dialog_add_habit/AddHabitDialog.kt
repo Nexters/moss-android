@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
 import com.nexters.moss.databinding.DialogAddHabitBinding
+import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,10 +41,15 @@ class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         if (isStartActivity) {
-            activity?.startActivity(Intent(activity, SendActivity::class.java).apply {
-                putExtra(SendActivity.COME_FROM, SendActivity.FROM_ADD_HABIT)
-            })
-            activity?.finish()
+            activity?.let {
+                if (it is FormationHabitActivity) {
+                    startActivity(Intent(it, SendActivity::class.java).apply {
+                        putExtra(SendActivity.COME_FROM, SendActivity.FROM_ADD_HABIT)
+                        putExtra(SendActivity.CREATE_CATEGORY_ID, it.vm.getSelectedItem())
+                    })
+                    activity?.finish()
+                }
+            }
         }
     }
 }

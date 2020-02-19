@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nexters.moss.model.HabitModel
 import com.nexters.moss.repository.HabitRepository
 import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.DLog
@@ -34,8 +35,8 @@ class MainViewModel(
     private val _nickname = MutableLiveData<String>("미확인")
     val nickname: LiveData<String> get() = _nickname
 
-    private val _itemList = MutableLiveData<ArrayList<String>>(ArrayList())
-    val itemList: LiveData<ArrayList<String>> get() = _itemList
+    private val _itemList = MutableLiveData<ArrayList<HabitModel>>(ArrayList())
+    val itemList: LiveData<ArrayList<HabitModel>> get() = _itemList
 
     fun openDrawer() {
         DLog.d("open drawer")
@@ -80,13 +81,12 @@ class MainViewModel(
     }
 
     fun refreshItemList2(itemList : ArrayList<String>) {
-        _itemList.value = itemList
+//        _itemList.value = itemList
     }
 
     fun refreshItemList(habikeryToken: String) {
         viewModelScope.launch {
-            val response = habitRepo.getHabit(habikeryToken)
-            DLog.d(response.toString())
+            _itemList.value = habitRepo.getHabit(habikeryToken).data as ArrayList
         }
     }
 }

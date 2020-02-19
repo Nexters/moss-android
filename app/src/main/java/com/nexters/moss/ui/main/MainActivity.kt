@@ -46,10 +46,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startActivity<ReceiveActivity>()
         }
         setupNickname()
-        setupHabitList()
         setupHabitRecyclerView()
         setupDrawerLayout()
         observeViewModel()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupHabitList()
     }
 
     override fun onBackPressed() {
@@ -93,6 +97,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     startActivity<DiaryActivity>()
                 }
             })
+
             intentSend.observe(this@MainActivity, Observer {
                 if (it) {
                     startActivity(Intent(applicationContext, SendActivity::class.java).apply {

@@ -1,6 +1,7 @@
 package com.nexters.moss.ui.send
 
 import android.app.Activity
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
+import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivitySendBinding
+import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.model.CakeModel
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
@@ -22,6 +25,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SendActivity : BaseActivity<ActivitySendBinding>() {
     override val vm: SendViewModel by viewModel()
+
+    private lateinit var sp: SharedPreferences
+
     override fun getLayoutRes() = R.layout.activity_send
     override fun setupBinding() {
         binding.vm = vm
@@ -56,6 +62,9 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             FROM_ADD_HABIT -> {
                 back.visibility = View.VISIBLE
                 close.visibility = View.INVISIBLE
+                vm.setAddHabit(true)
+                val categoryId = intent.getIntExtra(CREATE_CATEGORY_ID, -1)
+                vm.setCreateCategoryId(categoryId)
             }
             FROM_MAIN_SEND_CAKE -> {
                 back.visibility = View.INVISIBLE
@@ -68,6 +77,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         }
 
         setupView()
+        setupHabikeryToken()
         setupCakeRecyclerView()
         observeViewModel()
         textChangeListener()
@@ -115,11 +125,18 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
             main.observe(this@SendActivity, Observer {
                 if (it) {
-                    startActivity<MainActivity>()
                 }
             })
         }
     }
+    private fun setupHabikeryToken() {
+        sp = getUserSharedPreference()
+        vm.setHabikeryToken(sp.getString(
+            SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
+            null
+        ) ?: "unknown")
+    }
+
 
     private fun setupCakeRecyclerView() {
 
@@ -130,7 +147,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                 }
 
                 setOnItemClickListener { position ->
-                    //toast(" " + position)
+                    vm.setCategoryId(position)
                     when (position) {
                         0 -> {
                             changeItems(R.drawable.send_watermelon, "물마시는", "수박")
@@ -216,5 +233,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         const val FROM_ADD_HABIT = "from_add_habit"
         const val FROM_RECEIVE_CAKE = "from_receive_habit"
         const val FROM_MAIN_SEND_CAKE = "from_main_send_cake"
+
+        const val CREATE_CATEGORY_ID = "create_category_id"
     }
 }

@@ -3,10 +3,18 @@ package com.nexters.moss.ui.send
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.nexters.moss.model.CakeModel
+import com.nexters.moss.repository.CakeRepository
+import com.nexters.moss.repository.HabitRepository
+import com.nexters.moss.utils.DLog
+import kotlinx.coroutines.launch
 
 
-class SendViewModel : ViewModel() {
+class SendViewModel(
+    private val cakeRepo: CakeRepository,
+    private val habitRepo: HabitRepository
+) : ViewModel() {
     private val _cakeList = MutableLiveData<ArrayList<CakeModel>>()
     val cakeList: LiveData<ArrayList<CakeModel>> get() = _cakeList
 
@@ -31,6 +39,12 @@ class SendViewModel : ViewModel() {
     private val _cakeName = MutableLiveData<String>()
     val cakeName: LiveData<String> get() = _cakeName
 
+    val note = MutableLiveData<String>("")
+
+    private var habikeryToken = ""
+    private var categoryId = 0
+    private var createCategoryId = 0
+    private var isAddHabit = false
 
     fun setCakeList(list: ArrayList<CakeModel>) {
         _cakeList.value = list
@@ -52,8 +66,16 @@ class SendViewModel : ViewModel() {
         _exit.value = true
     }
 
-    fun goMain(){
-        _main.value = true
+    fun sendCake(){
+        viewModelScope.launch {
+            val response = cakeRepo.sendCake(habikeryToken, categoryId + 1, note.value ?: "화이팅")
+            DLog.d(response.toString())
+
+            if (isAddHabit) {
+                val response2 = habitRepo.createHabit(habikeryToken, createCategoryId)
+                DLog.d(response2.toString())
+            }
+        }
     }
 
     fun changeString(toYou: String) {
@@ -62,5 +84,21 @@ class SendViewModel : ViewModel() {
 
     fun changeCakeName(cakeName : String){
         _cakeName.value = cakeName
+    }
+
+    fun setCategoryId(position: Int) {
+        categoryId = position
+    }
+
+    fun setCreateCategoryId(position: Int) {
+        createCategoryId = position
+    }
+
+    fun setHabikeryToken(token: String) {
+        habikeryToken = token
+    }
+
+    fun setAddHabit(enabled: Boolean) {
+        isAddHabit = enabled
     }
 }

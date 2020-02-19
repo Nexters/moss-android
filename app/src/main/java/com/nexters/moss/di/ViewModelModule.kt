@@ -26,7 +26,7 @@ val viewModelModule = module {
     viewModel { MainViewModel(get(), get()) }
     viewModel { FormationHabitViewModel(get()) }
 
-    viewModel { SendViewModel() }
+    viewModel { SendViewModel(get(), get()) }
     viewModel { ReceiveViewModel() }
     viewModel { ReceiveDialogViewModel() }
 
