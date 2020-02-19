@@ -11,7 +11,7 @@ import com.nexters.moss.R
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.ui.diary.DiaryWholeFragment
 
-class DiaryPieceRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : RecyclerView.Adapter<DiaryPieceRecyclerAdapter.Holder>() {
+class DiaryPieceRecyclerAdapter : RecyclerView.Adapter<DiaryPieceRecyclerAdapter.Holder>() {
     private var context : Context? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
