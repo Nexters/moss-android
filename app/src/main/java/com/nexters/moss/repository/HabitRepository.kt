@@ -21,9 +21,8 @@ class HabitRepository(private val habitApi: HabitApi) {
         return habitApi.deleteHabit(userId, json.toString())
     }
 
-    suspend fun getHabitHistory(userId: Int): Any {
-        DLog.d("$userId")
-        return habitApi.getHabitHistory(userId)
+    suspend fun getHabit(habikeryToken: String): Any {
+        return habitApi.getHabit(habikeryToken)
     }
 
     suspend fun doneHabit(habitId: Int): Any {

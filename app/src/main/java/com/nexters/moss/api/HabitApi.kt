@@ -13,8 +13,8 @@ interface HabitApi {
     @DELETE("$baseUrl/{userId}")
     suspend fun deleteHabit(@Path("userId") userId: Int, @Body habitId: String): Any
 
-    @GET("$baseUrl/history/{userId}")
-    suspend fun getHabitHistory(@Path("userId") userId: Int): Any
+    @GET(baseUrl)
+    suspend fun getHabit(@Header("habikeryToken") habikeryToken: String): Any
 
     @GET("$baseUrl/record")
     suspend fun doneHabit(@Body habitId: String): Any
