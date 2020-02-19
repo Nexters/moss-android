@@ -27,14 +27,41 @@
         android:layout_weight="0.25"
         android:orientation="vertical">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/indicator_onboarding"
-            app:tabIndicatorHeight="0dp"
-            app:tabBackground="@drawable/indicator_selector"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            app:tabRippleColor="@color/transparent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/firstIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/icon_indicator_selected" />
+
+            <ImageView
+                android:id="@+id/secondIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/icon_indicator_default" />
+
+            <ImageView
+                android:id="@+id/thirdIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/icon_indicator_default" />
+
+            <ImageView
+                android:id="@+id/fourthIndicator"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/icon_indicator_default" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_startByKakao"
