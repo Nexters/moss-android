@@ -34,12 +34,27 @@ class ReceiveDialog : BaseDialog<DialogReportBinding>() {
                 if (it) {
                     dismiss()
                     showToastReportCompleted()
+
+//                    toast(" "+vm.report.value)
+//
+//                    if(vm.report.value == 3){
+//                        if(vm.report.value == null)
+//                            toast("기타")
+//                        else
+//                            toast(" "+vm.reason.value)
+//                    }
                 }
             })
 
             cancel.observe(viewLifecycleOwner, Observer {
                 if (it) {
                     dismiss()
+                }
+            })
+
+            report.observe(viewLifecycleOwner, Observer {
+                if (it != 0) {
+                    itemSelected()
                 }
             })
         }
@@ -49,7 +64,7 @@ class ReceiveDialog : BaseDialog<DialogReportBinding>() {
 
         val toastTopValue = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
-            20f,
+            21f,
             view!!.resources.displayMetrics
         ).toInt()
 

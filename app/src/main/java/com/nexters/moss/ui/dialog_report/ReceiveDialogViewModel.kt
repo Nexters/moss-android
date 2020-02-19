@@ -12,11 +12,27 @@ class ReceiveDialogViewModel : ViewModel() {
     private val _cancel = MutableLiveData<Boolean>().apply { value = false }
     val cancel: LiveData<Boolean> get() = _cancel
 
+    private val _report = MutableLiveData<Int>().apply { value = 0 }
+    val report: LiveData<Int> get() = _report
+
+    private val _firstReport = MutableLiveData<Boolean>(true)
+    val firstReport: LiveData<Boolean> get() = _firstReport
+
+    val reason = MutableLiveData<String>()
+
     fun submit() {
         _submit.value = true
     }
 
-    fun cancel(){
+    fun cancel() {
         _cancel.value = true
+    }
+
+    fun reportSelected(reportNum: Int) {
+        _report.value = reportNum
+    }
+
+    fun itemSelected() {
+        _firstReport.value = false
     }
 }

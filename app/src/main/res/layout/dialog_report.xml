@@ -55,24 +55,29 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:checked="@{vm.firstReport}"
+                        android:onClick="@{()->vm.reportSelected(0)}"
                         android:paddingBottom="28dp" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:onClick="@{()->vm.reportSelected(1)}"
                         android:paddingBottom="28dp" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:onClick="@{()->vm.reportSelected(2)}"
                         android:paddingBottom="28dp" />
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:onClick="@{()->vm.reportSelected(3)}"
                         android:paddingBottom="28dp" />
                 </RadioGroup>
 
@@ -119,10 +124,12 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:enabled="@{vm.report == 3? true : false}"
                         android:gravity="center_vertical"
                         android:hint="@string/report_txt_other"
                         android:inputType="textVisiblePassword"
                         android:maxLength="12"
+                        android:text="@={vm.reason}"
                         android:textColor="@color/textColorSlate"
                         android:textSize="16sp" />
 
@@ -149,8 +156,8 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:letterSpacing="-0.04"
-                android:text="취소"
                 android:onClick="@{()->vm.cancel()}"
+                android:text="취소"
                 android:textColor="@color/textColorSlate"
                 android:textSize="16sp" />
 
@@ -162,9 +169,9 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:letterSpacing="-0.04"
+                android:onClick="@{()->vm.submit()}"
                 android:padding="14dp"
                 android:text="확인"
-                android:onClick="@{()->vm.submit()}"
                 android:textColor="@color/uiColorMain"
                 android:textSize="16sp" />
         </LinearLayout>
