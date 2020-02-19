@@ -8,7 +8,6 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -111,7 +110,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     private fun observeViewModel() {
         with(vm) {
 
-//            exit.observe(this@SendActivity, Observer {
+            //            exit.observe(this@SendActivity, Observer {
 //                if (it) {
 //                    finish()
 //                }
@@ -131,7 +130,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         layout_send_cake_recycler.apply {
             adapter = SendAdapter().apply {
                 setOnFirstItemListener {
-                    changeItems(R.drawable.send_watermelon,"물마시는", "수박")
+                    changeItems(R.drawable.send_watermelon, "물마시는", "수박")
                 }
 
                 setOnItemClickListener { position ->
@@ -141,7 +140,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                             changeItems(R.drawable.send_watermelon, "물마시는", "수박")
                         }
                         1 -> {
-                            changeItems(R.drawable.send_cheese, "스트레칭하는","치즈")
+                            changeItems(R.drawable.send_cheese, "스트레칭하는", "치즈")
                         }
                         2 -> {
                             changeItems(R.drawable.send_cream, "명상하는", "생크림")
@@ -173,8 +172,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         }
     }
 
-    private fun changeItems(img : Int, toYou :String, cakeName:String){
-        vm.apply{
+    private fun changeItems(img: Int, toYou: String, cakeName: String) {
+        vm.apply {
             changeCakeImage(img)
             changeString(toYou)
             changeCakeName(cakeName)
