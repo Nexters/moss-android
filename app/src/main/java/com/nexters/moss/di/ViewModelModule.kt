@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel { MakeNicknameViewModel() }
+    viewModel { MakeNicknameViewModel(get()) }
 
     viewModel { MainViewModel(get()) }
     viewModel { FormationHabitViewModel(get()) }

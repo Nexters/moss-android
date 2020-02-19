@@ -28,6 +28,7 @@
             android:padding="20dp">
 
             <ImageButton
+                android:id="@+id/btn_send_cake_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -53,7 +54,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="@color/transparent"
-                android:onClick="@{()->vm.exit()}"
                 android:src="@drawable/icon_exit_black"
                 tools:text="나가기" />
         </RelativeLayout>
