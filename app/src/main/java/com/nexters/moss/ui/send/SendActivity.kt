@@ -3,6 +3,10 @@ package com.nexters.moss.ui.send
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.TypedValue
+import android.view.Gravity
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +64,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             main.observe(this@SendActivity, Observer {
                 if (it) {
                     startActivity<MainActivity>()
+                    showToastReportCompleted()
                 }
             })
         }
@@ -152,5 +157,22 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             onHideKeyboard = {
                 vm.isBtnVisible(true)
             })
+    }
+
+    private fun showToastReportCompleted() {
+
+        val toastTopValue = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            21f,
+            this.resources.displayMetrics
+        ).toInt()
+
+
+        Toast(this).apply {
+            view = layoutInflater.inflate(R.layout.layout_toast_complete, null)
+            duration = Toast.LENGTH_LONG
+            setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
+            show()
+        }
     }
 }
