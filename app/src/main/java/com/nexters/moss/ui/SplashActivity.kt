@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.nexters.moss.R
 import com.nexters.moss.constant.SharedPreferenceConstant
+import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.onboarding.OnboardingActivity
@@ -38,10 +39,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private suspend fun isExistId(): Boolean {
-        val sp = getSharedPreferences(
-            SharedPreferenceConstant.USER_PREFERENCE_NAME.getValue(),
-            Context.MODE_PRIVATE
-        )
+        val sp = getUserSharedPreference()
 
         val accessToken = sp.getString(
             SharedPreferenceConstant.ACCESS_TOKEN.getValue(),
