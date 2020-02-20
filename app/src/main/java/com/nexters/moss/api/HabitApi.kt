@@ -1,5 +1,7 @@
 package com.nexters.moss.api
 
+import com.nexters.moss.model.request.CategoryRequestModel
+import com.nexters.moss.model.response.HabitListResponseModel
 import retrofit2.http.*
 
 interface HabitApi {
@@ -7,15 +9,16 @@ interface HabitApi {
         private const val baseUrl = "/api/habit"
     }
 
-    @POST("$baseUrl/{userId}")
-    suspend fun createHabit(@Path("userId") userId: Int, @Body categoryId: String): Any
+    @POST(baseUrl)
+    suspend fun createHabit(@Header("habikeryToken") habikeryToken: String, @Body categoryRequestModel: CategoryRequestModel): Any
 
     @DELETE("$baseUrl/{userId}")
     suspend fun deleteHabit(@Path("userId") userId: Int, @Body habitId: String): Any
 
-    @GET("$baseUrl/history/{userId}")
-    suspend fun getHabitHistory(@Path("userId") userId: Int): Any
+    @GET(baseUrl)
+    suspend fun getHabit(@Header("habikeryToken") habikeryToken: String): HabitListResponseModel
 
     @GET("$baseUrl/record")
     suspend fun doneHabit(@Body habitId: String): Any
+
 }

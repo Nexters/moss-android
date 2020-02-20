@@ -22,10 +22,10 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { MakeNicknameViewModel(get()) }
 
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { FormationHabitViewModel(get()) }
 
-    viewModel { SendViewModel() }
+    viewModel { SendViewModel(get(), get()) }
     viewModel { ReceiveViewModel() }
     viewModel { ReceiveDialogViewModel() }
 

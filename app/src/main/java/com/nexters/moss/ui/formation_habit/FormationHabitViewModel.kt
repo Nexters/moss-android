@@ -3,12 +3,9 @@ package com.nexters.moss.ui.formation_habit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.repository.HabitRepository
-import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.DLog
-import kotlinx.coroutines.launch
 
 class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewModel() {
     private val _selectedItem = MutableLiveData<String>()
@@ -34,13 +31,24 @@ class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewMode
         _selectedItem.value = item
     }
 
+    fun getSelectedItem(): Int {
+        val list = HabitListConstant.values()
+        var position = 0
+
+        for (i in list.indices) {
+            if (list[i].getHabitName() == selectedItem.value) {
+                position = i
+                break
+            }
+        }
+
+        return position + 1
+    }
+
+
     fun makeHabit() {
         _isMakeHabit.value = true
         _isMakeHabit.value = false
-
-//        viewModelScope.launch {
-//            DLog.d(habitRepo.createHabit(1, 1).toString())
-//        }
     }
 
     fun closeDisplay() {
