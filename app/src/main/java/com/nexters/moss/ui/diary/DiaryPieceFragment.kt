@@ -15,14 +15,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DiaryPieceFragment : BaseFragment<FragmentPieceBinding>() {
 
-//    private val cakeList = arrayListOf<DiaryCakeModel>(
-//        DiaryCakeModel("클리어1", "야호야호", "녹차케이크"),
-//        DiaryCakeModel("클리어2", "메롱메롱", "딸기케이크"),
-//        DiaryCakeModel("클리어3", "냠냠냠냠", "초코케이크"),
-//        DiaryCakeModel("클리어4", "쭈욱쭈욱", "치즈케이크")
-//    )
+    private val cakeList = arrayListOf<DiaryCakeModel>(
+        DiaryCakeModel("클리어1", "야호야호", "녹차케이크"),
+        DiaryCakeModel("클리어2", "메롱메롱", "딸기케이크"),
+        DiaryCakeModel("클리어3", "냠냠냠냠", "초코케이크"),
+        DiaryCakeModel("클리어4", "쭈욱쭈욱", "치즈케이크")
+    )
 
-    lateinit var habikeryToken : String
+    lateinit var habikeryToken: String
 
     override val vm: DiaryPieceViewModel by viewModel()
     override fun getLayoutRes(): Int = R.layout.fragment_piece
@@ -33,9 +33,10 @@ class DiaryPieceFragment : BaseFragment<FragmentPieceBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        vm.setCakeList(cakeList)
         getHabikeryToken()
-        vm.setCakeList(habikeryToken)
+        vm.setCakeList(cakeList, habikeryToken)
+
+//        vm.setCakeList(habikeryToken)
 
         setRecyclerView()
     }
@@ -52,8 +53,8 @@ class DiaryPieceFragment : BaseFragment<FragmentPieceBinding>() {
         }
     }
 
-    private fun getHabikeryToken(){
-        activity?.getUserSharedPreference()?.let{
+    private fun getHabikeryToken() {
+        activity?.getUserSharedPreference()?.let {
             habikeryToken = it.getString(
                 SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
                 null
