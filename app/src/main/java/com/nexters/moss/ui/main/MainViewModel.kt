@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.nexters.moss.model.HabitModel
 import com.nexters.moss.repository.HabitRepository
 import com.nexters.moss.repository.UserRepository
+import com.nexters.moss.utils.CategoryState
 import com.nexters.moss.utils.DLog
 import kotlinx.coroutines.launch
 
@@ -37,6 +38,7 @@ class MainViewModel(
 
     private val _itemList = MutableLiveData<ArrayList<HabitModel>>(ArrayList())
     val itemList: LiveData<ArrayList<HabitModel>> get() = _itemList
+
 
     fun openDrawer() {
         DLog.d("open drawer")
@@ -80,13 +82,14 @@ class MainViewModel(
         }
     }
 
-    fun refreshItemList2(itemList : ArrayList<String>) {
-//        _itemList.value = itemList
-    }
-
     fun refreshItemList(habikeryToken: String) {
         viewModelScope.launch {
-            _itemList.value = habitRepo.getHabit(habikeryToken).data as ArrayList
+            val response = habitRepo.getHabit(habikeryToken).data as ArrayList
+            _itemList.value = response
+
+            for (habit in response) {
+//                CategoryState.setCategoryState(0, true)
+            }
         }
     }
 }

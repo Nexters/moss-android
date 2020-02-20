@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ui.formation_habit.FormationHabitActivity"></activity>
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.make_nickname.MakeNicknameActivity" />
+        <activity android:name=".ui.make_nickname.MakeNicknameActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"/>
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

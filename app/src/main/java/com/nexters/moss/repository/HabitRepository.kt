@@ -12,12 +12,9 @@ class HabitRepository(private val habitApi: HabitApi) {
         return habitApi.createHabit(habikeryToken, request)
     }
 
-    suspend fun deleteHabit(userId: Int, habitId: Int): Any {
-        val json = JsonObject()
-        json.addProperty("habitId", habitId)
+    suspend fun deleteHabit(habikeryToken: String, habitId: Int): Any {
 
-        DLog.d("$userId, $json")
-        return habitApi.deleteHabit(userId, json.toString())
+        return habitApi.deleteHabit(habikeryToken, habitId)
     }
 
     suspend fun getHabit(habikeryToken: String): HabitListResponseModel {

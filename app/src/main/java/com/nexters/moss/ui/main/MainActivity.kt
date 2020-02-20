@@ -2,7 +2,10 @@ package com.nexters.moss.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -16,6 +19,7 @@ import com.nexters.moss.databinding.ActivityMainBinding
 import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
+import com.nexters.moss.ui.dialog_remove_habit.RemoveHabitDialog
 import com.nexters.moss.ui.dialog_withdraw.WithdrawDialog
 import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.main.adapter.HabitItemTouchHelper
@@ -119,6 +123,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         with(binding.rvHabitList) {
             adapter = habitListAdapter
+            habitListAdapter.setOnDeleteButtonClickListener { habitId, habitName ->
+                RemoveHabitDialog().apply {
+                    val bundle = Bundle()
+                    bundle.putInt(RemoveHabitDialog.ARGUMENT_CATEGORY_ID, habitId)
+                    arguments = bundle
+                    setOnDissmissListener {
+                        showToastReportCompleted("$habitName 습관이 삭제되었습니다.")
+
+                        setupHabitList()
+                    }
+                }.run {
+                    show(supportFragmentManager, "")
+                }
+            }
             layoutManager = LinearLayoutManager(this@MainActivity)
             habitItemTouchCallback.attachItemTouchAdapter(habitListAdapter)
             itemTouchHelper.attachToRecyclerView(this)
@@ -151,12 +169,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         ) ?: return
 
         vm.refreshItemList(habikeryToken)
-
-        vm.refreshItemList2(
-            ArrayList<String>().apply {
-                add("물마시기")
-            }
-        )
     }
 
     private fun setupNickname() {
@@ -167,6 +179,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         ) ?: return
 
         vm.setNickname(habikeryToken)
+    }
+
+    private fun showToastReportCompleted(content: String) {
+        val toastTopValue = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            21f,
+            this.resources.displayMetrics
+        ).toInt()
+
+
+        Toast(this).apply {
+            view = layoutInflater.inflate(R.layout.layout_toast_complete, null)
+            view.findViewById<TextView>(R.id.tv_toastMessage).text = content
+            duration = Toast.LENGTH_LONG
+            setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
+            show()
+        }
     }
 
 

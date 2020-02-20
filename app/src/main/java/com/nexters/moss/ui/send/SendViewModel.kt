@@ -41,9 +41,12 @@ class SendViewModel(
 
     val note = MutableLiveData<String>("")
 
+    private val _isFinishSendCake = MutableLiveData<Boolean>()
+    val isFinishSendCake: LiveData<Boolean> get() = _isFinishSendCake
+
     private var habikeryToken = ""
     private var categoryId = 0
-    private var createCategoryId = 0
+    private var createCategoryId = -1
     private var isAddHabit = false
 
     fun setCakeList(list: ArrayList<CakeModel>) {
@@ -75,6 +78,8 @@ class SendViewModel(
                 val response2 = habitRepo.createHabit(habikeryToken, createCategoryId)
                 DLog.d(response2.toString())
             }
+
+            _isFinishSendCake.value = true
         }
     }
 

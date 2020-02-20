@@ -119,12 +119,11 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
     private fun observeViewModel() {
         with(vm) {
-
-//            exit.observe(this@SendActivity, Observer {
-//                if (it) {
-//                    finish()
-//                }
-//            })
+            isFinishSendCake.observe(this@SendActivity, Observer {
+                if (it) {
+                    finish()
+                }
+            })
 
             main.observe(this@SendActivity, Observer {
                 if (it) {
