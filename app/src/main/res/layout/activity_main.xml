@@ -164,12 +164,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_habitList"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="@dimen/main_habit_list_margin_top"
                 app:setItemList="@{vm.itemList}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_habit" />
+                app:layout_constraintTop_toBottomOf="@id/txt_habit"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
