@@ -1,5 +1,6 @@
 package com.nexters.moss.api
 
+import com.nexters.moss.model.response.HistoryResponseModel
 import com.nexters.moss.model.response.DiaryListResponseModel
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -11,8 +12,8 @@ interface DiaryApi {
     }
 
     @GET("$baseUrl/history")
-    suspend fun getCakeHistory(@Header("categoryId") categoryId: Int,
-                               @Query("habikeryToken") habikeryToken: String): Any
+    suspend fun getCakeHistory(@Header("habikeryToken") habikeryToken: String,
+                               @Query("categoryId") categoryId: Int): HistoryResponseModel
 
     @GET("$baseUrl/piece")
     suspend fun getPieceOfCakeDiary(@Header("habikeryToken") habikeryToken: String): DiaryListResponseModel

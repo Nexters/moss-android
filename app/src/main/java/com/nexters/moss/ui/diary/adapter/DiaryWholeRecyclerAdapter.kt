@@ -18,7 +18,7 @@ class DiaryWholeRecyclerAdapter(val cakeList:ArrayList<DiaryCakeModel>) : Recycl
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtClear = itemView.findViewById<TextView>(R.id.txt_diary_item_clear)
-        private val txtSubjective = itemView.findViewById<TextView>(R.id.txt_diary_item_cake_subjective)
+        private val txtSubjective = itemView.findViewById<TextView>(R.id.txt_diary_item_cake_description)
         private val txtCakeName = itemView.findViewById<TextView>(R.id.txt_diary_item_cake_name)
 
         fun bind(item : DiaryCakeModel) {
