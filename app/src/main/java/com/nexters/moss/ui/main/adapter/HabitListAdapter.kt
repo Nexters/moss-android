@@ -14,6 +14,7 @@ import com.nexters.moss.R
 import com.nexters.moss.constant.CheckIconColorConstant
 import com.nexters.moss.constant.CheckIconConstant
 import com.nexters.moss.constant.HabitListConstant
+import com.nexters.moss.model.HabitModel
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import java.util.*
 import kotlin.collections.ArrayList
@@ -21,7 +22,7 @@ import kotlin.collections.ArrayList
 class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     HabitItemTouchHelper.OnItemTouchListener {
 
-    private var itemList = ArrayList<String>()
+    private var itemList = ArrayList<HabitModel>()
     private lateinit var context: Context
     private var isEditMode = false
 
@@ -70,9 +71,9 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
             }
             is HabitViewHolder -> {
                 val item = itemList[position]
-                holder.habitName.text = item
+                holder.habitName.text = translateItem(item.name)
                 val color =
-                    context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+                    context.resources.getColor(HabitListConstant.getPersonalColor(translateItem(item.name)), null)
                 holder.habitName.setTextColor(color)
 
                 val stateList = arrayOf(
@@ -85,7 +86,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
                 var habit = HabitListConstant.DRINK_WATER
                 for (h in HabitListConstant.values()) {
-                    if (h.getHabitName() == item) {
+                    if (h.getHabitName() == translateItem(item.name)) {
                         habit = h
                     }
                 }
@@ -101,9 +102,9 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
             }
             is EditHabitViewHolder -> {
                 val item = itemList[position]
-                holder.habitName.text = item
+                holder.habitName.text = translateItem(item.name)
                 val color =
-                    context.resources.getColor(HabitListConstant.getPersonalColor(item), null)
+                    context.resources.getColor(HabitListConstant.getPersonalColor(translateItem(item.name)), null)
                 holder.habitName.setTextColor(color)
             }
         }
@@ -126,8 +127,9 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         }
     }
 
-    fun refreshItemList(list: ArrayList<String>) {
+    fun refreshItemList(list: ArrayList<HabitModel>) {
         itemList = list
+        notifyDataSetChanged()
     }
 
     fun setEditMode(enabled: Boolean) {
@@ -136,6 +138,21 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     }
 
     fun getEditMode() = isEditMode
+
+    private fun translateItem(item: String): String {
+        return when (item.toLowerCase()) {
+            "water" -> "물마시기"
+            "stretching" -> "스트레칭"
+            "meditation" -> "명상"
+            "walk" -> "산책"
+            "news" -> "뉴스보기"
+            "breakfast" -> "아침식사"
+            "diary" -> "일기쓰기"
+            "reading" -> "책읽기"
+            else -> "딴짓하기"
+        }
+
+    }
 
     @DrawableRes
     private fun getCheckIcon(icon: CheckIconConstant, habit: HabitListConstant, isToday: Boolean): Int {

@@ -51,6 +51,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         observeViewModel()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setupHabitList()
+    }
+
     override fun onBackPressed() {
         if (vm.isOpenDrawer.value!!) {
             vm.setDrawerState(false)
@@ -92,6 +97,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     startActivity<DiaryActivity>()
                 }
             })
+
             intentSend.observe(this@MainActivity, Observer {
                 if (it) {
                     startActivity(Intent(applicationContext, SendActivity::class.java).apply {
@@ -112,12 +118,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val itemTouchHelper = ItemTouchHelper(habitItemTouchCallback)
 
         with(binding.rvHabitList) {
-            adapter = habitListAdapter.apply {
-                refreshItemList(ArrayList<String>().apply {
-                    add("산책")
-                    add("스트레칭")
-                })
-            }
+            adapter = habitListAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
             habitItemTouchCallback.attachItemTouchAdapter(habitListAdapter)
             itemTouchHelper.attachToRecyclerView(this)
@@ -142,6 +143,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    private fun setupHabitList() {
+        val sp = getUserSharedPreference()
+        val habikeryToken = sp.getString(
+            SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
+            null
+        ) ?: return
+
+        vm.refreshItemList(habikeryToken)
+
+        vm.refreshItemList2(
+            ArrayList<String>().apply {
+                add("물마시기")
+            }
+        )
+    }
+
     private fun setupNickname() {
         val sp = getUserSharedPreference()
         val habikeryToken = sp.getString(
@@ -151,6 +168,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         vm.setNickname(habikeryToken)
     }
+
 
     fun withdrawFinish() {
         startActivity<OnboardingActivity>()
