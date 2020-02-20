@@ -58,6 +58,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onResume() {
         super.onResume()
         setupHabitList()
+        vm.refreshDate()
     }
 
     override fun onBackPressed() {

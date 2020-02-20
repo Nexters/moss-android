@@ -9,6 +9,7 @@ import com.nexters.moss.repository.HabitRepository
 import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.CategoryState
 import com.nexters.moss.utils.DLog
+import com.nexters.moss.utils.DateHelper
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -38,6 +39,21 @@ class MainViewModel(
 
     private val _itemList = MutableLiveData<ArrayList<HabitModel>>(ArrayList())
     val itemList: LiveData<ArrayList<HabitModel>> get() = _itemList
+
+    private val _dayOfFirst = MutableLiveData<String>()
+    val dayOfFirst: LiveData<String> get() = _dayOfFirst
+
+    private val _dayOfSecond = MutableLiveData<String>()
+    val dayOfSecond: LiveData<String> get() = _dayOfSecond
+
+    private val _dayOfThird = MutableLiveData<String>()
+    val dayOfThird: LiveData<String> get() = _dayOfThird
+
+    private val _dayOfFourth = MutableLiveData<String>()
+    val dayOfFourth: LiveData<String> get() = _dayOfFourth
+
+    private val _dayOfFifth = MutableLiveData<String>()
+    val dayOfFifth: LiveData<String> get() = _dayOfFifth
 
 
     fun openDrawer() {
@@ -91,5 +107,15 @@ class MainViewModel(
 //                CategoryState.setCategoryState(0, true)
             }
         }
+    }
+
+    fun refreshDate() {
+        val days = DateHelper.getFiveDays()
+
+        _dayOfFirst.value = days[0]
+        _dayOfSecond.value = days[1]
+        _dayOfThird.value = days[2]
+        _dayOfFourth.value = days[3]
+        _dayOfFifth.value = days[4]
     }
 }

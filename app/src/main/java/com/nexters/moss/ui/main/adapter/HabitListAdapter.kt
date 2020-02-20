@@ -94,6 +94,13 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                 }
                 var isToday: Boolean
                 for (i in holder.iconArr.indices) {
+                    stateList[i] = when(item.records[i].habitStatus.toLowerCase()) {
+                        "done" -> CheckIconConstant.CHECKED
+                        "not_done" -> CheckIconConstant.UNCHECKED
+                        "cake_done" -> CheckIconConstant.CHECKED_CAKE
+                        "cake_not_done" -> CheckIconConstant.UNCHECKED_CAKE
+                        else -> CheckIconConstant.UNCHECKED
+                    }
                     isToday = false
                     if (i == 1)
                         isToday = true
