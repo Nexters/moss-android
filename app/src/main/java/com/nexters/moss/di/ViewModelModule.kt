@@ -40,5 +40,5 @@ val viewModelModule = module {
 
     viewModel { AddHabitViewModel() }
     viewModel { ReceiveCakeViewModel() }
-    viewModel { RemoveHabitViewModel() }
+    viewModel { RemoveHabitViewModel(get()) }
 }

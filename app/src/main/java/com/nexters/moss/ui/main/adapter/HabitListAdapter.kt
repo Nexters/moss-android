@@ -26,6 +26,8 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     private lateinit var context: Context
     private var isEditMode = false
 
+    private var onDeleteButtonClickListener: OnDeleteButtonClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
         return when (viewType) {
@@ -106,6 +108,10 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                 val color =
                     context.resources.getColor(HabitListConstant.getPersonalColor(translateItem(item.name)), null)
                 holder.habitName.setTextColor(color)
+
+                holder.deleteButton.setOnClickListener {
+                    onDeleteButtonClickListener?.onDeleteButtonClick(item.habitId, translateItem(item.name))
+                }
             }
         }
     }
@@ -289,6 +295,18 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                 R.drawable.icon_brown_cake_unchecked
             }
         }
+    }
+
+    fun setOnDeleteButtonClickListener(listener: (categoryId: Int, habitName: String) -> Unit) {
+        onDeleteButtonClickListener = object : OnDeleteButtonClickListener {
+            override fun onDeleteButtonClick(habitId: Int, habitName: String) {
+                listener(habitId, habitName)
+            }
+        }
+    }
+
+    interface OnDeleteButtonClickListener {
+        fun onDeleteButtonClick(habitId: Int, habitName: String)
     }
 
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

@@ -12,8 +12,8 @@ interface HabitApi {
     @POST(baseUrl)
     suspend fun createHabit(@Header("habikeryToken") habikeryToken: String, @Body categoryRequestModel: CategoryRequestModel): Any
 
-    @DELETE("$baseUrl/{userId}")
-    suspend fun deleteHabit(@Path("userId") userId: Int, @Body habitId: String): Any
+    @HTTP(method = "DELETE", path = baseUrl, hasBody = true)
+    suspend fun deleteHabit(@Header("habikeryToken") habikeryToken: String, @Body habitId: Int): Any
 
     @GET(baseUrl)
     suspend fun getHabit(@Header("habikeryToken") habikeryToken: String): HabitListResponseModel

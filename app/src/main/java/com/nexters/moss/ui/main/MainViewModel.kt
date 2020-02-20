@@ -38,6 +38,7 @@ class MainViewModel(
     private val _itemList = MutableLiveData<ArrayList<HabitModel>>(ArrayList())
     val itemList: LiveData<ArrayList<HabitModel>> get() = _itemList
 
+
     fun openDrawer() {
         DLog.d("open drawer")
         _isOpenDrawer.value = true
@@ -80,8 +81,8 @@ class MainViewModel(
         }
     }
 
-    fun refreshItemList2(itemList : ArrayList<String>) {
-//        _itemList.value = itemList
+    fun deleteHabit(habikeryToken : String, categoryId: Int) {
+
     }
 
     fun refreshItemList(habikeryToken: String) {
