@@ -14,19 +14,30 @@ class DiaryHistoryViewModel(private val diaryRepo: DiaryRepository) : ViewModel(
     private val _exit = MutableLiveData<Boolean>().apply { value = false }
     val exit: LiveData<Boolean> get() = _exit
 
-    private val _itemList = MutableLiveData<HistoryModel>()
-    val itemList : LiveData<HistoryModel> get() = _itemList
+    private val _habit = MutableLiveData<String>(" ")
+    val habit : LiveData<String> get() = _habit
+
+    private val _description = MutableLiveData<String>(" ")
+    val description : LiveData<String> get() = _description
+
+    private val _cakeImage = MutableLiveData<String>(" ")
+    val cakeImage : LiveData<String> get() = _cakeImage
 
     fun exit() {
         _exit.value = true
     }
 
-    fun getCakeHistory(categoryId : Int, habikeryToken : String){
-        viewModelScope.launch {
-            _itemList.value = diaryRepo.getCakeHistory(habikeryToken, categoryId).data
-
-            DLog.d(itemList.value.toString())
-        }
+    fun setTextHabit(text : String){
+        _habit.value = text
     }
+
+    fun setTextDescription(text : String){
+        _description.value = text
+    }
+
+    fun changeCakeImage(image : String){
+        _cakeImage.value = image
+    }
+
 }
 
