@@ -131,4 +131,13 @@ class MainViewModel(
         _dayOfFourth.value = days[3]
         _dayOfFifth.value = days[4]
     }
+
+    fun changeOrderHabit(habikeryToken: String, habitId: Int, order: Int) {
+        viewModelScope.launch {
+            val response = habitRepo.changeOrderHabit(habikeryToken, habitId, order)
+            DLog.d(response.toString())
+
+//            refreshItemList(habikeryToken)
+        }
+    }
 }

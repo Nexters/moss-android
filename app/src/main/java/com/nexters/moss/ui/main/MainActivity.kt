@@ -154,6 +154,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 vm.doneHabit(habikeryToken ?: return@setOnCheckButtonClickListener, it)
             }
 
+            habitListAdapter.setOnItemOrderChangeListener { habitId, to ->
+                vm.changeOrderHabit(habikeryToken ?: return@setOnItemOrderChangeListener, habitId, to)
+            }
+
 
             layoutManager = LinearLayoutManager(this@MainActivity)
             habitItemTouchCallback.attachItemTouchAdapter(habitListAdapter)

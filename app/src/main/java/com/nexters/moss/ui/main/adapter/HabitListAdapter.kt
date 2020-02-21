@@ -16,6 +16,7 @@ import com.nexters.moss.constant.CheckIconConstant
 import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.model.HabitModel
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
+import com.nexters.moss.utils.DLog
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -28,6 +29,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
 
     private var onDeleteButtonClickListener: OnDeleteButtonClickListener? = null
     private var onCheckButtonClickListener: OnCheckButtonClickListener? = null
+    private var onItemOrderChangeListener: OnItemOrderChangeListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
@@ -144,6 +146,8 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         if (toPosition != itemList.size) {
             Collections.swap(itemList, fromPosition, toPosition)
             notifyItemMoved(fromPosition, toPosition)
+            onItemOrderChangeListener?.onItemOrderChange(itemList[toPosition].habitId, toPosition)
+            DLog.d("hehlehlelhlehlelhlel")
         }
     }
 
@@ -319,12 +323,24 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         }
     }
 
-    fun setOnCheckButtonClickListener(listener: (habitId: Int) -> Unit) {
+    fun setOnCheckButtonClickListener(listener: (Int) -> Unit) {
         onCheckButtonClickListener = object : OnCheckButtonClickListener {
             override fun onCheckButtonClick(habitId: Int) {
                 listener(habitId)
             }
         }
+    }
+
+    fun setOnItemOrderChangeListener(listener: (habitId: Int, to: Int) -> Unit) {
+        onItemOrderChangeListener = object : OnItemOrderChangeListener {
+            override fun onItemOrderChange(habitId: Int, to: Int) {
+                listener(habitId, to)
+            }
+        }
+    }
+
+    interface OnItemOrderChangeListener {
+        fun onItemOrderChange(habitId: Int, to: Int)
     }
 
     interface OnDeleteButtonClickListener {
