@@ -16,8 +16,7 @@
         android:background="@color/cake_green_tea"
         android:paddingStart="@dimen/receive_padding_start_end"
         android:paddingTop="@dimen/receive_padding_top_bottom"
-        android:paddingEnd="@dimen/receive_padding_start_end"
-        android:paddingBottom="@dimen/receive_padding_top_bottom">
+        android:paddingEnd="@dimen/receive_padding_start_end">
 
         <RelativeLayout
             android:id="@+id/layout_receive_head"
@@ -57,7 +56,6 @@
                 android:id="@+id/layout_receive_body"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_below="@id/layout_receive_head"
                 android:layout_weight="0.8">
 
 
@@ -77,19 +75,17 @@
                         <RelativeLayout
                             android:id="@+id/layout_cake"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_above="@id/layout_cake_name"
-                            android:layout_centerHorizontal="true">
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="20dp">
 
                             <ImageView
                                 android:id="@+id/gif"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
+                                android:layout_height="match_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="fitXY" />
-
 
                         </RelativeLayout>
 
@@ -126,50 +122,56 @@
 
                     </RelativeLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:paddingStart="@dimen/receive_padding_start_end"
-                        android:paddingTop="@dimen/receive_padding_card_top">
+                        android:layout_marginStart="@dimen/receive_padding_start_end">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="채은"
-                                android:textColor="@color/receive_cheer_message_from"
-                                android:textSize="@dimen/receive_txt_small"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/receive_from_who"
-                                android:textColor="@color/receive_cheer_message_from"
-                                android:textSize="@dimen/receive_txt_small"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
+                            android:layout_centerVertical="true"
+                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
+                            android:layout_height="wrap_content">
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="산책은 머리를 맑게 해준대요~"
-                                android:textColor="@color/receive_cheer_message_content"
-                                android:textSize="@dimen/receive_txt_normal" />
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="채은"
+                                    android:textColor="@color/receive_cheer_message_from"
+                                    android:textSize="@dimen/receive_txt_small"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/receive_from_who"
+                                    android:textColor="@color/receive_cheer_message_from"
+                                    android:textSize="@dimen/receive_txt_small"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="산책은 머리를 맑게 해준대요~"
+                                    android:textColor="@color/receive_cheer_message_content"
+                                    android:textSize="@dimen/receive_txt_normal" />
+                            </LinearLayout>
+
                         </LinearLayout>
 
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -177,7 +179,7 @@
                         android:layout_weight="1"
                         android:background="@color/cake_green_tea">
 
-                        <view
+                        <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_weight="1" />
@@ -219,6 +221,7 @@
                     android:padding="@dimen/receive_padding_btn"
                     android:text="@string/receive_btn_go_diary"
                     android:textColor="@color/white"
+                    android:shadowColor="@color/transparent"
                     android:textSize="@dimen/receive_txt_normal" />
 
                 <Button
