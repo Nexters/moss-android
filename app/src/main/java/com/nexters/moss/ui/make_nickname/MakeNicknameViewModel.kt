@@ -15,7 +15,7 @@ class MakeNicknameViewModel(private val userRepo: UserRepository) : ViewModel() 
     private val _intentMain = MutableLiveData<Boolean>(false)
     val intentMain: LiveData<Boolean> get() = _intentMain
 
-    private var accessToken = "z9Q8qWwlE2PbDDZ4QZ5qKj72WZmE4u82I__Uxwo9dZsAAAFwU1f1PQ"
+    private var accessToken = ""
     private var habikeryToken = ""
 
     fun makeNickname() {
@@ -42,6 +42,10 @@ class MakeNicknameViewModel(private val userRepo: UserRepository) : ViewModel() 
 
             _intentMain.value = true
         }
+    }
+
+    fun setAccessToken(token: String) {
+        accessToken = token
     }
 
     fun getAccessToken() = accessToken

@@ -130,7 +130,11 @@ class MainViewModel(
             val receivedCake = response.newCakeDTO
 
             val list = _itemList.value ?: ArrayList()
-            list[newModel.categoryId - 1] = newModel
+
+            for (i in list.indices) {
+                if (newModel.categoryId == list[i].categoryId)
+                    list[i] = newModel
+            }
 
             _itemList.value = list
 
@@ -154,8 +158,6 @@ class MainViewModel(
         viewModelScope.launch {
             val response = habitRepo.changeOrderHabit(habikeryToken, habitId, order)
             DLog.d(response.toString())
-
-//            refreshItemList(habikeryToken)
         }
     }
 }

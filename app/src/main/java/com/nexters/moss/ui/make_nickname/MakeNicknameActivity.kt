@@ -8,6 +8,9 @@ import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivityMakeNicknameBinding
 import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.ui.main.MainActivity
+import com.nexters.moss.utils.KakaoLoginUtils
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
@@ -20,7 +23,15 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        vm.setAccessToken(intent.getStringExtra(EXTRA_KAKAO_ID) ?: throw Exception("need intent extra"))
         observeViewModel()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        GlobalScope.launch {
+            KakaoLoginUtils.unlink()
+        }
     }
 
     private fun observeViewModel() {
@@ -47,5 +58,9 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
                 vm.getHabikeryToken()
             )
         }.apply()
+    }
+
+    companion object {
+        const val EXTRA_KAKAO_ID = "extra_kakao_id"
     }
 }
