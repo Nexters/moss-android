@@ -37,6 +37,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private var lastBackPressedTime = -1L
     private var finishToast: Toast? = null
 
+    private val sp by lazy {
+        getUserSharedPreference()
+    }
+
+    private val habikeryToken by lazy {
+        sp.getString(
+            SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
+            null
+        )
+    }
+
     override fun getLayoutRes() = R.layout.activity_main
     override fun setupBinding() {
         binding.vm = vm
@@ -124,6 +135,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         with(binding.rvHabitList) {
             adapter = habitListAdapter
+
             habitListAdapter.setOnDeleteButtonClickListener { habitId, habitName ->
                 RemoveHabitDialog().apply {
                     val bundle = Bundle()
@@ -131,13 +143,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     arguments = bundle
                     setOnDissmissListener {
                         showToastReportCompleted("$habitName 습관이 삭제되었습니다.")
-
                         setupHabitList()
                     }
                 }.run {
                     show(supportFragmentManager, "")
                 }
             }
+
+            habitListAdapter.setOnCheckButtonClickListener {
+                vm.doneHabit(habikeryToken ?: return@setOnCheckButtonClickListener, it)
+            }
+
+
             layoutManager = LinearLayoutManager(this@MainActivity)
             habitItemTouchCallback.attachItemTouchAdapter(habitListAdapter)
             itemTouchHelper.attachToRecyclerView(this)
@@ -163,23 +180,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupHabitList() {
-        val sp = getUserSharedPreference()
-        val habikeryToken = sp.getString(
-            SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
-            null
-        ) ?: return
-
-        vm.refreshItemList(habikeryToken)
+        vm.refreshItemList(habikeryToken ?: return)
     }
 
     private fun setupNickname() {
-        val sp = getUserSharedPreference()
-        val habikeryToken = sp.getString(
-            SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
-            null
-        ) ?: return
-
-        vm.setNickname(habikeryToken)
+        vm.setNickname(habikeryToken ?: return)
     }
 
     private fun showToastReportCompleted(content: String) {

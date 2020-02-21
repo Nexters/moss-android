@@ -27,6 +27,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     private var isEditMode = false
 
     private var onDeleteButtonClickListener: OnDeleteButtonClickListener? = null
+    private var onCheckButtonClickListener: OnCheckButtonClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         context = parent.context
@@ -107,6 +108,12 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                     holder.iconArr[i].setImageResource(getCheckIcon(stateList[i], habit, isToday))
                 }
 
+                holder.second.setOnClickListener {
+                    if (!(stateList[1] == CheckIconConstant.CHECKED ||
+                        stateList[1] == CheckIconConstant.CHECKED_CAKE)) {
+                        onCheckButtonClickListener?.onCheckButtonClick(item.habitId)
+                    }
+                }
 
             }
             is EditHabitViewHolder -> {
@@ -312,8 +319,20 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         }
     }
 
+    fun setOnCheckButtonClickListener(listener: (habitId: Int) -> Unit) {
+        onCheckButtonClickListener = object : OnCheckButtonClickListener {
+            override fun onCheckButtonClick(habitId: Int) {
+                listener(habitId)
+            }
+        }
+    }
+
     interface OnDeleteButtonClickListener {
         fun onDeleteButtonClick(habitId: Int, habitName: String)
+    }
+
+    interface OnCheckButtonClickListener {
+        fun onCheckButtonClick(habitId: Int)
     }
 
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

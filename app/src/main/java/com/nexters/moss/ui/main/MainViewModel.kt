@@ -109,6 +109,19 @@ class MainViewModel(
         }
     }
 
+    fun doneHabit(habikeryToken: String, habitId: Int) {
+        viewModelScope.launch {
+            val response = habitRepo.doneHabit(habikeryToken, habitId)
+
+            val newModel = response.habitModel
+
+            val list = _itemList.value ?: ArrayList()
+            list[newModel.categoryId - 1] = newModel
+
+            _itemList.value = list
+        }
+    }
+
     fun refreshDate() {
         val days = DateHelper.getFiveDays()
 
