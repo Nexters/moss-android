@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexters.moss.model.HabitModel
+import com.nexters.moss.model.NewCakeModel
 import com.nexters.moss.repository.HabitRepository
 import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.CategoryState
@@ -55,6 +56,9 @@ class MainViewModel(
 
     private val _dayOfFifth = MutableLiveData<String>()
     val dayOfFifth: LiveData<String> get() = _dayOfFifth
+
+    private val _receivedCake = MutableLiveData<NewCakeModel>()
+    val receivedCake: LiveData<NewCakeModel> get() = _receivedCake
 
 
     fun openDrawer() {
@@ -123,11 +127,16 @@ class MainViewModel(
             val response = habitRepo.doneHabit(habikeryToken, habitId)
 
             val newModel = response.habitModel
+            val receivedCake = response.newCakeDTO
 
             val list = _itemList.value ?: ArrayList()
             list[newModel.categoryId - 1] = newModel
 
             _itemList.value = list
+
+            receivedCake?.let {
+                _receivedCake.value = it
+            }
         }
     }
 

@@ -5,7 +5,7 @@ import com.nexters.moss.model.HabitModel
 import com.nexters.moss.model.NewCakeModel
 
 data class DoneHabitResponseModel (
-    @SerializedName("data")
+    @SerializedName("habitCheckResponse")
     val habitModel: HabitModel,
     val newCakeDTO: NewCakeModel?
 )

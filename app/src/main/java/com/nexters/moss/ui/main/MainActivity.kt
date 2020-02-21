@@ -113,13 +113,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     startActivity<DiaryActivity>()
                 }
             })
-
             intentSend.observe(this@MainActivity, Observer {
                 if (it) {
                     startActivity(Intent(applicationContext, SendActivity::class.java).apply {
                         putExtra(SendActivity.COME_FROM, SendActivity.FROM_MAIN_SEND_CAKE)
                     })
                 }
+            })
+            receivedCake.observe(this@MainActivity, Observer {
+                startActivity(Intent(applicationContext, ReceiveActivity::class.java).apply {
+                    putExtra(ReceiveActivity.EXTRA_NEW_CAKE_MODEL, it)
+                })
             })
         }
 

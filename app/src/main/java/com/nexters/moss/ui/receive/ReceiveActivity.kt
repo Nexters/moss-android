@@ -142,6 +142,8 @@ class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
     companion object {
         const val REQUEST_SEND_CAKE = 1000
         const val REQUEST_CAKE_DIARY = 2000
+
+        const val EXTRA_NEW_CAKE_MODEL = "extra_new_cake_model"
     }
 }
 
