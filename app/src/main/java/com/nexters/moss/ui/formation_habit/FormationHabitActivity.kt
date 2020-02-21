@@ -37,6 +37,9 @@ class FormationHabitActivity : BaseActivity<ActivityFormationHabitBinding>() {
             isMakeHabit.observe(this@FormationHabitActivity, Observer {
                 AddHabitDialog().show(supportFragmentManager, "")
             })
+            existToastValue.observe(this@FormationHabitActivity, Observer {
+                toast(it)
+            })
         }
     }
 

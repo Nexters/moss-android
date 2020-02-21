@@ -1,10 +1,10 @@
 package com.nexters.moss.repository
 
-import com.google.gson.JsonObject
 import com.nexters.moss.api.HabitApi
 import com.nexters.moss.model.request.CategoryRequestModel
+import com.nexters.moss.model.request.HabitOrderRequestModel
+import com.nexters.moss.model.response.DoneHabitResponseModel
 import com.nexters.moss.model.response.HabitListResponseModel
-import com.nexters.moss.utils.DLog
 
 class HabitRepository(private val habitApi: HabitApi) {
     suspend fun createHabit(habikeryToken: String, categoryId: Int): Any {
@@ -21,11 +21,12 @@ class HabitRepository(private val habitApi: HabitApi) {
         return habitApi.getHabit(habikeryToken)
     }
 
-    suspend fun doneHabit(habitId: Int): Any {
-        val json = JsonObject()
-        json.addProperty("habitId", habitId)
+    suspend fun doneHabit(habikeryToken: String, habitId: Int): DoneHabitResponseModel {
+        return habitApi.doneHabit(habikeryToken, habitId)
+    }
 
-        DLog.d("$json")
-        return habitApi.doneHabit(json.toString())
+    suspend fun changeOrderHabit(habikeryToken: String, habitId: Int, order: Int): Any {
+        val request = HabitOrderRequestModel(habitId, order)
+        return habitApi.changeOrderHabit(habikeryToken, request)
     }
 }

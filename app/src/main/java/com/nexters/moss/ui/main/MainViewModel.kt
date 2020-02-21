@@ -5,11 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexters.moss.model.HabitModel
+import com.nexters.moss.model.NewCakeModel
 import com.nexters.moss.repository.HabitRepository
 import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.CategoryState
 import com.nexters.moss.utils.DLog
+import com.nexters.moss.utils.DateHelper
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 
 class MainViewModel(
     private val userRepo: UserRepository,
@@ -38,6 +41,24 @@ class MainViewModel(
 
     private val _itemList = MutableLiveData<ArrayList<HabitModel>>(ArrayList())
     val itemList: LiveData<ArrayList<HabitModel>> get() = _itemList
+
+    private val _dayOfFirst = MutableLiveData<String>()
+    val dayOfFirst: LiveData<String> get() = _dayOfFirst
+
+    private val _dayOfSecond = MutableLiveData<String>()
+    val dayOfSecond: LiveData<String> get() = _dayOfSecond
+
+    private val _dayOfThird = MutableLiveData<String>()
+    val dayOfThird: LiveData<String> get() = _dayOfThird
+
+    private val _dayOfFourth = MutableLiveData<String>()
+    val dayOfFourth: LiveData<String> get() = _dayOfFourth
+
+    private val _dayOfFifth = MutableLiveData<String>()
+    val dayOfFifth: LiveData<String> get() = _dayOfFifth
+
+    private val _receivedCake = MutableLiveData<NewCakeModel>()
+    val receivedCake: LiveData<NewCakeModel> get() = _receivedCake
 
 
     fun openDrawer() {
@@ -77,8 +98,14 @@ class MainViewModel(
     fun setNickname(habikeryToken: String) {
         viewModelScope.launch {
             val response = userRepo.getUserInfo(habikeryToken)
+            val name = response.nickname ?: "unknown"
 
-            _nickname.value = response.nickname ?: "unknown"
+            val nameBuilder = StringBuilder()
+            for (i in 1 until name.length - 1) {
+                nameBuilder.append(name[i])
+            }
+
+            _nickname.value = nameBuilder.toString()
         }
     }
 
@@ -87,9 +114,48 @@ class MainViewModel(
             val response = habitRepo.getHabit(habikeryToken).data as ArrayList
             _itemList.value = response
 
+
+            CategoryState.resetCategoryState()
             for (habit in response) {
-//                CategoryState.setCategoryState(0, true)
+                CategoryState.setCategoryState(habit.categoryId - 1, true)
             }
+        }
+    }
+
+    fun doneHabit(habikeryToken: String, habitId: Int) {
+        viewModelScope.launch {
+            val response = habitRepo.doneHabit(habikeryToken, habitId)
+
+            val newModel = response.habitModel
+            val receivedCake = response.newCakeDTO
+
+            val list = _itemList.value ?: ArrayList()
+            list[newModel.categoryId - 1] = newModel
+
+            _itemList.value = list
+
+            receivedCake?.let {
+                _receivedCake.value = it
+            }
+        }
+    }
+
+    fun refreshDate() {
+        val days = DateHelper.getFiveDays()
+
+        _dayOfFirst.value = days[0]
+        _dayOfSecond.value = days[1]
+        _dayOfThird.value = days[2]
+        _dayOfFourth.value = days[3]
+        _dayOfFifth.value = days[4]
+    }
+
+    fun changeOrderHabit(habikeryToken: String, habitId: Int, order: Int) {
+        viewModelScope.launch {
+            val response = habitRepo.changeOrderHabit(habikeryToken, habitId, order)
+            DLog.d(response.toString())
+
+//            refreshItemList(habikeryToken)
         }
     }
 }

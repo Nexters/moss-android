@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.repository.HabitRepository
-import com.nexters.moss.utils.DLog
+import com.nexters.moss.utils.CategoryState
 
 class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewModel() {
     private val _selectedItem = MutableLiveData<String>()
@@ -16,6 +16,9 @@ class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewMode
 
     private val _isClose = MutableLiveData<Boolean>()
     val isClose: LiveData<Boolean> get() = _isClose
+
+    private val _existToastValue = MutableLiveData<String>()
+    val existToastValue: LiveData<String> get() = _existToastValue
 
     val formationHabitList by lazy {
         val values = HabitListConstant.values()
@@ -47,8 +50,14 @@ class FormationHabitViewModel(private val habitRepo: HabitRepository) : ViewMode
 
 
     fun makeHabit() {
-        _isMakeHabit.value = true
-        _isMakeHabit.value = false
+        val selectedId = getSelectedItem() - 1
+        if (CategoryState.getCategoryState()[selectedId]) {
+            _existToastValue.value = "이미 있는 습관이에요!"
+        } else {
+            _isMakeHabit.value = true
+            _isMakeHabit.value = false
+        }
+
     }
 
     fun closeDisplay() {

@@ -1,6 +1,8 @@
 package com.nexters.moss.api
 
 import com.nexters.moss.model.request.CategoryRequestModel
+import com.nexters.moss.model.request.HabitOrderRequestModel
+import com.nexters.moss.model.response.DoneHabitResponseModel
 import com.nexters.moss.model.response.HabitListResponseModel
 import retrofit2.http.*
 
@@ -18,7 +20,9 @@ interface HabitApi {
     @GET(baseUrl)
     suspend fun getHabit(@Header("habikeryToken") habikeryToken: String): HabitListResponseModel
 
-    @GET("$baseUrl/record")
-    suspend fun doneHabit(@Body habitId: String): Any
+    @PUT(baseUrl)
+    suspend fun doneHabit(@Header("habikeryToken") habikeryToken: String, @Body habitId: Int): DoneHabitResponseModel
 
+    @PUT("$baseUrl/order")
+    suspend fun changeOrderHabit(@Header("habikeryToken") habikeryToken: String, @Body habitOrderRequestModel: HabitOrderRequestModel): Any
 }
