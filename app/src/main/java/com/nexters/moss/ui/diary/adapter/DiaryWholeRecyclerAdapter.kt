@@ -32,7 +32,7 @@ class DiaryWholeRecyclerAdapter(val itemList:ArrayList<DiaryModel>) : RecyclerVi
             txtDescription.text = item.description
             txtCakeName.text = item.cakeName + "케익"
             txtCount.text = item.count.toString()
-            Glide.with(context!!).asBitmap().load("http:/" + item.imagePath).into(cakeImage)
+            Glide.with(context!!).asBitmap().load("http://" + item.imagePath).into(cakeImage)
         }
 
         fun clickEvent(){
