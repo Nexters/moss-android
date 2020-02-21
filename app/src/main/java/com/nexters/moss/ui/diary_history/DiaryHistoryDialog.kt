@@ -87,8 +87,10 @@ class DiaryHistoryDialog : BaseDialog<DialogDiaryHistoryBinding>() {
     }
 
     private fun setChange() {
-        //vm.changeCakeImage(item!!.imagePath)
-        showGif()
+        vm.changeCakeImage(item!!.imagePath)
+        //showGif()
+
+        DLog.d(item!!.imagePath)
         vm.setTextHabit(item!!.habitName)
         vm.setTextDescription(item!!.description + " " + item!!.cakeName)
     }
@@ -99,7 +101,7 @@ class DiaryHistoryDialog : BaseDialog<DialogDiaryHistoryBinding>() {
         Glide.with(this)
             .asGif()
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-            .load(item!!.imagePath)
+            .load("http:/"+item!!.imagePath)
             .listener(object : RequestListener<GifDrawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -134,7 +136,6 @@ class DiaryHistoryDialog : BaseDialog<DialogDiaryHistoryBinding>() {
                 }
             })
             .into(imageView)
-
         linearLayout.addView(imageView)
     }
 
