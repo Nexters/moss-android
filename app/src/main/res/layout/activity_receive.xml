@@ -143,6 +143,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="채은"
+                                    android:layout_marginBottom="2dp"
                                     android:textColor="@color/receive_cheer_message_from"
                                     android:textSize="@dimen/receive_txt_small"
                                     android:textStyle="bold" />
