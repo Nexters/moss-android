@@ -1,6 +1,7 @@
 package com.nexters.moss.di
 
 import com.nexters.moss.api.CakeApi
+import com.nexters.moss.api.DiaryApi
 import com.nexters.moss.api.HabitApi
 import com.nexters.moss.api.UserApi
 import okhttp3.OkHttpClient
@@ -53,5 +54,14 @@ val networkModule = module {
             .baseUrl("http://49.50.167.14/")
             .build()
             .create(CakeApi::class.java)
+    }
+
+    single {
+        Retrofit.Builder()
+            .client(get())
+            .addConverterFactory(get())
+            .baseUrl("http://49.50.167.14/")
+            .build()
+            .create(DiaryApi::class.java)
     }
 }

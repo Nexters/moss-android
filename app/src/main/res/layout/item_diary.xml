@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/uiColorBgGrey"
+    android:background="@color/uiColorBackground"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -29,11 +29,12 @@
                 android:layout_height="wrap_content"
                 android:letterSpacing="-0.04"
                 android:text="스트레칭"
+                android:layout_marginBottom="4dp"
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/diary_item_txt_clear" />
 
             <TextView
-                android:id="@+id/txt_diary_item_cake_subjective"
+                android:id="@+id/txt_diary_item_cake_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:letterSpacing="-0.04"
@@ -61,7 +62,6 @@
                 android:id="@+id/img_diary_item_cake"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/diary_whole_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

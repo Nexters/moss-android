@@ -21,7 +21,8 @@ import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.send.SendActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
+class
+ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
     override val vm: ReceiveViewModel by viewModel()
     override fun getLayoutRes() = R.layout.activity_receive
     override fun setupBinding() {

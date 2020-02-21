@@ -15,12 +15,6 @@
             android:id="@+id/layout_diary_whole_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/btn_dialog"
-            android:text="dialog"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
 </layout>

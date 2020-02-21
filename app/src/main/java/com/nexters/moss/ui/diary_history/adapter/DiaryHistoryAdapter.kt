@@ -5,23 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.nexters.moss.R
 
-class DiaryHistoryAdapter(private val dateList: ArrayList<String>) :
-    RecyclerView.Adapter<DiaryHistoryAdapter.Holder>(){
+class DiaryHistoryAdapter(val dateList : List<String>) :
+    RecyclerView.Adapter<DiaryHistoryAdapter.Holder>() {
     private var context: Context? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtNum = itemView.findViewById<TextView>(R.id.txt_history_num)
         private val txtDate = itemView.findViewById<TextView>(R.id.txt_history_date)
 
-        fun bind(date: String) {
+        fun bind(date : String) {
             val num = dateList.size - adapterPosition
 
             txtNum?.text = "${num}판"
-            txtDate?.text = date
+            txtDate?.text = date.slice(IntRange(0,9))
         }
     }
 
