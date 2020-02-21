@@ -104,7 +104,7 @@ class MainViewModel(
             _itemList.value = response
 
             for (habit in response) {
-//                CategoryState.setCategoryState(0, true)
+                CategoryState.setCategoryState(habit.categoryId - 1, true)
             }
         }
     }
