@@ -24,6 +24,7 @@
     <string name="diary_title">케익 다이어리</string>
     <string name="diary_title_piece_cake">조각케이크</string>
     <string name="diary_title_whole_cake">홀케이크</string>
+    <string name="diary_cake_name">%s케익</string>
 
     <!-- receive cake -->
     <string name="receive_title">케익 도착</string>

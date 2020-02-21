@@ -30,9 +30,9 @@ val viewModelModule = module {
     viewModel { ReceiveDialogViewModel() }
 
     viewModel { DiaryViewModel() }
-    viewModel { DiaryPieceViewModel() }
-    viewModel { DiaryWholeViewModel() }
-    viewModel { DiaryHistoryViewModel() }
+    viewModel { DiaryPieceViewModel(get()) }
+    viewModel { DiaryWholeViewModel(get()) }
+    viewModel { DiaryHistoryViewModel(get()) }
 
     viewModel { WithdrawViewModel(get()) }
     viewModel { LogoutViewModel() }
