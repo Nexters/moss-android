@@ -7,22 +7,19 @@ import androidx.lifecycle.viewModelScope
 import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.model.DiaryModel
 import com.nexters.moss.repository.DiaryRepository
+import com.nexters.moss.utils.DLog
 import kotlinx.coroutines.launch
 
 class DiaryPieceViewModel(private val diaryRepo: DiaryRepository) : ViewModel() {
 
-    private val _cakeList = MutableLiveData<ArrayList<DiaryModel>>(ArrayList())
-    val cakeList: LiveData<ArrayList<DiaryModel>> get() = _cakeList
+    private val _cakeList = MutableLiveData<List<DiaryModel>>(ArrayList())
+    val cakeList: LiveData<List<DiaryModel>> get() = _cakeList
 
-    //   private val _cakeList = MutableLiveData<ArrayList<DiaryCakeModel>>(ArrayList())
-    //   val cakeList: LiveData<ArrayList<DiaryCakeModel>> get() = _cakeList
-
-    fun setCakeList(list: ArrayList<DiaryCakeModel>, habikeryToken: String) {
-//       _cakeList.value = list
+    fun setCakeList(habikeryToken: String) {
         viewModelScope.launch {
-            _cakeList.value = diaryRepo.getPieceOfCakeDiary(habikeryToken).data as ArrayList
+            _cakeList.value = diaryRepo.getPieceOfCakeDiary(habikeryToken).data
 
-            // DLog.d(response.toString())
+            //DLog.d("정보정보"+_cakeList.value.toString())
         }
     }
 }

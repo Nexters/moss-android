@@ -20,7 +20,7 @@ class DiaryHistoryAdapter(val dateList : List<String>) :
             val num = dateList.size - adapterPosition
 
             txtNum?.text = "${num}판"
-            txtDate?.text = date
+            txtDate?.text = date.slice(IntRange(0,9))
         }
     }
 

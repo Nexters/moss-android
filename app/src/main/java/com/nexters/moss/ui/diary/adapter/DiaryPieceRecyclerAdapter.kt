@@ -11,23 +11,25 @@ import com.bumptech.glide.Glide
 import com.nexters.moss.R
 import com.nexters.moss.model.DiaryModel
 
-class DiaryPieceRecyclerAdapter : RecyclerView.Adapter<DiaryPieceRecyclerAdapter.Holder>() {
-    private var context : Context? = null
-    private var itemList = ArrayList<DiaryModel>()
+class DiaryPieceRecyclerAdapter(private val itemList: List<DiaryModel>) :
+    RecyclerView.Adapter<DiaryPieceRecyclerAdapter.Holder>() {
+    private var context: Context? = null
+    private var count = 0
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtClear = itemView.findViewById<TextView>(R.id.txt_diary_item_clear)
-        private val txtDescription = itemView.findViewById<TextView>(R.id.txt_diary_item_cake_description)
+        private val txtDescription =
+            itemView.findViewById<TextView>(R.id.txt_diary_item_cake_description)
         private val txtCakeName = itemView.findViewById<TextView>(R.id.txt_diary_item_cake_name)
         private val cakeImage = itemView.findViewById<ImageView>(R.id.img_diary_item_cake)
         private val imgCount = itemView.findViewById<ImageView>(R.id.img_diary_item_cake_count)
         private val txtCount = itemView.findViewById<TextView>(R.id.txt_diary_item_cake_count)
 
-        fun bind(item : DiaryModel) {
+        fun bind(item: DiaryModel) {
             txtClear.text = item.habitName
             txtDescription.text = item.description
-            txtCakeName.text = item.cakeName
-            Glide.with(context!!).load(item.imagePath).into(cakeImage)
+            txtCakeName.text = item.cakeName + "케익"
+            Glide.with(context!!).asBitmap().load("http:/" + item.imagePath).into(cakeImage)
 
             imgCount.visibility = View.GONE
             txtCount.visibility = View.GONE
@@ -36,16 +38,27 @@ class DiaryPieceRecyclerAdapter : RecyclerView.Adapter<DiaryPieceRecyclerAdapter
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.item_diary, parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_diary, parent, false)
         return Holder(view)
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(itemList[position])
+        if (itemList[position].count != 0) {
+            holder.bind(itemList[position])
+        }else {
+            count += 1
+        }
     }
 
-
     override fun getItemCount(): Int {
-        return itemList.size
+        return itemList.size - count
+    }
+
+    fun refreshItemList(list: ArrayList<DiaryModel>) {
+        with(itemList as ArrayList) {
+            clear()
+            addAll(list)
+        }
+        notifyDataSetChanged()
     }
 }
