@@ -10,6 +10,7 @@ import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.FragmentWholeBinding
 import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.model.DiaryCakeModel
+import com.nexters.moss.model.DiaryModel
 import com.nexters.moss.ui.diary.adapter.DiaryWholeRecyclerAdapter
 import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
 import kotlinx.android.synthetic.main.fragment_whole.*
@@ -17,11 +18,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
 
-    private val cakeList = arrayListOf<DiaryCakeModel>(
-        DiaryCakeModel("클리어9", "야호야호", "녹차케이크"),
-        DiaryCakeModel("클리어8", "메롱메롱", "딸기케이크"),
-        DiaryCakeModel("클리어7", "냠냠냠냠", "초코케이크")
-    )
+    private val recyclerAdapter by lazy {
+        DiaryWholeRecyclerAdapter(vm.cakeList.value!!)
+    }
 
     override val vm: DiaryWholeViewModel by viewModel()
     override fun getLayoutRes(): Int = R.layout.fragment_whole
@@ -35,23 +34,29 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         getHabikeryToken()
-        vm.setCakeList(cakeList)
+        vm.setCakeList(habikeryToken)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setRecyclerView()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        with(vm) {
+            cakeList.observe(viewLifecycleOwner, Observer {
+                recyclerAdapter.refreshItemList(it as ArrayList<DiaryModel>)
+            })
+        }
     }
 
     private fun setRecyclerView() {
-        val recyclerAdapter = DiaryWholeRecyclerAdapter(cakeList)
         val recyclerManager = LinearLayoutManager(context!!)
 
         layout_diary_whole_recycler.apply {
             adapter = recyclerAdapter.apply {
                 setOnItemClickListener { position ->
-
-                    //Toast.makeText(context, "click!!"+it, Toast.LENGTH_LONG).show()
 
                     val categoryId = position + 1
                     vm.getCakeHistory(categoryId, habikeryToken)
