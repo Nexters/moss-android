@@ -56,10 +56,12 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
 
         layout_diary_whole_recycler.apply {
             adapter = recyclerAdapter.apply {
-                setOnItemClickListener { position ->
+                setOnItemClickListener {
 
-                    val categoryId = position + 1
-                    vm.getCakeHistory(categoryId, habikeryToken)
+                    val list = vm.categoryList.value as ArrayList
+                    val id =translateItem(list[it])
+
+                    vm.getCakeHistory(id, habikeryToken)
 
                     vm.itemList.observe(viewLifecycleOwner, Observer {
                         val item = vm.itemList.value
@@ -87,6 +89,20 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
                 SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
                 null
             ) ?: return
+        }
+    }
+
+    private fun translateItem(item: String): Int{
+        return when (item) {
+            "수박" -> 1
+            "치즈" -> 2
+            "생크림" -> 3
+            "녹차" -> 4
+            "커피" -> 5
+            "사과" -> 6
+            "밤" -> 7
+            "아몬드" -> 8
+            else -> 1
         }
     }
 
