@@ -20,7 +20,6 @@
         android:paddingBottom="@dimen/receive_padding_top_bottom">
 
         <RelativeLayout
-
             android:id="@+id/layout_receive_head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,166 +38,202 @@
             <ImageButton
                 android:layout_width="17dp"
                 android:layout_height="17dp"
-                android:layout_centerVertical="true"
-                android:onClick="@{()->vm.exit()}"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:background="@color/transparent"
+                android:onClick="@{()->vm.exit()}"
                 android:src="@drawable/icon_exit" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_receive_body"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/layout_receive_head">
-
-            <LinearLayout
-                android:id="@+id/layout_receive_cake_main_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:background="@drawable/receive_cake_background"
-                    android:layout_width="match_parent"
-                    android:layout_height="358dp">
-
-                    <RelativeLayout
-                        android:id="@+id/layout_cake"
-                        android:layout_above="@id/layout_cake_name"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/layout_cake_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/receive_padding_card_top"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="@dimen/receive_padding_card_bottom">
-
-                        <TextView
-                            android:id="@+id/txt_receive_cake_name_subjective"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerInParent="true"
-                            android:text="산책하는 당신을 위한"
-                            android:textColor="@color/receive_cake_name_subjective"
-                            android:textSize="@dimen/receive_txt_cake_soft" />
-
-                        <TextView
-                            android:id="@+id/txt_receive_cake_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/txt_receive_cake_name_subjective"
-                            android:layout_centerHorizontal="true"
-                            android:text="녹차케익"
-                            android:textColor="@color/receive_cake_name"
-                            android:textSize="@dimen/receive_txt_cake_bold">
-
-                        </TextView>
-                    </RelativeLayout>
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="92dp"
-                    android:orientation="vertical"
-                    android:paddingStart="@dimen/receive_padding_start_end"
-                    android:paddingTop="@dimen/receive_padding_card_top">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="채은"
-                            android:textColor="@color/receive_cheer_message_from"
-                            android:textSize="@dimen/receive_txt_small"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/receive_from_who"
-                            android:textColor="@color/receive_cheer_message_from"
-                            android:textSize="@dimen/receive_txt_small"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="산책은 머리를 맑게 해준대요~"
-                            android:textColor="@color/receive_cheer_message_content"
-                            android:textSize="@dimen/receive_txt_normal"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/layout_receive_cake_main_img">
-
-                <Button
-                    android:id="@+id/btn_receive_report"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/receive_btn_report"
-                    android:onClick="@{()->vm.clickBtnReport()}"
-                    android:background="@color/transparent"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/receive_txt_small" />
-            </RelativeLayout>
-
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/layout_receive_head"
             android:layout_alignParentBottom="true"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/receive_padding_top_bottom">
+            android:orientation="vertical">
 
-            <Button
+            <RelativeLayout
+                android:id="@+id/layout_receive_body"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/receive_btn"
-                android:padding="@dimen/receive_padding_btn"
-                android:onClick="@{()->vm.goDiary()}"
-                android:text="@string/receive_btn_go_diary"
-                android:textColor="@color/white"
-                android:textSize="@dimen/receive_txt_normal" />
+                android:layout_height="0dp"
+                android:layout_below="@id/layout_receive_head"
+                android:layout_weight="0.8">
 
-            <Button
+
+                <LinearLayout
+                    android:id="@+id/layout_receive_cake_main_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3"
+                        android:background="@drawable/receive_cake_background">
+
+                        <RelativeLayout
+                            android:id="@+id/layout_cake"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/layout_cake_name"
+                            android:layout_centerHorizontal="true">
+
+                            <ImageView
+                                android:id="@+id/gif"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="20dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/layout_cake_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginTop="@dimen/receive_padding_card_top"
+                            android:layout_marginBottom="@dimen/receive_padding_card_bottom">
+
+                            <TextView
+                                android:id="@+id/txt_receive_cake_name_subjective"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerInParent="true"
+                                android:text="산책하는 당신을 위한"
+                                android:textColor="@color/receive_cake_name_subjective"
+                                android:textSize="@dimen/receive_txt_cake_soft" />
+
+                            <TextView
+                                android:id="@+id/txt_receive_cake_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/txt_receive_cake_name_subjective"
+                                android:layout_centerHorizontal="true"
+                                android:text="녹차케익"
+                                android:textColor="@color/receive_cake_name"
+                                android:textSize="@dimen/receive_txt_cake_bold">
+
+                            </TextView>
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/receive_padding_start_end"
+                        android:paddingTop="@dimen/receive_padding_card_top">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="채은"
+                                android:textColor="@color/receive_cheer_message_from"
+                                android:textSize="@dimen/receive_txt_small"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/receive_from_who"
+                                android:textColor="@color/receive_cheer_message_from"
+                                android:textSize="@dimen/receive_txt_small"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="산책은 머리를 맑게 해준대요~"
+                                android:textColor="@color/receive_cheer_message_content"
+                                android:textSize="@dimen/receive_txt_normal" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@color/cake_green_tea">
+
+                        <view
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <Button
+                            android:id="@+id/btn_receive_report"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:background="@color/transparent"
+                            android:minWidth="0dp"
+                            android:onClick="@{()->vm.clickBtnReport()}"
+                            android:shadowColor="@color/transparent"
+                            android:text="@string/receive_btn_report"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/receive_txt_small" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="@{()->vm.goSend()}"
-                android:background="@color/transparent"
-                android:padding="@dimen/receive_padding_btn"
-                android:text="@string/receive_btn_send_cake"
-                android:textColor="@color/white"
-                android:textSize="@dimen/receive_txt_normal" />
+                android:layout_height="0dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="0.2"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/receive_padding_top_bottom">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/receive_btn"
+                    android:onClick="@{()->vm.goDiary()}"
+                    android:padding="@dimen/receive_padding_btn"
+                    android:text="@string/receive_btn_go_diary"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/receive_txt_normal" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:onClick="@{()->vm.goSend()}"
+                    android:padding="@dimen/receive_padding_btn"
+                    android:text="@string/receive_btn_send_cake"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/receive_txt_normal" />
+            </LinearLayout>
+
         </LinearLayout>
+
 
     </RelativeLayout>
 
