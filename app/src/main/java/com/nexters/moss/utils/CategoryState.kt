@@ -5,6 +5,11 @@ object CategoryState {
         false
     }
 
+    fun resetCategoryState() {
+        for (i in categoryState.indices)
+            categoryState[i] = false
+    }
+
     fun setCategoryState(position: Int, isExist: Boolean) {
         categoryState[position] = isExist
         DLog.d("category State")

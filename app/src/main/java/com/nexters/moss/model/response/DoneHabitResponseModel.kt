@@ -7,5 +7,5 @@ import com.nexters.moss.model.NewCakeModel
 data class DoneHabitResponseModel (
     @SerializedName("data")
     val habitModel: HabitModel,
-    val newCakeDTO: NewCakeModel
+    val newCakeDTO: NewCakeModel?
 )

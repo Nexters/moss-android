@@ -11,6 +11,7 @@ import com.nexters.moss.utils.CategoryState
 import com.nexters.moss.utils.DLog
 import com.nexters.moss.utils.DateHelper
 import kotlinx.coroutines.launch
+import java.lang.StringBuilder
 
 class MainViewModel(
     private val userRepo: UserRepository,
@@ -93,8 +94,14 @@ class MainViewModel(
     fun setNickname(habikeryToken: String) {
         viewModelScope.launch {
             val response = userRepo.getUserInfo(habikeryToken)
+            val name = response.nickname ?: "unknown"
 
-            _nickname.value = response.nickname ?: "unknown"
+            val nameBuilder = StringBuilder()
+            for (i in 1 until name.length - 1) {
+                nameBuilder.append(name[i])
+            }
+
+            _nickname.value = nameBuilder.toString()
         }
     }
 
@@ -103,6 +110,8 @@ class MainViewModel(
             val response = habitRepo.getHabit(habikeryToken).data as ArrayList
             _itemList.value = response
 
+
+            CategoryState.resetCategoryState()
             for (habit in response) {
                 CategoryState.setCategoryState(habit.categoryId - 1, true)
             }
