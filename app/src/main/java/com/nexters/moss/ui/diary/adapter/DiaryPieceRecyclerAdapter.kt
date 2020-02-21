@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nexters.moss.R
 import com.nexters.moss.model.DiaryModel
+import com.nexters.moss.utils.DLog
 
 class DiaryPieceRecyclerAdapter(private val itemList: List<DiaryModel>) :
     RecyclerView.Adapter<DiaryPieceRecyclerAdapter.Holder>() {
     private var context: Context? = null
-    private var count = 0
+
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtClear = itemView.findViewById<TextView>(R.id.txt_diary_item_clear)
@@ -29,7 +30,7 @@ class DiaryPieceRecyclerAdapter(private val itemList: List<DiaryModel>) :
             txtClear.text = item.habitName
             txtDescription.text = item.description
             txtCakeName.text = item.cakeName + "케익"
-            Glide.with(context!!).asBitmap().load("http:/" + item.imagePath).into(cakeImage)
+            Glide.with(context!!).asBitmap().load("http://" + item.imagePath).into(cakeImage)
 
             imgCount.visibility = View.GONE
             txtCount.visibility = View.GONE
@@ -45,13 +46,11 @@ class DiaryPieceRecyclerAdapter(private val itemList: List<DiaryModel>) :
     override fun onBindViewHolder(holder: Holder, position: Int) {
         if (itemList[position].count != 0) {
             holder.bind(itemList[position])
-        }else {
-            count += 1
         }
     }
 
     override fun getItemCount(): Int {
-        return itemList.size - count
+        return itemList.size
     }
 
     fun refreshItemList(list: ArrayList<DiaryModel>) {
