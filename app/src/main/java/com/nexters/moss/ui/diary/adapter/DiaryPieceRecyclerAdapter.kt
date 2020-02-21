@@ -44,9 +44,7 @@ class DiaryPieceRecyclerAdapter(private val itemList: List<DiaryModel>) :
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        if (itemList[position].count != 0) {
-            holder.bind(itemList[position])
-        }
+        holder.bind(itemList[position])
     }
 
     override fun getItemCount(): Int {
