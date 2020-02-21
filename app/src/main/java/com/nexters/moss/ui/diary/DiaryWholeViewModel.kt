@@ -29,7 +29,18 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
 
     fun setCakeList(habikeryToken: String) {
         viewModelScope.launch {
-            _cakeList.value = diaryRepo.getWholeCakeDiary(habikeryToken).data as ArrayList
+//            _cakeList.value = diaryRepo.getWholeCakeDiary(habikeryToken).data as ArrayList
+
+            val response =  diaryRepo.getWholeCakeDiary(habikeryToken).data as ArrayList
+            val itemList : ArrayList<DiaryModel> = ArrayList()
+
+            for (item in response){
+                if (item.count !=0){
+                    itemList.add(item)
+                }
+            }
+
+            _cakeList.value = itemList
 
             //DLog.d("정보정보"+_cakeList.value.toString())
         }
