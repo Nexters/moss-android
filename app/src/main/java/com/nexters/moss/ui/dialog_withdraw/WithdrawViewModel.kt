@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexters.moss.repository.UserRepository
+import com.nexters.moss.utils.DLog
+import com.nexters.moss.utils.KakaoLoginUtils
 import kotlinx.coroutines.launch
 
 class WithdrawViewModel(private val userRepo: UserRepository) : ViewModel() {
@@ -14,6 +16,8 @@ class WithdrawViewModel(private val userRepo: UserRepository) : ViewModel() {
     fun withdraw(habikeryToken: String) {
         viewModelScope.launch {
             userRepo.leave(habikeryToken)
+            val unlinkResult = KakaoLoginUtils.unlink()
+            DLog.d(unlinkResult)
             _isWithdrawFinish.value = true
         }
     }

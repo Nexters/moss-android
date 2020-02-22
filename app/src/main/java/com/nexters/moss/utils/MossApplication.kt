@@ -4,8 +4,10 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import com.kakao.auth.*
 import com.nexters.moss.di.networkModule
 import com.nexters.moss.di.repositoryModule
+import com.nexters.moss.di.utilsModule
 import com.nexters.moss.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -36,8 +38,42 @@ class MossApplication : Application() {
             modules(viewModelModule)
             modules(networkModule)
             modules(repositoryModule)
+            modules(utilsModule)
         }
+
+        initKakaoOauth(applicationContext)
     }
 
+    private fun initKakaoOauth(context: Context) {
+        KakaoSDK.init(object : KakaoAdapter() {
+            override fun getSessionConfig(): ISessionConfig {
+                return object : ISessionConfig {
+                    override fun getAuthTypes(): Array<AuthType> {
+                        return arrayOf(AuthType.KAKAO_LOGIN_ALL)
+                    }
+
+                    override fun isUsingWebviewTimer(): Boolean {
+                        return false
+                    }
+
+                    override fun isSecureMode(): Boolean {
+                        return false
+                    }
+
+                    override fun getApprovalType(): ApprovalType? {
+                        return ApprovalType.INDIVIDUAL
+                    }
+
+                    override fun isSaveFormData(): Boolean {
+                        return true
+                    }
+                }
+            }
+
+            override fun getApplicationConfig(): IApplicationConfig {
+                return IApplicationConfig { context }
+            }
+        })
+    }
 
 }

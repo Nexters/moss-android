@@ -62,15 +62,13 @@
                 android:src="@drawable/icon_indicator_default" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_startByKakao"
+        <com.kakao.usermgmt.LoginButton
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="30dp"
-            android:text="카카오 계정으로 시작하기" />
+            android:layout_marginBottom="30dp" />
     </RelativeLayout>
 
 </LinearLayout>
