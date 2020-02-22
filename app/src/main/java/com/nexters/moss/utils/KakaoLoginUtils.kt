@@ -1,6 +1,10 @@
 package com.nexters.moss.utils
 
+import com.kakao.auth.ApiResponseCallback
+import com.kakao.auth.AuthService
 import com.kakao.auth.ISessionCallback
+import com.kakao.auth.Session
+import com.kakao.auth.network.response.AccessTokenInfoResponse
 import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeV2ResponseCallback
@@ -15,8 +19,6 @@ object KakaoLoginUtils {
     suspend fun getLoginId(): String {
         var id = EMPTY
 
-//        var isClosed = false
-
         UserManagement.getInstance().me(object : MeV2ResponseCallback() {
             override fun onSuccess(result: MeV2Response?) {
                 id = result?.id.toString()
@@ -24,7 +26,6 @@ object KakaoLoginUtils {
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 errorResult?.exception?.printStackTrace()
-//                isClosed = true
             }
         })
 
@@ -39,15 +40,40 @@ object KakaoLoginUtils {
                 DLog.e("timeout get token")
                 break
             }
-
-//            if (isClosed) {
-//                DLog.e("session closed")
-//                break
-//            }
         }
 
         DLog.i("id value is : $id")
         return id
+    }
+
+    suspend fun getAccessToken(): String {
+        var token = EMPTY
+
+        AuthService.getInstance().requestAccessTokenInfo(object : ApiResponseCallback<AccessTokenInfoResponse>() {
+            override fun onSuccess(result: AccessTokenInfoResponse?) {
+                token = result?.userId?.toString() ?: EMPTY
+            }
+
+            override fun onSessionClosed(errorResult: ErrorResult?) {
+                errorResult?.exception?.printStackTrace()
+            }
+        })
+        val timeout = 200
+        var currentTime = 0
+
+        while (token == EMPTY) {
+            delay(10)
+            currentTime += 10
+
+            if (currentTime == timeout) {
+                DLog.e("timeout get token")
+                break
+            }
+        }
+
+        DLog.i("token value is : $token")
+
+        return token
     }
 
     suspend fun unlink(): String {

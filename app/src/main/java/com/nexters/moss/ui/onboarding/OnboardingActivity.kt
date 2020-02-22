@@ -67,7 +67,7 @@ class OnboardingActivity : AppCompatActivity() {
         }
         DLog.d("repeat count is $count")
 
-        val id = KakaoLoginUtils.getLoginId()
+        val id = KakaoLoginUtils.getAccessToken()
 
         if (id != KakaoLoginUtils.EMPTY) {
             startActivity(
@@ -93,6 +93,11 @@ class OnboardingActivity : AppCompatActivity() {
     private fun setupKakaoCallback() {
         Session.getCurrentSession().addCallback(callback)
         Session.getCurrentSession().checkAndImplicitOpen()
+
+
+        GlobalScope.launch {
+            KakaoLoginUtils.unlink()
+        }
     }
 
     private fun setViewPager() {

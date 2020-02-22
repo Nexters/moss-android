@@ -2,12 +2,14 @@ package com.nexters.moss.ui.make_nickname
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.kakao.auth.Session
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivityMakeNicknameBinding
 import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.ui.main.MainActivity
+import com.nexters.moss.utils.DLog
 import com.nexters.moss.utils.KakaoLoginUtils
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,7 +25,9 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        vm.setAccessToken(intent.getStringExtra(EXTRA_KAKAO_ID) ?: throw Exception("need intent extra"))
+//        vm.setAccessToken(intent.getStringExtra(EXTRA_KAKAO_ID) ?: throw Exception("need intent extra"))
+        vm.setAccessToken(Session.getCurrentSession().tokenInfo.accessToken ?: throw Exception("need intent extra"))
+
         observeViewModel()
     }
 
