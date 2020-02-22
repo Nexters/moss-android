@@ -19,6 +19,9 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
     private val _cakeList = MutableLiveData<ArrayList<DiaryModel>>(ArrayList())
     val cakeList: LiveData<ArrayList<DiaryModel>> get() = _cakeList
 
+    private val _categoryList = MutableLiveData<ArrayList<String>>(ArrayList())
+    val categoryList: LiveData<ArrayList<String>> get() = _categoryList
+
     fun getCakeHistory(categoryId : Int, habikeryToken : String){
         viewModelScope.launch {
             _itemList.value = diaryRepo.getCakeHistory(habikeryToken, categoryId).data
@@ -29,20 +32,22 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
 
     fun setCakeList(habikeryToken: String) {
         viewModelScope.launch {
-//            _cakeList.value = diaryRepo.getWholeCakeDiary(habikeryToken).data as ArrayList
 
             val response =  diaryRepo.getWholeCakeDiary(habikeryToken).data as ArrayList
             val itemList : ArrayList<DiaryModel> = ArrayList()
+            val categoryList : ArrayList<String> = ArrayList()
 
             for (item in response){
+                categoryList.add(item.cakeName)
+
                 if (item.count !=0){
                     itemList.add(item)
                 }
             }
 
             _cakeList.value = itemList
+            _categoryList.value = categoryList
 
-            //DLog.d("정보정보"+_cakeList.value.toString())
         }
     }
 }
