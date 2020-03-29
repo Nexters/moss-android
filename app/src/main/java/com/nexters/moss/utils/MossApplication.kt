@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import com.google.firebase.iid.FirebaseInstanceId
 import com.kakao.auth.*
 import com.nexters.moss.di.networkModule
 import com.nexters.moss.di.repositoryModule
@@ -32,6 +33,16 @@ class MossApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         debugMode = isDebuggable(this)
+
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener {
+                if (!it.isSuccessful) {
+                    DLog.d("getInstanceFail : ${it.exception}")
+                }
+
+                val token = it.result?.token ?: "result fail"
+                DLog.d("token = $token")
+            }
 
         startKoin {
             androidContext(this@MossApplication)
