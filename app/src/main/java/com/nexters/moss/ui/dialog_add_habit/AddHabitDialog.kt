@@ -3,12 +3,17 @@ package com.nexters.moss.ui.dialog_add_habit
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.lifecycle.ViewModel
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
 import com.nexters.moss.databinding.DialogAddHabitBinding
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.send.SendActivity
+import com.nexters.moss.utils.DLog
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
@@ -32,24 +37,19 @@ class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
         }
 
         binding.btnSubmit.setOnClickListener {
-            isStartActivity = true
-            dismiss()
-        }
-    }
-
-
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        if (isStartActivity) {
             activity?.let {
                 if (it is FormationHabitActivity) {
                     startActivity(Intent(it, SendActivity::class.java).apply {
                         putExtra(SendActivity.COME_FROM, SendActivity.FROM_ADD_HABIT)
                         putExtra(SendActivity.CREATE_CATEGORY_ID, it.vm.getSelectedItem())
                     })
-                    activity?.finish()
                 }
             }
         }
+    }
+
+    override fun onPause() {
+        dialog?.dismiss()
+        super.onPause()
     }
 }

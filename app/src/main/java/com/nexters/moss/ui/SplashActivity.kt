@@ -8,6 +8,7 @@ import com.nexters.moss.R
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.repository.UserRepository
+import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.onboarding.OnboardingActivity
 import com.nexters.moss.utils.DLog
@@ -24,12 +25,14 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         GlobalScope.launch {
-            val isExist = isExistId()
+//            val isExist = isExistId()
 
-            val clazz: Class<out AppCompatActivity> = if (isExist) {
-                MainActivity::class.java
+            val clazz: Class<out AppCompatActivity> = if (true) {
+//                MainActivity::class.java
+                FormationHabitActivity::class.java
             } else {
-                OnboardingActivity::class.java
+                FormationHabitActivity::class.java
+//                OnboardingActivity::class.java
             }
             delay(500)
 
