@@ -105,7 +105,6 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     private fun onClose() {
         when (from) {
             FROM_ADD_HABIT -> {
-                startActivity<FormationHabitActivity>()
                 finish()
             }
             FROM_MAIN_SEND_CAKE -> {
