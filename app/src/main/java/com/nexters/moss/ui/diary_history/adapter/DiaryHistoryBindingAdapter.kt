@@ -21,7 +21,7 @@ class DiaryHistoryBindingAdapter {
     companion object {
         @JvmStatic
         @BindingAdapter("showGif")
-        fun showGif(layout: LinearLayout, imagePath: String) {
+        fun showGif(layout: ViewGroup, imagePath: String) {
             var imageView = ImageView(layout.context)
 //
 //            val lp = ViewGroup.LayoutParams(50, 50)

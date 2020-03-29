@@ -125,11 +125,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     putExtra(ReceiveActivity.EXTRA_NEW_CAKE_MODEL, it)
                 })
             })
+//            isFirstCheck.observe(this@MainActivity, Observer {
+//                val habit = HabitListConstant.values()[it - 1]
+//                FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
+//            })
         }
 
         // 임시 첫 선물 팝업 띄우기 기능
         binding.txtPush.setOnClickListener {
-            FirstGiftDialog.newInstance(HabitListConstant.READ_BOOK).show(supportFragmentManager, "")
+
         }
     }
 
@@ -154,12 +158,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             }
 
-            habitListAdapter.setOnCheckButtonClickListener {
-                vm.doneHabit(habikeryToken ?: return@setOnCheckButtonClickListener, it)
+            habitListAdapter.setOnCheckButtonClickListener { habitId, categoryId ->
+                if (categoryId != -1) {
+                    val habit = HabitListConstant.values()[categoryId - 1]
+                    FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
+                }
+
+                vm.doneHabit(habikeryToken ?: return@setOnCheckButtonClickListener, habitId)
             }
 
             habitListAdapter.setOnItemOrderChangeListener { habitId, to ->
-                vm.changeOrderHabit(habikeryToken ?: return@setOnItemOrderChangeListener, habitId, to)
+                vm.changeOrderHabit(
+                    habikeryToken ?: return@setOnItemOrderChangeListener,
+                    habitId,
+                    to
+                )
             }
 
 

@@ -107,5 +107,17 @@ enum class HabitListConstant(
 
             return colorRes
         }
+
+        @JvmStatic
+        fun getCategoryIdByName(name: String): Int {
+            var i = 0
+            for (item in values().indices) {
+                if (values()[item].cakeName == name) {
+                    i = item
+                }
+            }
+
+            return i
+        }
     }
 }

@@ -95,9 +95,9 @@ class OnboardingActivity : AppCompatActivity() {
         Session.getCurrentSession().checkAndImplicitOpen()
 
 
-        GlobalScope.launch {
-            KakaoLoginUtils.unlink()
-        }
+//        GlobalScope.launch {
+//            KakaoLoginUtils.unlink()
+//        }
     }
 
     private fun setViewPager() {

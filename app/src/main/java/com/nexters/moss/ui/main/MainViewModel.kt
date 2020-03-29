@@ -60,6 +60,9 @@ class MainViewModel(
     private val _receivedCake = MutableLiveData<NewCakeModel>()
     val receivedCake: LiveData<NewCakeModel> get() = _receivedCake
 
+    private val _isFirstCheck = MutableLiveData<Int>()
+    val isFirstCheck: LiveData<Int> get() = _isFirstCheck
+
 
     fun openDrawer() {
         DLog.d("open drawer")
@@ -137,6 +140,11 @@ class MainViewModel(
             }
 
             _itemList.value = list
+
+
+//            if (newModel.firstCheck) {
+//                _isFirstCheck.value = newModel.categoryId
+//            }
 
             receivedCake?.let {
                 _receivedCake.value = it
