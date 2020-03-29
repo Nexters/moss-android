@@ -15,10 +15,13 @@ import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseActivity
+import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.databinding.ActivityReceiveBinding
+import com.nexters.moss.model.NewCakeModel
 import com.nexters.moss.ui.dialog_report.ReceiveDialog
 import com.nexters.moss.ui.diary.DiaryActivity
 import com.nexters.moss.ui.send.SendActivity
+import kotlinx.android.synthetic.main.activity_receive.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class
@@ -32,8 +35,16 @@ ReceiveActivity : BaseActivity<ActivityReceiveBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+        val newCake = intent.getParcelableExtra<NewCakeModel>(EXTRA_NEW_CAKE_MODEL)
+        newCake?.let {
+            vm.setNewCake(it)
+
+            var categoryId = HabitListConstant.getCategoryIdByName(it.cakeName)
+//            bg_color_personal.setBackgroundResource()
+        }
         observeViewModel()
-        showGif()
+//        showGif()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.receive.ReceiveActivity">
 
     <data>
@@ -11,6 +12,7 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/bg_color_personal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/cake_green_tea"
@@ -78,7 +80,8 @@
                             android:layout_height="match_parent"
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
-                            android:layout_marginBottom="20dp">
+                            android:layout_marginBottom="20dp"
+                            app:showGif="@{vm.imagePath}">
 
                             <ImageView
                                 android:id="@+id/gif"
@@ -103,7 +106,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerInParent="true"
-                                android:text="산책하는 당신을 위한"
+                                android:text="노력하는 당신을 위한"
                                 android:textColor="@color/receive_cake_name_subjective"
                                 android:textSize="@dimen/receive_txt_cake_soft" />
 
@@ -113,7 +116,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/txt_receive_cake_name_subjective"
                                 android:layout_centerHorizontal="true"
-                                android:text="녹차케익"
+                                android:text="@{vm.cakeName}"
                                 android:textColor="@color/receive_cake_name"
                                 android:textSize="@dimen/receive_txt_cake_bold">
 
@@ -142,7 +145,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="채은"
+                                    android:text="@{vm.nickname}"
                                     android:layout_marginBottom="2dp"
                                     android:textColor="@color/receive_cheer_message_from"
                                     android:textSize="@dimen/receive_txt_small"
@@ -165,7 +168,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="산책은 머리를 맑게 해준대요~"
+                                    android:text="@{vm.note}"
                                     android:textColor="@color/receive_cheer_message_content"
                                     android:textSize="@dimen/receive_txt_normal" />
                             </LinearLayout>
@@ -175,6 +178,7 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/bg_color_pesonal2"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"

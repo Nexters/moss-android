@@ -113,7 +113,11 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
                 holder.second.setOnClickListener {
                     if (!(stateList[1] == CheckIconConstant.CHECKED ||
                         stateList[1] == CheckIconConstant.CHECKED_CAKE)) {
-                        onCheckButtonClickListener?.onCheckButtonClick(item.habitId)
+                        var paramId = -1
+                        if (!itemList[position].firstCheck)
+                            paramId = item.categoryId
+
+                        onCheckButtonClickListener?.onCheckButtonClick(item.habitId, paramId)
                     }
                 }
 
@@ -323,10 +327,10 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
         }
     }
 
-    fun setOnCheckButtonClickListener(listener: (Int) -> Unit) {
+    fun setOnCheckButtonClickListener(listener: (habitId: Int, categoryId: Int) -> Unit) {
         onCheckButtonClickListener = object : OnCheckButtonClickListener {
-            override fun onCheckButtonClick(habitId: Int) {
-                listener(habitId)
+            override fun onCheckButtonClick(habitId: Int, categoryId: Int) {
+                listener(habitId, categoryId)
             }
         }
     }
@@ -348,7 +352,7 @@ class HabitListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(),
     }
 
     interface OnCheckButtonClickListener {
-        fun onCheckButtonClick(habitId: Int)
+        fun onCheckButtonClick(habitId: Int, category: Int)
     }
 
     class AddHabitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
