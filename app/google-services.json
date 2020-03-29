@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "408265840234",
+    "firebase_url": "https://habikery-edf3b.firebaseio.com",
+    "project_id": "habikery-edf3b",
+    "storage_bucket": "habikery-edf3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408265840234:android:17c70ec9c4ad6392319c13",
+        "android_client_info": {
+          "package_name": "com.nexters.moss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408265840234-a34nr3htp5dnh3451ttjk922rb1fa3ct.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo0hffckqSOug9l9ywjEZ5Et2LewvY74U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408265840234-a34nr3htp5dnh3451ttjk922rb1fa3ct.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
