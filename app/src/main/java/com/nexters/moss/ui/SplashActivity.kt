@@ -25,14 +25,12 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         GlobalScope.launch {
-//            val isExist = isExistId()
+            val isExist = isExistId()
 
-            val clazz: Class<out AppCompatActivity> = if (true) {
-//                MainActivity::class.java
-                FormationHabitActivity::class.java
+            val clazz: Class<out AppCompatActivity> = if (isExist) {
+                MainActivity::class.java
             } else {
-                FormationHabitActivity::class.java
-//                OnboardingActivity::class.java
+                OnboardingActivity::class.java
             }
             delay(500)
 
