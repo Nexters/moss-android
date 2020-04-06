@@ -41,7 +41,7 @@ class MossApplication : Application() {
                 }
 
                 val token = it.result?.token ?: "result fail"
-                DLog.d("token = $token")
+                DLog.d("crashlystic token = $token")
             }
 
         startKoin {

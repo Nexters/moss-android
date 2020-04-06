@@ -13,6 +13,10 @@ import com.kakao.usermgmt.callback.MeV2ResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
 import com.kakao.util.exception.KakaoException
 import com.nexters.moss.R
+import com.nexters.moss.constant.SharedPreferenceConstant
+import com.nexters.moss.extension.getUserSharedPreference
+import com.nexters.moss.repository.UserRepository
+import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.make_nickname.MakeNicknameActivity
 import com.nexters.moss.ui.onboarding.adapter.OnboardingAdapter
 import com.nexters.moss.utils.DLog
@@ -31,7 +35,10 @@ class OnboardingActivity : AppCompatActivity() {
     lateinit var third: ImageView
     lateinit var fourth: ImageView
 
+    private var autoLogin = false
+
     private val callback: KakaoSessionCallback by inject()
+    private val userRepo: UserRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,37 +57,46 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
-            GlobalScope.launch {
-                if (callback.isOpening()) {
-                    startNicknameActivityWithId(0)
-                }
-            }
             return
         }
 
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    private suspend fun startNicknameActivityWithId(count: Int) {
-        if (count == 5) {
-            DLog.e("cannot get oAuth id")
-        }
-        DLog.d("repeat count is $count")
-
-        val id = KakaoLoginUtils.getAccessToken()
-
-        if (id != KakaoLoginUtils.EMPTY) {
-            startActivity(
-                Intent(
-                    applicationContext,
-                    MakeNicknameActivity::class.java
-                ).apply {
-                    putExtra(MakeNicknameActivity.EXTRA_KAKAO_ID, id)
-                })
+    private fun startNicknameActivityWithId() {
+        GlobalScope.launch {
+            val id = KakaoLoginUtils.getAccessToken()
+            if (autoLogin) {
+                DLog.d("auto!")
+                saveHabikeryTokenInSharedPreference()
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+            } else {
+                startActivity(
+                    Intent(
+                        applicationContext,
+                        MakeNicknameActivity::class.java
+                    ).apply {
+                        putExtra(MakeNicknameActivity.EXTRA_KAKAO_ID, id)
+                    }
+                )
+            }
             finish()
-        } else {
-            startNicknameActivityWithId(count + 1)
         }
+    }
+
+    private suspend fun saveHabikeryTokenInSharedPreference() {
+        val sp = getUserSharedPreference()
+
+        val accessToken = Session.getCurrentSession().tokenInfo.accessToken
+
+        val token = userRepo.login(accessToken)
+
+        sp.edit().run{
+            putString(
+                SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
+                token.habikeryToken
+            )
+        }.apply()
     }
 
     private fun setupView() {
@@ -91,13 +107,11 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun setupKakaoCallback() {
+        callback.setOnSessionOpenedCallback {
+            startNicknameActivityWithId()
+        }
         Session.getCurrentSession().addCallback(callback)
-        Session.getCurrentSession().checkAndImplicitOpen()
-
-
-//        GlobalScope.launch {
-//            KakaoLoginUtils.unlink()
-//        }
+        autoLogin = Session.getCurrentSession().checkAndImplicitOpen()
     }
 
     private fun setViewPager() {
@@ -132,10 +146,7 @@ class OnboardingActivity : AppCompatActivity() {
                     }
                 }
             })
-
         }
-
-
     }
 
     private fun changeResource(
