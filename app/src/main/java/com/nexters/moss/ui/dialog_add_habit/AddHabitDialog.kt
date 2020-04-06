@@ -1,5 +1,6 @@
 package com.nexters.moss.ui.dialog_add_habit
 
+import android.app.Activity.RESULT_OK
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -39,10 +40,10 @@ class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
         binding.btnSubmit.setOnClickListener {
             activity?.let {
                 if (it is FormationHabitActivity) {
-                    startActivity(Intent(it, SendActivity::class.java).apply {
+                    startActivityForResult(Intent(it, SendActivity::class.java).apply {
                         putExtra(SendActivity.COME_FROM, SendActivity.FROM_ADD_HABIT)
                         putExtra(SendActivity.CREATE_CATEGORY_ID, it.vm.getSelectedItem())
-                    })
+                    }, 1000)
                 }
             }
         }
@@ -51,5 +52,12 @@ class AddHabitDialog : BaseDialog<DialogAddHabitBinding>() {
     override fun onPause() {
         dialog?.dismiss()
         super.onPause()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            dismiss()
+        }
     }
 }
