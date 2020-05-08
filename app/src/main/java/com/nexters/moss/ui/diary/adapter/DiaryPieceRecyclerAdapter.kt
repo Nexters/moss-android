@@ -30,10 +30,11 @@ class DiaryPieceRecyclerAdapter(private val itemList: List<DiaryModel>) :
             txtClear.text = item.habitName
             txtDescription.text = item.description
             txtCakeName.text = item.cakeName + "케익"
+            txtCount.text = item.count.toString()
             Glide.with(context!!).asBitmap().load("http://" + item.imagePath).into(cakeImage)
 
-            imgCount.visibility = View.GONE
-            txtCount.visibility = View.GONE
+            imgCount.visibility = View.VISIBLE
+            txtCount.visibility = View.VISIBLE
         }
     }
 

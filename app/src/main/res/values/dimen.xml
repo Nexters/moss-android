@@ -99,13 +99,13 @@
 
 
     <!-- receive cake -->
-    <dimen name="receive_padding_top_bottom">18dp</dimen>
-    <dimen name="receive_padding_start_end">20dp</dimen>
-    <dimen name="receive_padding_title">18dp</dimen>
-    <dimen name="receive_padding_card_top">24dp</dimen>
-    <dimen name="receive_padding_card_bottom">20dp</dimen>
-    <dimen name="receive_padding_report_top">10dp</dimen>
-    <dimen name="receive_padding_btn">14dp</dimen>
+    <dimen name="receive_margin_top_bottom">18dp</dimen>
+    <dimen name="receive_margin_start_end">20dp</dimen>
+    <dimen name="receive_margin_title">18dp</dimen>
+    <dimen name="receive_margin_card_top">24dp</dimen>
+    <dimen name="receive_margin_card_bottom">20dp</dimen>
+    <dimen name="receive_margin_report_top">10dp</dimen>
+    <dimen name="receive_margin_btn">14dp</dimen>
 
     <dimen name="receive_txt_title">18sp</dimen>
     <dimen name="receive_txt_small">12sp</dimen>
