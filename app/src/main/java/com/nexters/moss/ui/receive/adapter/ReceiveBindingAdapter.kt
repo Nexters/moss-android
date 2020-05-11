@@ -1,9 +1,8 @@
 package com.nexters.moss.ui.receive.adapter
 
 import android.graphics.drawable.Drawable
-import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.view.children
+import android.widget.RelativeLayout
 import androidx.databinding.BindingAdapter
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.bumptech.glide.Glide
@@ -11,33 +10,27 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
-import com.nexters.moss.R
 
 class ReceiveBindingAdapter {
 
     companion object {
         @JvmStatic
+        @BindingAdapter("cakeColor")
+        fun cakeColor(view:RelativeLayout, color : Int){
+            view.setBackgroundResource(color)
+        }
+
+
+        @JvmStatic
         @BindingAdapter("showGif")
-        fun showGif(layout: ViewGroup, imagePath: String) {
-            var imageView = ImageView(layout.context)
-//
-//            val lp = ViewGroup.LayoutParams(50, 50)
-//
-//            imageView.marginStart
-//
-//            imageView.layoutParams = lp
-//            var imageView: ImageView
+        fun showGif(layout: RelativeLayout, imagePath: String) {
+            val imageView = ImageView(layout.context)
 
-            for (item in layout.children.iterator()) {
-                if (item.id == R.id.gif) {
-                    imageView = item as ImageView
-                }
-            }
-
-            Glide.with(layout.context)
+            Glide.with(layout)
                 .asGif()
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .load("http:/" + imagePath)
+                //.load(R.raw.green)
                 .listener(object : RequestListener<GifDrawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -73,7 +66,8 @@ class ReceiveBindingAdapter {
                     }
                 })
                 .into(imageView)
-//            layout.addView(imageView)
+
+            layout.addView(imageView)
         }
     }
 }

@@ -14,7 +14,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cake_green_tea">
+        android:background="@color/cake_green_tea"
+        app:cakeColor="@{vm.backColor}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,7 +71,7 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="30dp"
                         app:showGif="@{vm.imagePath}">
 
                         <ImageView
@@ -87,6 +88,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
+                        android:paddingBottom="20dp"
                         android:layout_marginTop="@dimen/receive_margin_card_top"
                         android:layout_marginBottom="@dimen/receive_margin_card_bottom">
 
@@ -96,7 +98,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_centerInParent="true"
-                            android:text="노력하는 당신을 위한"
+                            android:text="@{vm.description}"
                             android:textColor="@color/receive_cake_name_subjective"
                             android:textSize="@dimen/receive_txt_cake_soft" />
 

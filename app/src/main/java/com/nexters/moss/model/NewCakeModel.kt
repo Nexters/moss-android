@@ -8,5 +8,6 @@ data class NewCakeModel (
     val nickname: String,
     val note: String,
     val cakeName: String,
-    val imagePath: String
+    val imagePath: String,
+    val description: String
 ) : Parcelable
