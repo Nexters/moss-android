@@ -125,6 +125,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     putExtra(ReceiveActivity.EXTRA_NEW_CAKE_MODEL, it)
                 })
             })
+            firstCheckEvent.observe(this@MainActivity, Observer {
+                toast("첫체크 누르기")
+                val habit = HabitListConstant.values()[it - 1]
+                FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
+            })
 //            isFirstCheck.observe(this@MainActivity, Observer {
 //                val habit = HabitListConstant.values()[it - 1]
 //                FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
@@ -158,13 +163,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             }
 
-            habitListAdapter.setOnCheckButtonClickListener { habitId, categoryId ->
-                if (categoryId != -1) {
-                    val habit = HabitListConstant.values()[categoryId - 1]
-                    FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
-                }
-
-                vm.doneHabit(habikeryToken ?: return@setOnCheckButtonClickListener, habitId)
+            habitListAdapter.setOnCheckButtonClickListener {
+                vm.doneHabit(habikeryToken ?: return@setOnCheckButtonClickListener, it)
             }
 
             habitListAdapter.setOnItemOrderChangeListener { habitId, to ->
