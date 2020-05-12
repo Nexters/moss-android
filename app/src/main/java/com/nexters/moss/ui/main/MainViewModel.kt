@@ -11,6 +11,7 @@ import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.utils.CategoryState
 import com.nexters.moss.utils.DLog
 import com.nexters.moss.utils.DateHelper
+import com.nexters.moss.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 
@@ -62,6 +63,8 @@ class MainViewModel(
 
     private val _isFirstCheck = MutableLiveData<Int>()
     val isFirstCheck: LiveData<Int> get() = _isFirstCheck
+
+    val firstCheckEvent = SingleLiveEvent<Int>()
 
 
     fun openDrawer() {
@@ -142,9 +145,9 @@ class MainViewModel(
             _itemList.value = list
 
 
-//            if (newModel.firstCheck) {
-//                _isFirstCheck.value = newModel.categoryId
-//            }
+            if (newModel.firstCheck) {
+                firstCheckEvent.call(newModel.categoryId)
+            }
 
             receivedCake?.let {
                 _receivedCake.value = it
