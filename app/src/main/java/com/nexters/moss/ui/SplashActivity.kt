@@ -12,6 +12,7 @@ import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.onboarding.OnboardingActivity
 import com.nexters.moss.utils.DLog
+import com.nexters.moss.utils.KakaoLoginUtils
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -25,16 +26,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         GlobalScope.launch {
-            val isExist = isExistId()
+            delay(1000)
 
-            val clazz: Class<out AppCompatActivity> = if (isExist) {
-                MainActivity::class.java
-            } else {
-                OnboardingActivity::class.java
-            }
-            delay(500)
-
-            startActivity(Intent(applicationContext, clazz))
+            startActivity(Intent(applicationContext, OnboardingActivity::class.java))
             finish()
         }
     }

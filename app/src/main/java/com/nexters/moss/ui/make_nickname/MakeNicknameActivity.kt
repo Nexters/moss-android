@@ -33,9 +33,9 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-        GlobalScope.launch {
-            KakaoLoginUtils.unlink()
-        }
+//        GlobalScope.launch {
+//            KakaoLoginUtils.unlink()
+//        }
     }
 
     private fun observeViewModel() {

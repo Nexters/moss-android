@@ -1,5 +1,7 @@
 package com.nexters.moss.ui.formation_habit
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -27,6 +29,13 @@ class FormationHabitActivity : BaseActivity<ActivityFormationHabitBinding>() {
 
         setupFormationHabitRecyclerView()
         observeViewModel()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            finish()
+        }
     }
 
     private fun observeViewModel() {

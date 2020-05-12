@@ -52,23 +52,24 @@ object KakaoLoginUtils {
         AuthService.getInstance().requestAccessTokenInfo(object : ApiResponseCallback<AccessTokenInfoResponse>() {
             override fun onSuccess(result: AccessTokenInfoResponse?) {
                 token = result?.userId?.toString() ?: EMPTY
+
             }
 
             override fun onSessionClosed(errorResult: ErrorResult?) {
                 errorResult?.exception?.printStackTrace()
             }
         })
-        val timeout = 200
-        var currentTime = 0
+//        val timeout = 200
+//        var currentTime = 0
 
         while (token == EMPTY) {
             delay(10)
-            currentTime += 10
+//            currentTime += 10
 
-            if (currentTime == timeout) {
-                DLog.e("timeout get token")
-                break
-            }
+//            if (currentTime == timeout) {
+//                DLog.e("timeout get token")
+//                break
+//            }
         }
 
         DLog.i("token value is : $token")

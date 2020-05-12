@@ -120,6 +120,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
         with(vm) {
             isFinishSendCake.observe(this@SendActivity, Observer {
                 if (it) {
+                    setResult(RESULT_OK)
                     finish()
                 }
             })

@@ -46,6 +46,7 @@ class MakeNicknameViewModel(private val userRepo: UserRepository) : ViewModel() 
 
     fun setAccessToken(token: String) {
         accessToken = token
+        DLog.d("my token = $accessToken")
     }
 
     fun getAccessToken() = accessToken
