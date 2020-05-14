@@ -48,6 +48,7 @@ class SendViewModel(
     private var categoryId = 0
     private var createCategoryId = -1
     private var isAddHabit = false
+    private var isClicked = false
 
     fun setCakeList(list: ArrayList<CakeModel>) {
         _cakeList.value = list
@@ -70,6 +71,11 @@ class SendViewModel(
     }
 
     fun sendCake(){
+        if (isClicked)
+            return
+
+        isClicked = true
+
         viewModelScope.launch {
             val response = cakeRepo.sendCake(habikeryToken, categoryId + 1, note.value ?: "화이팅")
             DLog.d(response.toString())
