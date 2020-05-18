@@ -36,6 +36,7 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
 //        GlobalScope.launch {
 //            KakaoLoginUtils.unlink()
 //        }
+//        DLog.d("종료됨")
     }
 
     private fun observeViewModel() {

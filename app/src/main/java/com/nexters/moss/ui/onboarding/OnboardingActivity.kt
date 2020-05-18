@@ -27,7 +27,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-
 class OnboardingActivity : AppCompatActivity() {
     lateinit var onboardingAdapter: OnboardingAdapter
     lateinit var first: ImageView
@@ -35,10 +34,7 @@ class OnboardingActivity : AppCompatActivity() {
     lateinit var third: ImageView
     lateinit var fourth: ImageView
 
-    private var autoLogin = false
-
     private val callback: KakaoSessionCallback by inject()
-    private val userRepo: UserRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,37 +62,16 @@ class OnboardingActivity : AppCompatActivity() {
     private fun startNicknameActivityWithId() {
         GlobalScope.launch {
             val id = KakaoLoginUtils.getAccessToken()
-            if (autoLogin) {
-                DLog.d("auto!")
-                saveHabikeryTokenInSharedPreference()
-                startActivity(Intent(applicationContext, MainActivity::class.java))
-            } else {
-                startActivity(
-                    Intent(
-                        applicationContext,
-                        MakeNicknameActivity::class.java
-                    ).apply {
-                        putExtra(MakeNicknameActivity.EXTRA_KAKAO_ID, id)
-                    }
-                )
-            }
+            startActivity(
+                Intent(
+                    applicationContext,
+                    MakeNicknameActivity::class.java
+                ).apply {
+                    putExtra(MakeNicknameActivity.EXTRA_KAKAO_ID, id)
+                }
+            )
             finish()
         }
-    }
-
-    private suspend fun saveHabikeryTokenInSharedPreference() {
-        val sp = getUserSharedPreference()
-
-        val accessToken = Session.getCurrentSession().tokenInfo.accessToken
-
-        val token = userRepo.login(accessToken)
-
-        sp.edit().run{
-            putString(
-                SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
-                token.habikeryToken
-            )
-        }.apply()
     }
 
     private fun setupView() {
@@ -111,7 +86,6 @@ class OnboardingActivity : AppCompatActivity() {
             startNicknameActivityWithId()
         }
         Session.getCurrentSession().addCallback(callback)
-        autoLogin = Session.getCurrentSession().checkAndImplicitOpen()
     }
 
     private fun setViewPager() {

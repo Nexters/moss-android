@@ -34,10 +34,16 @@ class SplashActivity : AppCompatActivity() {
         GlobalScope.launch {
             delay(1000)
             setupKakaoCallback()
-
+//            KakaoLoginUtils.unlink()
 //            startActivity(Intent(applicationContext, OnboardingActivity::class.java))
 //            finish()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Session.getCurrentSession().removeCallback(callback)
     }
 
     private fun setupKakaoCallback() {
@@ -47,6 +53,11 @@ class SplashActivity : AppCompatActivity() {
         Session.getCurrentSession().addCallback(callback)
         autoLogin = Session.getCurrentSession().checkAndImplicitOpen()
         DLog.d("is Can Open: $autoLogin")
+//
+        if (autoLogin.not()) {
+            startActivity(Intent(applicationContext, OnboardingActivity::class.java))
+            finish()
+        }
     }
 
     private fun startNicknameActivityWithId() {
@@ -75,9 +86,10 @@ class SplashActivity : AppCompatActivity() {
 
         val accessToken = Session.getCurrentSession().tokenInfo.accessToken
 
+
         val token = userRepo.login(accessToken)
 
-        sp.edit().run{
+        sp.edit().run {
             putString(
                 SharedPreferenceConstant.HABIKERY_TOKEN.getValue(),
                 token.habikeryToken
