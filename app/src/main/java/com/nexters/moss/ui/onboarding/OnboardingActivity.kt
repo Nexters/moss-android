@@ -62,14 +62,23 @@ class OnboardingActivity : AppCompatActivity() {
     private fun startNicknameActivityWithId() {
         GlobalScope.launch {
             val id = KakaoLoginUtils.getAccessToken()
-            startActivity(
-                Intent(
-                    applicationContext,
-                    MakeNicknameActivity::class.java
-                ).apply {
-                    putExtra(MakeNicknameActivity.EXTRA_KAKAO_ID, id)
-                }
-            )
+            val sp = getUserSharedPreference()
+            val isLogout = sp.getBoolean(SharedPreferenceConstant.IS_LOGOUT.getValue(), false)
+
+            if (isLogout) {
+                startActivity(Intent(applicationContext, MainActivity::class.java))
+                sp.edit().remove(SharedPreferenceConstant.IS_LOGOUT.getValue()).apply()
+            } else {
+                startActivity(
+                    Intent(
+                        applicationContext,
+                        MakeNicknameActivity::class.java
+                    ).apply {
+                        putExtra(MakeNicknameActivity.EXTRA_KAKAO_ID, id)
+                    }
+                )
+            }
+
             finish()
         }
     }

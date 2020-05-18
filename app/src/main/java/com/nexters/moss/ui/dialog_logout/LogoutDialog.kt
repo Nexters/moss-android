@@ -2,11 +2,15 @@ package com.nexters.moss.ui.dialog_logout
 
 import android.content.res.Resources
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
+import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.DialogLogoutBinding
 import com.nexters.moss.databinding.DialogWithdrawBinding
+import com.nexters.moss.extension.getUserSharedPreference
+import com.nexters.moss.ui.main.MainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LogoutDialog : BaseDialog<DialogLogoutBinding>() {
@@ -25,6 +29,32 @@ class LogoutDialog : BaseDialog<DialogLogoutBinding>() {
 
         binding.btnCancel.setOnClickListener {
             dismiss()
+        }
+
+        binding.btnSubmit.setOnClickListener {
+            vm.logout()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        with(vm) {
+            loginSuccessEvent.observe(this@LogoutDialog, Observer {
+                dismiss()
+
+                with(activity as MainActivity) {
+                    withdrawFinish()
+                    val sp = getUserSharedPreference()
+                    sp.edit().run {
+                        putBoolean(SharedPreferenceConstant.IS_LOGOUT.getValue(), true)
+                    }.apply()
+                }
+            })
         }
     }
 }

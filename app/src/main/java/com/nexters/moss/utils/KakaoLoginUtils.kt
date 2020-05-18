@@ -12,6 +12,9 @@ import com.kakao.usermgmt.callback.UnLinkResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
 import com.kakao.util.exception.KakaoException
 import kotlinx.coroutines.delay
+import com.kakao.usermgmt.callback.LogoutResponseCallback
+
+
 
 object KakaoLoginUtils {
     const val EMPTY = "empty"
@@ -129,5 +132,25 @@ object KakaoLoginUtils {
         }
 
         return result
+    }
+
+    suspend fun logout(): Boolean {
+        var isComplete = false
+
+        UserManagement.getInstance()
+            .requestLogout(object : LogoutResponseCallback() {
+                override fun onCompleteLogout() {
+                    isComplete = true
+                }
+            })
+
+        var currentTime = 0
+
+        while (!isComplete || currentTime < 2000) {
+            delay(100)
+            currentTime += 100
+        }
+
+        return isComplete
     }
 }

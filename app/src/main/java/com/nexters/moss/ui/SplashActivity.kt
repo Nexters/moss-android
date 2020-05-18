@@ -32,9 +32,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         GlobalScope.launch {
+//            KakaoLoginUtils.unlink()
             delay(1000)
             setupKakaoCallback()
-//            KakaoLoginUtils.unlink()
 //            startActivity(Intent(applicationContext, OnboardingActivity::class.java))
 //            finish()
         }
