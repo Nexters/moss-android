@@ -90,7 +90,6 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
     override fun onBackPressed() {
         onClose()
-//        super.onBackPressed()
     }
 
     private fun setupView() {

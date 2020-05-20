@@ -26,7 +26,7 @@ fun Activity.showHabikeryToast(content: String) {
 
 
     Toast(this).apply {
-        view = layoutInflater.inflate(R.layout.layout_toast_complete, null)
+        view = layoutInflater.inflate(R.layout.layout_habikery_toast, null)
         view.findViewById<TextView>(R.id.tv_toastMessage).text = content
         duration = Toast.LENGTH_SHORT
         setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
