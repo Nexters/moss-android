@@ -30,9 +30,6 @@ class SendViewModel(
     private val _exit = MutableLiveData<Boolean>().apply{ value = false }
     val exit : LiveData<Boolean> get() = _exit
 
-    private val _main = MutableLiveData<Boolean>().apply{ value = false }
-    val main : LiveData<Boolean> get() = _main
-
     private val _toYou = MutableLiveData<String>()
     val toYou: LiveData<String> get() = _toYou
 

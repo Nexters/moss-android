@@ -122,14 +122,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             isFinishSendCake.observe(this@SendActivity, Observer {
                 if (it) {
                     setResult(RESULT_OK)
-                    finish()
-                }
-            })
-
-            main.observe(this@SendActivity, Observer {
-                if (it) {
-                    startActivity<MainActivity>()
                     showHabikeryToast("선물 보내기가 완료 되었습니다!")
+                    finish()
                 }
             })
         }
