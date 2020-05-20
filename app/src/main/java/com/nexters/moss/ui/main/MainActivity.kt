@@ -131,10 +131,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 val habit = HabitListConstant.values()[it - 1]
                 FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
             })
-//            isFirstCheck.observe(this@MainActivity, Observer {
-//                val habit = HabitListConstant.values()[it - 1]
-//                FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
-//            })
         }
 
         // 임시 첫 선물 팝업 띄우기 기능

@@ -38,8 +38,9 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     }
 
     private lateinit var from: String
-
     private lateinit var keyboardVisibility: KeyboardEventVisibility
+
+    private var isSendCake = false
 
     private var cakeList = arrayListOf<CakeModel>(
         CakeModel("물마시기", R.drawable.send_select_watermelon),
@@ -108,6 +109,9 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                 finish()
             }
             FROM_MAIN_SEND_CAKE -> {
+                if (isSendCake) {
+                    showHabikeryToast("선물 보내기가 완료 되었습니다!")
+                }
                 finish()
             }
             FROM_RECEIVE_CAKE -> {
@@ -121,8 +125,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             isFinishSendCake.observe(this@SendActivity, Observer {
                 if (it) {
                     setResult(RESULT_OK)
-                    showHabikeryToast("선물 보내기가 완료 되었습니다!")
-                    finish()
+                    isSendCake = true
+                    onClose()
                 }
             })
         }
