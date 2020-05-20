@@ -29,14 +29,41 @@ val networkModule = module {
         GsonConverterFactory.create() as Converter.Factory
     }
 
-    single {
-        Retrofit.Builder()
-            .client(get())
-            .addConverterFactory(get())
-            .baseUrl("http://49.50.167.14/")
-            .build()
-            .create(HabitApi::class.java)
-    }
+//    single {
+//        Retrofit.Builder()
+//            .client(get())
+//            .addConverterFactory(get())
+//            .baseUrl("http://49.50.167.14/")
+//            .build()
+//            .create(HabitApi::class.java)
+//    }
+//
+//    single {
+//        Retrofit.Builder()
+//            .client(get())
+//            .addConverterFactory(get())
+//            .baseUrl("http://49.50.167.14/")
+//            .build()
+//            .create(UserApi::class.java)
+//    }
+//
+//    single {
+//        Retrofit.Builder()
+//            .client(get())
+//            .addConverterFactory(get())
+//            .baseUrl("http://49.50.167.14/")
+//            .build()
+//            .create(CakeApi::class.java)
+//    }
+//
+//    single {
+//        Retrofit.Builder()
+//            .client(get())
+//            .addConverterFactory(get())
+//            .baseUrl("http://49.50.167.14/")
+//            .build()
+//            .create(DiaryApi::class.java)
+//    }
 
     single {
         Retrofit.Builder()
@@ -44,24 +71,21 @@ val networkModule = module {
             .addConverterFactory(get())
             .baseUrl("http://49.50.167.14/")
             .build()
-            .create(UserApi::class.java)
     }
 
     single {
-        Retrofit.Builder()
-            .client(get())
-            .addConverterFactory(get())
-            .baseUrl("http://49.50.167.14/")
-            .build()
-            .create(CakeApi::class.java)
+        (get() as Retrofit).create(CakeApi::class.java)
     }
 
     single {
-        Retrofit.Builder()
-            .client(get())
-            .addConverterFactory(get())
-            .baseUrl("http://49.50.167.14/")
-            .build()
-            .create(DiaryApi::class.java)
+        (get() as Retrofit).create(HabitApi::class.java)
+    }
+
+    single {
+        (get() as Retrofit).create(UserApi::class.java)
+    }
+
+    single {
+        (get() as Retrofit).create(DiaryApi::class.java)
     }
 }

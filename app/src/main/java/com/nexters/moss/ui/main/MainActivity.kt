@@ -17,6 +17,7 @@ import com.nexters.moss.constant.HabitListConstant
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivityMainBinding
 import com.nexters.moss.extension.getUserSharedPreference
+import com.nexters.moss.extension.showHabikeryToast
 import com.nexters.moss.ui.dialog_first_gift.FirstGiftDialog
 import com.nexters.moss.ui.dialog_logout.LogoutDialog
 import com.nexters.moss.ui.dialog_remove_habit.RemoveHabitDialog
@@ -130,10 +131,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 val habit = HabitListConstant.values()[it - 1]
                 FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
             })
-//            isFirstCheck.observe(this@MainActivity, Observer {
-//                val habit = HabitListConstant.values()[it - 1]
-//                FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
-//            })
         }
 
         // 임시 첫 선물 팝업 띄우기 기능
@@ -155,7 +152,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     bundle.putInt(RemoveHabitDialog.ARGUMENT_CATEGORY_ID, habitId)
                     arguments = bundle
                     setOnDissmissListener {
-                        showToastReportCompleted("$habitName 습관이 삭제되었습니다.")
+                        showHabikeryToast("$habitName 습관이 삭제되었습니다.")
                         setupHabitList()
                     }
                 }.run {
@@ -207,24 +204,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun setupNickname() {
         vm.setNickname(habikeryToken ?: return)
     }
-
-    private fun showToastReportCompleted(content: String) {
-        val toastTopValue = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            21f,
-            this.resources.displayMetrics
-        ).toInt()
-
-
-        Toast(this).apply {
-            view = layoutInflater.inflate(R.layout.layout_toast_complete, null)
-            view.findViewById<TextView>(R.id.tv_toastMessage).text = content
-            duration = Toast.LENGTH_LONG
-            setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
-            show()
-        }
-    }
-
 
     fun withdrawFinish() {
         startActivity<OnboardingActivity>()
