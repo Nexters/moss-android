@@ -17,6 +17,7 @@ import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.extension.getUserSharedPreference
+import com.nexters.moss.extension.showHabikeryToast
 import com.nexters.moss.model.CakeModel
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
@@ -128,7 +129,7 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             main.observe(this@SendActivity, Observer {
                 if (it) {
                     startActivity<MainActivity>()
-                    showToastReportCompleted()
+                    showHabikeryToast("선물 보내기가 완료 되었습니다!")
                 }
             })
         }
@@ -229,23 +230,6 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             onHideKeyboard = {
                 vm.isBtnVisible(true)
             })
-    }
-
-    private fun showToastReportCompleted() {
-
-        val toastTopValue = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            21f,
-            this.resources.displayMetrics
-        ).toInt()
-
-
-        Toast(this).apply {
-            view = layoutInflater.inflate(R.layout.layout_toast_complete, null)
-            duration = Toast.LENGTH_LONG
-            setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
-            show()
-        }
     }
 
     companion object {
