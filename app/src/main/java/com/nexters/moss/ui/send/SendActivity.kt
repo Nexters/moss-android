@@ -17,6 +17,7 @@ import com.nexters.moss._base.BaseActivity
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.ActivitySendBinding
 import com.nexters.moss.extension.getUserSharedPreference
+import com.nexters.moss.extension.showHabikeryToast
 import com.nexters.moss.model.CakeModel
 import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
@@ -37,8 +38,9 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
     }
 
     private lateinit var from: String
-
     private lateinit var keyboardVisibility: KeyboardEventVisibility
+
+    private var isSendCake = false
 
     private var cakeList = arrayListOf<CakeModel>(
         CakeModel("물마시기", R.drawable.send_select_watermelon),
@@ -89,7 +91,6 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
 
     override fun onBackPressed() {
         onClose()
-//        super.onBackPressed()
     }
 
     private fun setupView() {
@@ -108,6 +109,9 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
                 finish()
             }
             FROM_MAIN_SEND_CAKE -> {
+                if (isSendCake) {
+                    showHabikeryToast("선물 보내기가 완료 되었습니다!")
+                }
                 finish()
             }
             FROM_RECEIVE_CAKE -> {
@@ -121,14 +125,8 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             isFinishSendCake.observe(this@SendActivity, Observer {
                 if (it) {
                     setResult(RESULT_OK)
-                    finish()
-                }
-            })
-
-            main.observe(this@SendActivity, Observer {
-                if (it) {
-                    startActivity<MainActivity>()
-                    showToastReportCompleted()
+                    isSendCake = true
+                    onClose()
                 }
             })
         }
@@ -229,23 +227,6 @@ class SendActivity : BaseActivity<ActivitySendBinding>() {
             onHideKeyboard = {
                 vm.isBtnVisible(true)
             })
-    }
-
-    private fun showToastReportCompleted() {
-
-        val toastTopValue = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            21f,
-            this.resources.displayMetrics
-        ).toInt()
-
-
-        Toast(this).apply {
-            view = layoutInflater.inflate(R.layout.layout_toast_complete, null)
-            duration = Toast.LENGTH_LONG
-            setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
-            show()
-        }
     }
 
     companion object {

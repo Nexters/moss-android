@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.nexters.moss.R
 import com.nexters.moss._base.BaseDialog
 import com.nexters.moss.databinding.DialogReportBinding
+import com.nexters.moss.extension.showHabikeryToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReceiveDialog : BaseDialog<DialogReportBinding>() {
@@ -32,17 +33,8 @@ class ReceiveDialog : BaseDialog<DialogReportBinding>() {
         with(vm) {
             submit.observe(viewLifecycleOwner, Observer {
                 if (it) {
+                    activity?.showHabikeryToast("신고가 접수되었습니다.")
                     dismiss()
-                    showToastReportCompleted()
-
-//                    toast(" "+vm.report.value)
-//
-//                    if(vm.report.value == 3){
-//                        if(vm.report.value == null)
-//                            toast("기타")
-//                        else
-//                            toast(" "+vm.reason.value)
-//                    }
                 }
             })
 
@@ -57,23 +49,6 @@ class ReceiveDialog : BaseDialog<DialogReportBinding>() {
                     itemSelected()
                 }
             })
-        }
-    }
-
-    private fun showToastReportCompleted() {
-
-        val toastTopValue = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            21f,
-            view!!.resources.displayMetrics
-        ).toInt()
-
-
-        Toast(context).apply {
-            view = layoutInflater.inflate(R.layout.layout_toast_report, null)
-            duration = Toast.LENGTH_LONG
-            setGravity(Gravity.FILL_HORIZONTAL or Gravity.TOP, 0, toastTopValue)
-            show()
         }
     }
 }
