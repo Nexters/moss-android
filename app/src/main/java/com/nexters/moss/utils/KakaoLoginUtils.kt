@@ -62,17 +62,9 @@ object KakaoLoginUtils {
                 errorResult?.exception?.printStackTrace()
             }
         })
-//        val timeout = 200
-//        var currentTime = 0
 
         while (token == EMPTY) {
             delay(10)
-//            currentTime += 10
-
-//            if (currentTime == timeout) {
-//                DLog.e("timeout get token")
-//                break
-//            }
         }
 
         DLog.i("token value is : $token")
@@ -147,8 +139,8 @@ object KakaoLoginUtils {
         var currentTime = 0
 
         while (!isComplete || currentTime < 2000) {
-            delay(100)
-            currentTime += 100
+            delay(20)
+            currentTime += 20
         }
 
         return isComplete

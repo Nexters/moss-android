@@ -1,6 +1,5 @@
 package com.nexters.moss.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +8,6 @@ import com.nexters.moss.R
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.extension.getUserSharedPreference
 import com.nexters.moss.repository.UserRepository
-import com.nexters.moss.ui.formation_habit.FormationHabitActivity
 import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.make_nickname.MakeNicknameActivity
 import com.nexters.moss.ui.onboarding.OnboardingActivity
@@ -32,11 +30,8 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         GlobalScope.launch {
-//            KakaoLoginUtils.unlink()
             delay(1000)
             setupKakaoCallback()
-//            startActivity(Intent(applicationContext, OnboardingActivity::class.java))
-//            finish()
         }
     }
 
@@ -53,7 +48,7 @@ class SplashActivity : AppCompatActivity() {
         Session.getCurrentSession().addCallback(callback)
         autoLogin = Session.getCurrentSession().checkAndImplicitOpen()
         DLog.d("is Can Open: $autoLogin")
-//
+
         if (autoLogin.not()) {
             startActivity(Intent(applicationContext, OnboardingActivity::class.java))
             finish()
