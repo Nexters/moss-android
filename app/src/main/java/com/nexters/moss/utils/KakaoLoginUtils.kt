@@ -12,6 +12,9 @@ import com.kakao.usermgmt.callback.UnLinkResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
 import com.kakao.util.exception.KakaoException
 import kotlinx.coroutines.delay
+import com.kakao.usermgmt.callback.LogoutResponseCallback
+
+
 
 object KakaoLoginUtils {
     const val EMPTY = "empty"
@@ -59,17 +62,9 @@ object KakaoLoginUtils {
                 errorResult?.exception?.printStackTrace()
             }
         })
-//        val timeout = 200
-//        var currentTime = 0
 
         while (token == EMPTY) {
             delay(10)
-//            currentTime += 10
-
-//            if (currentTime == timeout) {
-//                DLog.e("timeout get token")
-//                break
-//            }
         }
 
         DLog.i("token value is : $token")
@@ -129,5 +124,25 @@ object KakaoLoginUtils {
         }
 
         return result
+    }
+
+    suspend fun logout(): Boolean {
+        var isComplete = false
+
+        UserManagement.getInstance()
+            .requestLogout(object : LogoutResponseCallback() {
+                override fun onCompleteLogout() {
+                    isComplete = true
+                }
+            })
+
+        var currentTime = 0
+
+        while (!isComplete || currentTime < 2000) {
+            delay(20)
+            currentTime += 20
+        }
+
+        return isComplete
     }
 }

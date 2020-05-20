@@ -22,10 +22,11 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
         binding.vm = vm
     }
 
+    private var isJoin = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        vm.setAccessToken(intent.getStringExtra(EXTRA_KAKAO_ID) ?: throw Exception("need intent extra"))
         vm.setAccessToken(Session.getCurrentSession().tokenInfo.accessToken ?: throw Exception("need intent extra"))
 
         observeViewModel()
@@ -33,9 +34,11 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-//        GlobalScope.launch {
-//            KakaoLoginUtils.unlink()
-//        }
+        if (!isJoin) {
+            GlobalScope.launch {
+                KakaoLoginUtils.unlink()
+            }
+        }
     }
 
     private fun observeViewModel() {
@@ -44,6 +47,7 @@ class MakeNicknameActivity : BaseActivity<ActivityMakeNicknameBinding>() {
                 if (it) {
                     setTokenInSharedPreference()
                     startActivity<MainActivity>()
+                    isJoin = true
                     finish()
                 }
             })
