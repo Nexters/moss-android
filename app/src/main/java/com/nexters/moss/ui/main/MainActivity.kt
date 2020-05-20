@@ -126,7 +126,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 })
             })
             firstCheckEvent.observe(this@MainActivity, Observer {
-                toast("첫체크 누르기")
                 val habit = HabitListConstant.values()[it - 1]
                 FirstGiftDialog.newInstance(habit).show(supportFragmentManager, "")
             })
