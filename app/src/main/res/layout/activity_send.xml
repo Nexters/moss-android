@@ -16,7 +16,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
 
         <RelativeLayout
@@ -35,7 +36,7 @@
                 android:layout_centerVertical="true"
                 android:background="@color/transparent"
                 android:src="@drawable/icon_back"
-                tools:text="나가기" />/>
+                tools:text="나가기" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -122,9 +123,9 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:background="@color/white"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/white"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -154,12 +155,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/uiColorDisable"
-                                android:text="@={vm.note}"
                                 android:hint="@string/send_cake_message_hint"
                                 android:inputType="textVisiblePassword"
                                 android:letterSpacing="-0.04"
                                 android:maxLength="14"
                                 android:paddingBottom="20dp"
+                                android:text="@={vm.note}"
                                 android:textColor="@color/textColorSlate"
                                 android:textColorHint="@color/uiColorDisable"
                                 android:textCursorDrawable="@drawable/edit_text_cursor"

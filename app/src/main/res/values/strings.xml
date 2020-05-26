@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Moss</string>
+    <string name="app_name">Habikery</string>
 
     <!-- send cake -->
     <string name="send_cake_title">케익 보내기</string>

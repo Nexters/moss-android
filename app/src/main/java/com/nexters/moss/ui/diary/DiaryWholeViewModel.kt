@@ -22,6 +22,9 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
     private val _categoryList = MutableLiveData<ArrayList<String>>(ArrayList())
     val categoryList: LiveData<ArrayList<String>> get() = _categoryList
 
+    private val _isEmpty = MutableLiveData<Boolean>()
+    val isEmpty: LiveData<Boolean> get() = _isEmpty
+
     fun getCakeHistory(categoryId : Int, habikeryToken : String){
         viewModelScope.launch {
             _itemList.value = diaryRepo.getCakeHistory(habikeryToken, categoryId).data
@@ -45,6 +48,7 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
                 }
             }
 
+            _isEmpty.value = itemList.isEmpty()
             _cakeList.value = itemList
             _categoryList.value = categoryList
 
