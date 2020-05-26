@@ -17,9 +17,7 @@ class DiaryPieceViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
 
     fun setCakeList(habikeryToken: String) {
         viewModelScope.launch {
-//            _cakeList.value = diaryRepo.getPieceOfCakeDiary(habikeryToken).data
-
-            val response =  diaryRepo.getWholeCakeDiary(habikeryToken).data as ArrayList
+            val response =  diaryRepo.getPieceOfCakeDiary(habikeryToken).data as ArrayList
             val itemList : ArrayList<DiaryModel> = ArrayList()
 
             for (item in response){
