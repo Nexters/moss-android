@@ -2,24 +2,17 @@ package com.nexters.moss.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import com.kakao.auth.ISessionCallback
 import com.kakao.auth.Session
-import com.kakao.network.ErrorResult
-import com.kakao.usermgmt.UserManagement
-import com.kakao.usermgmt.callback.MeV2ResponseCallback
-import com.kakao.usermgmt.response.MeV2Response
-import com.kakao.util.exception.KakaoException
 import com.nexters.moss.R
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.extension.getUserSharedPreference
-import com.nexters.moss.repository.UserRepository
 import com.nexters.moss.ui.main.MainActivity
 import com.nexters.moss.ui.make_nickname.MakeNicknameActivity
 import com.nexters.moss.ui.onboarding.adapter.OnboardingAdapter
-import com.nexters.moss.utils.DLog
 import com.nexters.moss.utils.KakaoLoginUtils
 import com.nexters.moss.utils.KakaoSessionCallback
 import kotlinx.android.synthetic.main.activity_onboarding.*
@@ -37,6 +30,10 @@ class OnboardingActivity : AppCompatActivity() {
     private val callback: KakaoSessionCallback by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
 
