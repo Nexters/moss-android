@@ -3,11 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#3a4657</item>
+        <item name="colorPrimaryDark">#f4f4f5</item>
         <item name="colorAccent">@color/uiColorMain</item>
         <item name="android:fontFamily">@font/noto_sans_medium</item>
         <item name="android:letterSpacing">-0.04</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <!-- Onboardig TabTheme -->
