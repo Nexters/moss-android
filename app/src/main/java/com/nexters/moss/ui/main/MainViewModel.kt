@@ -106,12 +106,13 @@ class MainViewModel(
             val response = userRepo.getUserInfo(habikeryToken)
             val name = response.nickname ?: "unknown"
 
-            val nameBuilder = StringBuilder()
-            for (i in 1 until name.length - 1) {
-                nameBuilder.append(name[i])
-            }
-
-            _nickname.value = nameBuilder.toString()
+//            val nameBuilder = StringBuilder()
+//            for (i in 1 until name.length - 1) {
+//                nameBuilder.append(name[i])
+//            }
+//
+//            _nickname.value = nameBuilder.toString()
+            _nickname.value = name
         }
     }
 
