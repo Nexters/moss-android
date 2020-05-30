@@ -6,17 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nexters.moss.R
-import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.model.DiaryModel
-import com.nexters.moss.ui.diary.DiaryWholeFragment
-import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
 
-class DiaryWholeRecyclerAdapter(val itemList:ArrayList<DiaryModel>) : RecyclerView.Adapter<DiaryWholeRecyclerAdapter.Holder>() {
-    private var context : Context? = null
+class DiaryWholeRecyclerAdapter(val itemList: ArrayList<DiaryModel>) :
+    RecyclerView.Adapter<DiaryWholeRecyclerAdapter.Holder>() {
+    private var context: Context? = null
     private var onClick: OnItemClickListener? = null
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,7 +32,7 @@ class DiaryWholeRecyclerAdapter(val itemList:ArrayList<DiaryModel>) : RecyclerVi
             Glide.with(context!!).asBitmap().load("http://" + item.imagePath).into(cakeImage)
         }
 
-        fun clickEvent(){
+        fun clickEvent() {
             itemView.setOnClickListener {
                 onClick?.onItemClick(adapterPosition)
             }
@@ -44,7 +41,7 @@ class DiaryWholeRecyclerAdapter(val itemList:ArrayList<DiaryModel>) : RecyclerVi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.item_diary, parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_diary, parent, false)
         return Holder(view)
     }
 
