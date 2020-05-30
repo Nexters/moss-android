@@ -9,7 +9,6 @@ import com.nexters.moss._base.BaseFragment
 import com.nexters.moss.constant.SharedPreferenceConstant
 import com.nexters.moss.databinding.FragmentWholeBinding
 import com.nexters.moss.extension.getUserSharedPreference
-import com.nexters.moss.model.DiaryCakeModel
 import com.nexters.moss.model.DiaryModel
 import com.nexters.moss.ui.diary.adapter.DiaryWholeRecyclerAdapter
 import com.nexters.moss.ui.diary_history.DiaryHistoryDialog
@@ -48,6 +47,17 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
             cakeList.observe(viewLifecycleOwner, Observer {
                 recyclerAdapter.refreshItemList(it as ArrayList<DiaryModel>)
             })
+
+
+            itemList.observe(viewLifecycleOwner, Observer {
+                DiaryHistoryDialog().apply {
+                    val bundle = Bundle()
+                    bundle.putParcelable(KEY, it)
+                    arguments = bundle
+                }.run {
+                    show(this@DiaryWholeFragment.childFragmentManager, KEY)
+                }
+            })
         }
     }
 
@@ -59,21 +69,9 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
                 setOnItemClickListener {
 
                     val list = vm.categoryList.value as ArrayList
-                    val id =translateItem(list[it])
+                    val id = translateItem(list[it])
 
                     vm.getCakeHistory(id, habikeryToken)
-
-                    vm.itemList.observe(viewLifecycleOwner, Observer {
-                        val item = vm.itemList.value
-
-                        DiaryHistoryDialog().apply{
-                            val bundle = Bundle()
-                            bundle.putParcelable(KEY, item)
-                            arguments = bundle
-                        }.run {
-                            show(this@DiaryWholeFragment.childFragmentManager, KEY)
-                        }
-                    })
                 }
             }
 
@@ -92,7 +90,7 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
         }
     }
 
-    private fun translateItem(item: String): Int{
+    private fun translateItem(item: String): Int {
         return when (item) {
             "수박" -> 1
             "치즈" -> 2
@@ -107,7 +105,7 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
     }
 
     companion object {
-        const val KEY="key"
+        const val KEY = "key"
     }
 
 }
