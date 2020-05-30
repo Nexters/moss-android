@@ -2,10 +2,7 @@ package com.nexters.moss.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
@@ -58,9 +55,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         super.onCreate(savedInstanceState)
 
 
-        binding.tvNickname.setOnClickListener {
-            startActivity<ReceiveActivity>()
-        }
+//        binding.tvNickname.setOnClickListener {
+//            startActivity<ReceiveActivity>()
+//        }
         setupNickname()
         setupHabitRecyclerView()
         setupDrawerLayout()

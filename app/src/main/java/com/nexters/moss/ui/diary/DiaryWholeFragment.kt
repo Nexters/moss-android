@@ -68,8 +68,8 @@ class DiaryWholeFragment : BaseFragment<FragmentWholeBinding>() {
             adapter = recyclerAdapter.apply {
                 setOnItemClickListener {
 
-                    val list = vm.categoryList.value as ArrayList
-                    val id = translateItem(list[it])
+                    val list = vm.cakeList.value as ArrayList
+                    val id = translateItem(list[it].cakeName)
 
                     vm.getCakeHistory(id, habikeryToken)
                 }

@@ -18,9 +18,6 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
     private val _cakeList = MutableLiveData<ArrayList<DiaryModel>>(ArrayList())
     val cakeList: LiveData<ArrayList<DiaryModel>> get() = _cakeList
 
-    private val _categoryList = MutableLiveData<ArrayList<String>>(ArrayList())
-    val categoryList: LiveData<ArrayList<String>> get() = _categoryList
-
     private val _isEmpty = MutableLiveData<Boolean>()
     val isEmpty: LiveData<Boolean> get() = _isEmpty
 
@@ -49,8 +46,6 @@ class DiaryWholeViewModel(private val diaryRepo: DiaryRepository) : ViewModel() 
 
             _isEmpty.value = itemList.isEmpty()
             _cakeList.value = itemList
-            _categoryList.value = categoryList
-
         }
     }
 }

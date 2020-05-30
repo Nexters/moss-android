@@ -42,8 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/main_open_drawer_margin_top"
                 android:background="@null"
-                android:src="@drawable/btn_open_drawer"
                 android:onClick="@{() -> vm.openDrawer()}"
+                android:src="@drawable/btn_open_drawer"
                 app:layout_constraintStart_toStartOf="@id/guide_start"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,8 +53,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_receive_cake_margin_end"
                 android:background="@null"
-                android:src="@drawable/btn_receive_cake"
                 android:onClick="@{() -> vm.openDiary()}"
+                android:src="@drawable/btn_receive_cake"
                 app:layout_constraintEnd_toStartOf="@id/btn_sendCake"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
@@ -63,8 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:src="@drawable/btn_send_cake"
                 android:onClick="@{() -> vm.openSend()}"
+                android:src="@drawable/btn_send_cake"
                 app:layout_constraintEnd_toEndOf="@id/guide_end"
                 app:layout_constraintTop_toTopOf="@id/btn_openSettingDrawer" />
 
@@ -85,12 +85,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/main_edit_habit_margin_start"
-                android:text="편집"
-                android:textColor="@color/textColorSmall"
-                android:textSize="@dimen/main_edit_habit_text_size"
                 android:onClick="@{() -> vm.setEditMode(true)}"
                 android:paddingTop="10dp"
                 android:paddingEnd="6dp"
+                android:text="편집"
+                android:textColor="@color/textColorSmall"
+                android:textSize="@dimen/main_edit_habit_text_size"
                 app:layout_constraintBaseline_toBaselineOf="@id/txt_habit"
                 app:layout_constraintBottom_toBottomOf="@id/txt_habit"
                 app:layout_constraintStart_toEndOf="@id/txt_habit" />
@@ -103,8 +103,8 @@
                 android:text="@{vm.dayOfFifth}"
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
-                app:layout_constraintEnd_toEndOf="@id/guide_end"
-                app:layout_constraintBaseline_toBaselineOf="@id/tv_editHabit" />
+                app:layout_constraintBaseline_toBaselineOf="@id/tv_editHabit"
+                app:layout_constraintEnd_toEndOf="@id/guide_end" />
 
             <TextView
                 android:id="@+id/tv_dayOfFourth"
@@ -144,10 +144,10 @@
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_days_margin_end"
+                android:gravity="center"
                 android:text="@{vm.dayOfFirst}"
                 android:textColor="@color/textColorSmall"
                 android:textSize="@dimen/main_days_text_size"
-                android:gravity="center"
                 app:layout_constraintEnd_toStartOf="@id/tv_dayOfSecond"
                 app:layout_constraintTop_toTopOf="@id/tv_dayOfFifth" />
 
@@ -166,75 +166,82 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/main_habit_list_margin_top"
-                app:setItemList="@{vm.itemList}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_habit"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:setItemList="@{vm.itemList}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="@dimen/main_drawer_item_width"
             android:layout_height="match_parent"
             android:layout_gravity="left"
             android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_drawer_nickname_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_nickname_margin_top"
                 android:text="@{vm.nickname}"
                 android:textColor="@color/textColorBlack"
                 android:textSize="@dimen/main_drawer_nickname_text_size"
                 android:textStyle="bold"
-                android:layout_marginStart="@dimen/main_drawer_nickname_margin_start"
-                android:layout_marginTop="@dimen/main_drawer_nickname_margin_top"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="로그아웃"
-                android:textSize="@dimen/main_drawer_logout_text_size"
-                android:textColor="#b33a4657"
                 android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
                 android:onClick="@{() -> vm.logout()}"
+                android:text="로그아웃"
+                android:textColor="#b33a4657"
+                android:textSize="@dimen/main_drawer_logout_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/tv_nickname"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_nickname"
-                app:layout_constraintBottom_toBottomOf="@id/tv_nickname"/>
+                app:layout_constraintTop_toTopOf="@id/tv_nickname" />
+
             <TextView
                 android:id="@+id/txt_push"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
+                android:layout_marginTop="@dimen/main_drawer_push_margin_top"
                 android:text="푸시설정"
                 android:textColor="@color/textColorBlack"
                 android:textSize="@dimen/main_drawer_left_items_text_size"
-                android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
-                android:layout_marginTop="@dimen/main_drawer_push_margin_top"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_nickname" />
+
             <Switch
                 android:layout_width="@dimen/main_drawer_push_switch_width"
                 android:layout_height="@dimen/main_drawer_push_switch_height"
                 android:layout_marginEnd="@dimen/main_drawer_right_items_margin_end"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/txt_push"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/txt_push"
-                app:layout_constraintBottom_toBottomOf="@id/txt_push"/>
+                app:layout_constraintTop_toTopOf="@id/txt_push" />
+
             <TextView
                 android:id="@+id/txt_withdraw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="탈퇴하기"
-                android:textSize="@dimen/main_drawer_left_items_text_size"
-                android:textColor="@color/textColorBlack"
-                android:onClick="@{() -> vm.withDraw()}"
                 android:layout_marginStart="@dimen/main_drawer_left_items_margin_start"
-                android:layout_marginTop="@dimen/main_drawer_left_items_margin_top"
+                android:layout_marginTop="@dimen/main_drawer_push_margin_top"
+                android:onClick="@{() -> vm.withDraw()}"
+                android:text="탈퇴하기"
+                android:textColor="@color/textColorBlack"
+                android:textSize="@dimen/main_drawer_left_items_text_size"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_push"/>
+                app:layout_constraintTop_toBottomOf="@id/txt_push" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
