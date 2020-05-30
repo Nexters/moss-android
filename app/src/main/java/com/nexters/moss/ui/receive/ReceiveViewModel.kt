@@ -8,26 +8,26 @@ import com.nexters.moss.model.NewCakeModel
 
 class ReceiveViewModel : ViewModel() {
 
-    private val _report = MutableLiveData<Boolean>().apply{ value = false}
-    val report : LiveData<Boolean> get() = _report
+    private val _report = MutableLiveData<Boolean>().apply { value = false }
+    val report: LiveData<Boolean> get() = _report
 
-    private val _exit = MutableLiveData<Boolean>().apply{ value = false }
-    val exit : LiveData<Boolean> get() = _exit
+    private val _exit = MutableLiveData<Boolean>().apply { value = false }
+    val exit: LiveData<Boolean> get() = _exit
 
-    private val _diary = MutableLiveData<Boolean>().apply{ value = false }
-    val diary : LiveData<Boolean> get() = _diary
+    private val _diary = MutableLiveData<Boolean>().apply { value = false }
+    val diary: LiveData<Boolean> get() = _diary
 
-    private val _send = MutableLiveData<Boolean>().apply{ value = false }
-    val send : LiveData<Boolean> get() = _send
+    private val _send = MutableLiveData<Boolean>().apply { value = false }
+    val send: LiveData<Boolean> get() = _send
 
     private val _nickname = MutableLiveData<String>("채채")
     val nickname: LiveData<String> get() = _nickname
 
     private val _note = MutableLiveData<String>("화이팅!!")
     val note: LiveData<String> get() = _note
-    
+
     private val _description = MutableLiveData<String>("산책하는 나에게")
-    val description : LiveData<String> get() = _description
+    val description: LiveData<String> get() = _description
 
     private val _cakeName = MutableLiveData<String>("녹차케익")
     val cakeName: LiveData<String> get() = _cakeName
@@ -36,7 +36,7 @@ class ReceiveViewModel : ViewModel() {
     val imagePath: LiveData<String> get() = _imagePath
 
     private val _backColor = MutableLiveData<Int>(GREEN)
-    val backColor : LiveData<Int> get() = _backColor
+    val backColor: LiveData<Int> get() = _backColor
 
     fun setNewCake(newCake: NewCakeModel) {
         newCake.let {
@@ -47,28 +47,28 @@ class ReceiveViewModel : ViewModel() {
             _description.value = it.description
         }
 
-        _backColor.value = when(_cakeName.value){
-            "수박","사과" -> CORAL
+        _backColor.value = when (_cakeName.value) {
+            "수박", "사과" -> CORAL
             "밤", "생크림" -> BLUE
             "치즈", "책읽기" -> ORANGE
             "커피" -> BROWN
             else -> GREEN
         }
-   }
+    }
 
     fun clickBtnReport() {
         _report.value = true
     }
 
-    fun exit(){
+    fun exit() {
         _exit.value = true
     }
 
-    fun goDiary(){
+    fun goDiary() {
         _diary.value = true
     }
 
-    fun goSend(){
+    fun goSend() {
         _send.value = true
     }
 
