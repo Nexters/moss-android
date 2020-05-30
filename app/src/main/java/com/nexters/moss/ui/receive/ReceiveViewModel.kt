@@ -50,7 +50,7 @@ class ReceiveViewModel : ViewModel() {
         _backColor.value = when (_cakeName.value) {
             "수박", "사과" -> CORAL
             "밤", "생크림" -> BLUE
-            "치즈", "책읽기" -> ORANGE
+            "치즈", "아몬드" -> ORANGE
             "커피" -> BROWN
             else -> GREEN
         }
