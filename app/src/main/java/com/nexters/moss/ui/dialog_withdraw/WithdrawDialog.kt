@@ -28,6 +28,8 @@ class WithdrawDialog : BaseDialog<DialogWithdrawBinding>() {
     override fun getDialogWidth() = 340
     override fun getDialogHeight() = 220
 
+    private var isWithdrawProcess = false
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         observeViewModel()
@@ -37,6 +39,11 @@ class WithdrawDialog : BaseDialog<DialogWithdrawBinding>() {
         }
 
         binding.btnSubmit.setOnClickListener {
+            if (isWithdrawProcess) {
+                return@setOnClickListener
+            }
+            isWithdrawProcess = true
+
             withdraw()
         }
     }

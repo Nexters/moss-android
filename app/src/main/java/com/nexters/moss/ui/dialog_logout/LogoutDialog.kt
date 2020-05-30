@@ -24,6 +24,8 @@ class LogoutDialog : BaseDialog<DialogLogoutBinding>() {
     override fun getDialogWidth() = 340
     override fun getDialogHeight() = 220
 
+    private var isLogoutProcess = false
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
@@ -32,6 +34,11 @@ class LogoutDialog : BaseDialog<DialogLogoutBinding>() {
         }
 
         binding.btnSubmit.setOnClickListener {
+            if (isLogoutProcess) {
+                return@setOnClickListener
+            }
+            isLogoutProcess = true
+
             vm.logout()
         }
     }

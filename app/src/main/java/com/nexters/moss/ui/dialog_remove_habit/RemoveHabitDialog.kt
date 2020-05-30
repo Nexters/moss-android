@@ -23,6 +23,8 @@ class RemoveHabitDialog : BaseDialog<DialogRemoveHabitBinding>() {
     override fun getDialogWidth() = 340
     override fun getDialogHeight() = 220
 
+    private var isDeleteProgress = false
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         observeViewModel()
@@ -48,6 +50,11 @@ class RemoveHabitDialog : BaseDialog<DialogRemoveHabitBinding>() {
     }
 
     private fun deleteHabit() {
+        if (isDeleteProgress) {
+            return
+        }
+        isDeleteProgress = true
+
         activity?.let {
             val sp = it.getUserSharedPreference()
 

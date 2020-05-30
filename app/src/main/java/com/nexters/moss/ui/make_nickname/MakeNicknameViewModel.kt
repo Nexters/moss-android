@@ -18,7 +18,14 @@ class MakeNicknameViewModel(private val userRepo: UserRepository) : ViewModel() 
     private var accessToken = ""
     private var habikeryToken = ""
 
+    private var isMakeNickProcess = false
+
     fun makeNickname() {
+        if (isMakeNickProcess) {
+            return
+        }
+        isMakeNickProcess = true
+
         viewModelScope.launch {
             try {
                 val response = userRepo.join(
