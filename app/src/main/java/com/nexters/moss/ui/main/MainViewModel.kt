@@ -31,6 +31,9 @@ class MainViewModel(
     private val _isEditMode = MutableLiveData<Boolean>(false)
     val isEditMode: LiveData<Boolean> get() = _isEditMode
 
+    private val _editModeText = MutableLiveData<String>("편집")
+    val editModeText: LiveData<String> get() = _editModeText
+
     private val _intentDiary = MutableLiveData<Boolean>(false)
     val intentDiary: LiveData<Boolean> get() = _intentDiary
 
@@ -91,6 +94,11 @@ class MainViewModel(
     fun setEditMode(enabled: Boolean) {
         DLog.d("call $enabled")
         _isEditMode.value = enabled
+        if (enabled) {
+            _editModeText.value = "편집 취소"
+        } else {
+            _editModeText.value = "편집"
+        }
     }
 
     fun openDiary() {
